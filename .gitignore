@@ -1,3 +1,7 @@
-/.settings/*
+demo/.settings/*
+
 demo/.project
+
 demo/.classpath
+
+demo/target/*
