@@ -10,3 +10,4 @@ demo/target
 demo.zip
 
 demo/.mvn/*
+demo/src/main/java/com/example/util/Test.java
