@@ -1,8 +1,13 @@
 package com.example.pojo;
 
+import com.example.excelexport.GeneralExcelConfig;
+
 public class User {
+	@GeneralExcelConfig(value="姓名")
 	private String name;
+	@GeneralExcelConfig(ingore=true)
 	private int age;
+	@GeneralExcelConfig(value="性別")
 	private String sex;
 	
 	public String getName() {

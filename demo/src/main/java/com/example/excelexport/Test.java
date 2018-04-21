@@ -1,4 +1,4 @@
-package com.example.util;
+package com.example.excelexport;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,9 @@ import java.util.Map;
 
 import com.example.pojo.User;
 
-public class Test1 {
+import jxl.write.WriteException;
+
+public class Test {
 
 	public static void main(String[] args) {
 		List<User> list = new ArrayList<User>();
@@ -20,9 +22,9 @@ public class Test1 {
 		list.add(u);
 		
 		User u1 = new User();
-		u.setName("wd");
-		u.setAge(25);
-		u.setSex("女");
+		u1.setName("wd");
+		u1.setAge(25);
+		u1.setSex("女");
 		
 		list.add(u1);
 		
@@ -31,11 +33,12 @@ public class Test1 {
 		map.put("age", "年龄");
 		map.put("sex", "性别");
 		
-		try {
-			Test.createExcel(list, "D:\\\\test.xls", null, map, "花名册");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			try {
+				ExcelParams ep = new ExcelParams(list, User.class);
+				GerneralExcel.createExcel(ep, null);
+			} catch (WriteException e) {
+				e.printStackTrace();
+			}
 	}
 
 }
