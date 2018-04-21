@@ -76,9 +76,6 @@ public class GerneralExcel {
 			e.printStackTrace();
 		}finally{
 			try {
-				/*if(out!=null){
-					out.close();
-				}*/
 				if(book!=null){
 					book.close();
 				}
