@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author Zangy
  * 定时任务
  */
-@Component
+/*@Component*/
 public class ScheduleTask implements InitializingBean {
 	
 	@Override
