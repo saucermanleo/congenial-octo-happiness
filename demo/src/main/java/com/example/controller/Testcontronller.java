@@ -28,8 +28,12 @@ public class Testcontronller {
 	public String sayHello() {
 		return "hello springboot";
 	}
-
-	@RequestMapping(value = "/excel", method = RequestMethod.GET)
+	
+	/**
+	 * @param response
+	 * 文件下載
+	 */
+	@RequestMapping(value = "/downloadexcel", method = RequestMethod.GET)
 	public void loadExcel(HttpServletResponse response) {
 		try {
 			String filename = "test";
