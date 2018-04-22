@@ -22,6 +22,7 @@ import com.example.pojo.User;
 import jxl.write.WriteException;
 
 @RestController
+@RequestMapping("/zy")
 public class Testcontronller {
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
