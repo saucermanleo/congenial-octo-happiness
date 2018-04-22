@@ -4,3 +4,4 @@
 4.生成excel
 5.request請求參數校驗（@valid）
 6.springmvc返回參數忽略（@jsonview）
+7.filter（可以到request的信息）,interceptor（可以得到controller的信息）,Aspect(可以操作傳入參數和返回參數）
