@@ -9,8 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.security.MyProperties;
+import com.example.security.ValidateCodeFilter;
 
 @Configuration
 public class SecruityConfig extends WebSecurityConfigurerAdapter {
@@ -27,14 +29,17 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin()
+		ValidateCodeFilter filter = new ValidateCodeFilter();
+		filter.setFailhande(authenticationFailureHandler);
+		http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+			.formLogin()
 			.loginPage("/authentication/require")
 			.loginProcessingUrl("/authentication/form")
 			.successHandler(myAutenticationsuccessHandler)
 			.failureHandler(authenticationFailureHandler)
 			.and()
 			.authorizeRequests()
-			.antMatchers("/authentication/require",mp.getLogingpage()).permitAll()
+			.antMatchers("/authentication/require",mp.getLogingpage(),"/code/image").permitAll()
 			.anyRequest()
 			.authenticated()
 			.and()
