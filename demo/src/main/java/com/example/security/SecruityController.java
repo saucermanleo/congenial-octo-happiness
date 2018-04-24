@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -40,5 +44,22 @@ public class SecruityController {
 		}
 		return "请登陆";
 
+	}
+	@RequestMapping("me")
+	public Object me(Authentication autnentication) {
+		return autnentication.getPrincipal();
+		
+	}
+	
+	@RequestMapping("me1")
+	public Object me1(@AuthenticationPrincipal UserDetails user) {
+		return user;
+		
+	}
+	
+	@RequestMapping("me2")
+	public Object me1() {
+		return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
 	}
 }
