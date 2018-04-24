@@ -2,8 +2,9 @@ package com.example.pojo;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.example.annotation.MyNotBlank;
 import com.example.excelexport.GeneralExcelConfig;

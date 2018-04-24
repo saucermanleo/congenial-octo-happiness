@@ -30,6 +30,11 @@ public @interface MyNotBlank {
 		public boolean isValid(String value, ConstraintValidatorContext context) {
 			return !StringUtils.isEmpty(value);
 		}
+
+		@Override
+		public void initialize(MyNotBlank constraintAnnotation) {
+			
+		}
 		
 	}
 }

@@ -23,10 +23,10 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
 	}
 
 	@Bean
-	public FilterRegistrationBean<TimeFilter> timeFilter (){
+	public FilterRegistrationBean timeFilter (){
 		
 		TimeFilter tf = new TimeFilter();
-		FilterRegistrationBean<TimeFilter> fr = new FilterRegistrationBean<TimeFilter>();
+		FilterRegistrationBean fr = new FilterRegistrationBean();
 		fr.setFilter(tf);
 		List<String> urls = new ArrayList<String>();
 		urls.add("/zy/*");
