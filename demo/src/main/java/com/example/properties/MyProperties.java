@@ -1,4 +1,4 @@
-package com.example.security;
+package com.example.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -7,6 +7,16 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="com.zy")
 public class MyProperties {
 	private String logingpage = "/logintest.html";
+	
+	private ValidateCodeProperties vp = new ValidateCodeProperties();
+
+	public ValidateCodeProperties getVp() {
+		return vp;
+	}
+
+	public void setVp(ValidateCodeProperties vp) {
+		this.vp = vp;
+	}
 
 	public String getLogingpage() {
 		return logingpage;

@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.properties.MyProperties;
+
 @RestController
 public class SecruityController {
 	private RedirectStrategy rs = new DefaultRedirectStrategy();

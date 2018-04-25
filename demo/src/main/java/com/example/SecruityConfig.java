@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.security.MyProperties;
+import com.example.properties.MyProperties;
 import com.example.security.ValidateCodeFilter;
 
 @Configuration
