@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -23,6 +24,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.example.pojo.ImageCode;
 import com.example.properties.MyProperties;
 
+@Component
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
 	@Autowired

@@ -9,7 +9,7 @@ public class ValidateCodeProperties {
 	
 	private int expiresecends = 60;
 	
-	private String urls;
+	private String urls="";
 
 	public String getUrls() {
 		return urls;

@@ -26,6 +26,8 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	@Autowired
+	ValidateCodeFilter filter ;
+	@Autowired
 	private AuthenticationSuccessHandler myAutenticationsuccessHandler;
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
@@ -38,7 +40,6 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 	private SmsSecruityConfig smsSecruityConfig;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		ValidateCodeFilter filter = new ValidateCodeFilter();
 		filter.setFailhande(authenticationFailureHandler);
 		http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
 			.formLogin()
