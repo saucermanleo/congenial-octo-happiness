@@ -4,10 +4,11 @@ import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 
 public class ImageCode {
-	
+	public static final String SESSION_KEY = "SESSION_KEY_IMAGE_CODE";
 	private BufferedImage image;
 	private String code;
 	private LocalDateTime expireTime;
+	public static final String SPRING_SECURITY_FORM_PASSWORD_KEY = "smsCode";
 	
 	@SuppressWarnings("static-access")
 	public ImageCode(BufferedImage image, String code, int expireTime) {

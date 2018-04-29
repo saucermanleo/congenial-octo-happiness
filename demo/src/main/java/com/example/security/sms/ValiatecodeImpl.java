@@ -9,7 +9,6 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.example.pojo.ImageCode;
-import com.example.security.ValidateCodeController;
 import com.example.security.ValidateCodeException;
 
 @Component
@@ -20,8 +19,8 @@ public class ValiatecodeImpl implements Valiatecode {
 	@Override
 	public void valiate(ServletWebRequest request) throws ServletRequestBindingException {
 		ImageCode imagecode = null;
-		imagecode = (ImageCode) st.getAttribute(request, ValidateCodeController.SESSION_KEY);
-		String code = ServletRequestUtils.getStringParameter(request.getRequest(), "imageCode");
+		imagecode = (ImageCode) st.getAttribute(request, ImageCode.SESSION_KEY);
+		String code = ServletRequestUtils.getStringParameter(request.getRequest(), ImageCode.SPRING_SECURITY_FORM_PASSWORD_KEY);
 		if (StringUtils.isBlank(code)) {
 			throw new ValidateCodeException("验证码不能为空");
 		}
@@ -29,13 +28,13 @@ public class ValiatecodeImpl implements Valiatecode {
 			throw new ValidateCodeException("验证码不存在");
 		}
 		if (imagecode.isExpire()) {
-			st.removeAttribute(request, ValidateCodeController.SESSION_KEY);
+			st.removeAttribute(request, ImageCode.SESSION_KEY);
 			throw new ValidateCodeException("验证码过期了");
 		}
 		if (!StringUtils.equals(imagecode.getCode(), code)) {
 			throw new ValidateCodeException("验证码不正确");
 		}
-		st.removeAttribute(request, ValidateCodeController.SESSION_KEY);
+		st.removeAttribute(request, ImageCode.SESSION_KEY);
 	}
 
 }

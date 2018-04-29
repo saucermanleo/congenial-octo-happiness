@@ -14,17 +14,18 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.request.ServletWebRequest;
 
+import com.example.pojo.ImageCode;
 import com.example.security.ValidateCodeException;
 
 public class SMSAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
-	@Autowired
 	private Valiatecode valiatecode;
+
 	public static final String SPRING_SECURITY_FORM_USERNAME_KEY = "mobile";
-	public static final String SPRING_SECURITY_FORM_PASSWORD_KEY = "smsCode";
+	
 
 	private String usernameParameter = SPRING_SECURITY_FORM_USERNAME_KEY;
-	private String passwordParameter = SPRING_SECURITY_FORM_PASSWORD_KEY;
+	private String passwordParameter = ImageCode.SPRING_SECURITY_FORM_PASSWORD_KEY;
 	private boolean postOnly = true;
 
 	public SMSAuthenticationFilter() {
@@ -103,6 +104,14 @@ public class SMSAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
 	public void setPostOnly(boolean postOnly) {
 		this.postOnly = postOnly;
+	}
+
+	public Valiatecode getValiatecode() {
+		return valiatecode;
+	}
+
+	public void setValiatecode(Valiatecode valiatecode) {
+		this.valiatecode = valiatecode;
 	}
 
 }

@@ -18,7 +18,7 @@ import com.example.security.codegeneration.CodeGenerator;
 
 @RestController
 public class ValidateCodeController {
-	public static final String SESSION_KEY = "SESSION_KEY_IMAGE_CODE";
+	
 	
 	@Autowired
 	private CodeGenerator codegenerator;
@@ -28,7 +28,7 @@ public class ValidateCodeController {
 	@GetMapping("/code/image")
 	public void createImage(HttpServletRequest request, HttpServletResponse response) {
 		ImageCode imagecode = codegenerator.createImageCode();
-		sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY, imagecode);
+		sessionStrategy.setAttribute(new ServletWebRequest(request), ImageCode.SESSION_KEY, imagecode);
 		try {
 			ImageIO.write(imagecode.getImage(), "JPEG", response.getOutputStream());
 		} catch (IOException e) {

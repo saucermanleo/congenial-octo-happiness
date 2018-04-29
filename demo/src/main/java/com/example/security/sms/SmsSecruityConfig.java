@@ -17,6 +17,8 @@ public class SmsSecruityConfig extends SecurityConfigurerAdapter<DefaultSecurity
 	/*@Autowired
 	private MyProperties mp;*/
 	@Autowired
+	private Valiatecode valitecode;
+	@Autowired
 	private AuthenticationSuccessHandler myAutenticationsuccessHandler;
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
@@ -28,6 +30,7 @@ public class SmsSecruityConfig extends SecurityConfigurerAdapter<DefaultSecurity
 		SMSAuthenticationFilter smsfilter = new SMSAuthenticationFilter();
 		AuthenticationManager maager = http.getSharedObject(AuthenticationManager.class);
 		smsfilter.setAuthenticationManager(maager);
+		smsfilter.setValiatecode(valitecode);
 		smsfilter.setFilterProcessesUrl("/authentication/mobile");
 		SMSAuthenticationProvider smsprovider = new SMSAuthenticationProvider();
 		smsprovider.setUserdetailService(userservice);
