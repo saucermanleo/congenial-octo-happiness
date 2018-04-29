@@ -31,7 +31,6 @@ public class SmsSecruityConfig extends SecurityConfigurerAdapter<DefaultSecurity
 		AuthenticationManager maager = http.getSharedObject(AuthenticationManager.class);
 		smsfilter.setAuthenticationManager(maager);
 		smsfilter.setValiatecode(valitecode);
-		smsfilter.setFilterProcessesUrl("/authentication/mobile");
 		SMSAuthenticationProvider smsprovider = new SMSAuthenticationProvider();
 		smsprovider.setUserdetailService(userservice);
 		smsfilter.setAuthenticationSuccessHandler(myAutenticationsuccessHandler);
