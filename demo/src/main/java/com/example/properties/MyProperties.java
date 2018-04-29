@@ -1,12 +1,14 @@
 package com.example.properties;
 
+import org.springframework.boot.autoconfigure.social.SocialProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix="com.zy")
-public class MyProperties {
+public class MyProperties extends SocialProperties{
 	private String logingpage = "/logintest.html";
+	
 	
 	private int remebermSecends = 3600*24*7;
 	

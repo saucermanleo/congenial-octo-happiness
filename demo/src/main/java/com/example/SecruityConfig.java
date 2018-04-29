@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.example.properties.MyProperties;
 import com.example.security.ValidateCodeFilter;
@@ -36,6 +37,9 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 	private AuthenticationSuccessHandler myAutenticationsuccessHandler;
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
+	
+	@Autowired
+	SpringSocialConfigurer springSocialConfigurer;
 	
 	@Bean
 	public PersistentTokenRepository persistentTokenRepository() {
@@ -66,6 +70,8 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.csrf().disable()
 			.apply(smsSecruityConfig)
+				.and()
+			.apply(springSocialConfigurer)
 				.and()
 			.rememberMe()
 				.tokenValiditySeconds(mp.getRemebermSecends())
