@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pojo.User;
-import com.example.pojo.User.View1;
 import com.example.pojo.User.View2;
 import com.fasterxml.jackson.annotation.JsonView;
 

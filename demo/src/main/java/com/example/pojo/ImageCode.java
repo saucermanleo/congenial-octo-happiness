@@ -9,6 +9,7 @@ public class ImageCode {
 	private String code;
 	private LocalDateTime expireTime;
 	
+	@SuppressWarnings("static-access")
 	public ImageCode(BufferedImage image, String code, int expireTime) {
 		this.image = image;
 		this.code = code;

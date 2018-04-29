@@ -12,21 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.social.connect.web.HttpSessionSessionStrategy;
-import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.web.bind.ServletRequestBindingException;
-import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.pojo.ImageCode;
 import com.example.properties.MyProperties;
+import com.example.security.sms.Valiatecode;
 
 @Component
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
+	@Autowired
+	private Valiatecode valiatecode;
 	@Autowired
 	MyProperties mp;
 	private AntPathMatcher am = new AntPathMatcher();
@@ -42,7 +40,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 	}
 
 	private Set<String> url= new HashSet<String>();
-	private SessionStrategy st = new HttpSessionSessionStrategy();
+	
 	
 	@Override
 	public void afterPropertiesSet() throws ServletException {
@@ -64,7 +62,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 		}
 		if (flag) {
 			try {
-				valiatecode(new ServletWebRequest(request));
+				valiatecode.valiate(new ServletWebRequest(request));
 			} catch (ValidateCodeException e) {
 				failhande.onAuthenticationFailure(request, response, e);
 				return;
@@ -74,25 +72,5 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 
 	}
 
-	private void valiatecode(ServletWebRequest request) throws ServletRequestBindingException {
-		ImageCode imagecode = null;
-		imagecode = (ImageCode) st.getAttribute(request, ValidateCodeController.SESSION_KEY);
-		String code = ServletRequestUtils.getStringParameter(request.getRequest(), "imageCode");
-		if (StringUtils.isBlank(code)) {
-			throw new ValidateCodeException("验证码不能为空");
-		}
-		if (imagecode == null) {
-			throw new ValidateCodeException("验证码不存在");
-		}
-		if (imagecode.isExpire()) {
-			st.removeAttribute(request, ValidateCodeController.SESSION_KEY);
-			throw new ValidateCodeException("验证码过期了");
-		}
-		if (!StringUtils.equals(imagecode.getCode(), code)) {
-			throw new ValidateCodeException("验证码不正确");
-		}
-
-		st.removeAttribute(request, ValidateCodeController.SESSION_KEY);
-	}
-
+	
 }

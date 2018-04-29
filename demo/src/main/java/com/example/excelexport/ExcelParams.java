@@ -29,7 +29,9 @@ public class ExcelParams {
 	private WritableCellFormat cellformat;
 	private String filepath = "D:\\test.xls";
 	private LinkedHashMap<String, String> mapper = new LinkedHashMap<String, String>();
+	@SuppressWarnings("rawtypes")
 	private List objets;
+	@SuppressWarnings("rawtypes")
 	private Class clz;
 	private String sheetname = "sheet1";
 
@@ -51,6 +53,7 @@ public class ExcelParams {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public ExcelParams(List objets, Class clz) throws WriteException {
 		this.objets = objets;
 		this.clz = clz;
@@ -112,18 +115,22 @@ public class ExcelParams {
 		this.mapper = mapper;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public List getObjets() {
 		return objets;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setObjets(List objets) {
 		this.objets = objets;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Class getClz() {
 		return clz;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setClz(Class clz) {
 		this.clz = clz;
 	}

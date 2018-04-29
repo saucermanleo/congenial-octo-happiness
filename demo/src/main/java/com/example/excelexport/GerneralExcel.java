@@ -88,6 +88,7 @@ public class GerneralExcel {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static Map<String, Method> getMethods(Class clz) {
 		Map<String, Method> resultmap = new HashMap<String, Method>();
 

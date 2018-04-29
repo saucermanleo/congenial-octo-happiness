@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.example.pojo.ImageCode;
 import com.example.properties.MyProperties;
