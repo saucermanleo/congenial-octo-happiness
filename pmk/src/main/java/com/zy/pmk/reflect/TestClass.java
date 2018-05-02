@@ -9,6 +9,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.zy.pmk.pojo.A;
+import com.zy.pmk.pojo.D;
 import com.zy.pmk.pojo.EnumA;
 import com.zy.pmk.pojo.InterfaceB;
 import com.zy.pmk.pojo.User;
@@ -144,4 +145,5 @@ public class TestClass<m, v> {
 			}
 		}
 	}
+	
 }
