@@ -1,5 +1,9 @@
 package com.zy.pmk.reflect;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -151,6 +155,70 @@ public class TestClass<m, v> {
 				Type[] t = parameterizedType.getActualTypeArguments();
 				System.out.println(t[0]);
 			}
+		}
+	}
+
+	/**
+	 * 得到类的信息
+	 */
+	@Test
+	public void getxxx() {
+		//得到包名
+		Package p = A.class.getPackage();
+		System.out.println(p.getName());
+		//得到属性
+		Class<A> clzz = A.class;
+		Field[] fields = clzz.getDeclaredFields();
+		for (Field f : fields) {
+			String mod = Modifier.toString(f.getModifiers());
+			String name = f.getName();
+			Class<?> t = f.getType();
+			System.out.println(mod + " " + t.getSimpleName() + " " + name);
+		}
+		//得到构造器
+		Constructor<?>[] cs = A.class.getDeclaredConstructors();
+		for (int j = 0; j < cs.length; j++) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(Modifier.toString(cs[j].getModifiers()));
+			sb.append(" ");
+			sb.append(A.class.getSimpleName() + "(");
+			Class<?>[] ps = cs[j].getParameterTypes();
+			for (int i = 0; i < ps.length; i++) {
+				if (i == ps.length - 1) {
+					sb.append(ps[i].getSimpleName() + " arg" + i);
+				} else {
+					sb.append(ps[i].getSimpleName() + " arg" + i + " , ");
+				}
+			}
+			sb.append(")");
+			System.out.println(sb);
+		}
+		//得到方法
+		Method[] methods = A.class.getDeclaredMethods();
+		for (Method m : methods) {
+			String s = "";
+			int modefier = m.getModifiers();
+			Class<?> returntypeclz = m.getReturnType();
+			String returntype = returntypeclz.getSimpleName();
+			String mod = Modifier.toString(modefier);
+			String methodname = m.getName();
+			s = mod + " " + returntype + " " + methodname + "(";
+			Class<?>[] parameters = m.getParameterTypes();
+			for (int i = 0; i < parameters.length; i++) {
+				if (i == parameters.length - 1) {
+					s = s + parameters[i].getSimpleName() + " arg" + i;
+				} else {
+					s = s + parameters[i].getSimpleName() + " arg" + i + " , ";
+				}
+			}
+			s = s + ")";
+			Class<?>[] exceptions = m.getExceptionTypes();
+			if (exceptions.length > 0)
+				s = s + " throws  ";
+			for (Class<?> c : exceptions) {
+				s = s + c.getSimpleName();
+			}
+			System.out.println(s);
 		}
 	}
 
