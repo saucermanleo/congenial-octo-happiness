@@ -2,6 +2,7 @@ package com.zy.pmk.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -161,12 +162,12 @@ public class TestClass<m, v> {
 	/**
 	 * 得到类的信息
 	 */
-	@Test
+	// @Test
 	public void getxxx() {
-		//得到包名
+		// 得到包名
 		Package p = A.class.getPackage();
 		System.out.println(p.getName());
-		//得到属性
+		// 得到属性
 		Class<A> clzz = A.class;
 		Field[] fields = clzz.getDeclaredFields();
 		for (Field f : fields) {
@@ -175,7 +176,7 @@ public class TestClass<m, v> {
 			Class<?> t = f.getType();
 			System.out.println(mod + " " + t.getSimpleName() + " " + name);
 		}
-		//得到构造器
+		// 得到构造器
 		Constructor<?>[] cs = A.class.getDeclaredConstructors();
 		for (int j = 0; j < cs.length; j++) {
 			StringBuilder sb = new StringBuilder();
@@ -193,7 +194,7 @@ public class TestClass<m, v> {
 			sb.append(")");
 			System.out.println(sb);
 		}
-		//得到方法
+		// 得到方法
 		Method[] methods = A.class.getDeclaredMethods();
 		for (Method m : methods) {
 			String s = "";
@@ -212,6 +213,7 @@ public class TestClass<m, v> {
 				}
 			}
 			s = s + ")";
+			// 得到异常
 			Class<?>[] exceptions = m.getExceptionTypes();
 			if (exceptions.length > 0)
 				s = s + " throws  ";
@@ -220,6 +222,31 @@ public class TestClass<m, v> {
 			}
 			System.out.println(s);
 		}
+	}
+
+	/**
+	 * 执行方法 得到属性值
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws NoSuchFieldException
+	 */
+	@Test
+	public void invock() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
+		User u = new User();
+		u.setPassword("123456");
+		u.setUsername("zy");
+		Class<?> clzz = u.getClass();
+		Method ms = clzz.getDeclaredMethod("getUsername", new Class[] {});
+		String username = (String) ms.invoke(u, new Object[] {});
+		System.out.println(username);
+		
+		Field f = clzz.getDeclaredField("password");
+		f.setAccessible(true);
+		String password = (String) f.get(u);
+		System.out.println(password);
 	}
 
 }
