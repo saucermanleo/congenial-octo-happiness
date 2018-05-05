@@ -19,8 +19,18 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
+/**
+ * 导出excel工具类,例子:{@link TestGeneralExcel}
+ * @author Zangy
+ * 
+ */
 public class GerneralExcel {
-	public static void createExcel(ExcelParams ep, OutputStream out) {
+	/**
+	 * 导出execl
+	 * @param ep
+	 * @param out 为null使用{@code ep}中的filepath为导出路径,不为空则导出到这个输出流中,忽略{@code ep}中的路径
+	 */
+	public static <T> void createExcel(ExcelParams<T> ep, OutputStream out) {
 		WritableCellFormat hformat = ep.getHeadformat();
 		WritableCellFormat cformat = ep.getCellformat();
 		WritableWorkbook book = null;
@@ -46,7 +56,7 @@ public class GerneralExcel {
 				int j = 0;
 				for (String key : map.keySet()) {
 					Method m = methods.get(getkey(key));
-					Object o = m.invoke(t, null);
+					Object o = m.invoke(t, new Object[] {});
 					String value = o == null ? "" : o.toString();
 					try {
 						BigDecimal bd = new BigDecimal(value);
@@ -88,8 +98,7 @@ public class GerneralExcel {
 
 	}
 
-	@SuppressWarnings("rawtypes")
-	private static Map<String, Method> getMethods(Class clz) {
+	private static <T> Map<String, Method> getMethods(Class<T> clz) {
 		Map<String, Method> resultmap = new HashMap<String, Method>();
 
 		Method[] methods = clz.getMethods();

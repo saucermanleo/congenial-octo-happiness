@@ -15,7 +15,20 @@ import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WriteException;
 
-public class ExcelParams {
+/**
+ * 生成excel工具类{@link GerneralExcel}的参数封装类
+ * <p>{@code headformat} Excel头的格式{@link WritableCellFormat},不提供采用默认格式
+ * <p>{@code cellformat} Excel的格式,不提供采用默认格式
+ * <P>{@code filepath} 导出的excel的绝对路径地址,默认为D:\\test.xls
+ * <p>{@code mapper} 头字段信息,key为头字段,value为要导出对象的对应的属性字段,默认为导出对象的字段,可以用{@link GeneralExcelConfig}设置忽略字段,和头字段名
+ * <p>{@code sheetname} sheet名,默认为sheet1
+ * <p>{@code objets} 成excel的Beans
+ * @author Zangy
+ *
+ * @param <T> 要导出的Bean
+ * @see GerneralExcel
+ */
+public class ExcelParams<T> {
 
 	public String getSheetname() {
 		return sheetname;
@@ -29,10 +42,8 @@ public class ExcelParams {
 	private WritableCellFormat cellformat;
 	private String filepath = "D:\\test.xls";
 	private LinkedHashMap<String, String> mapper = new LinkedHashMap<String, String>();
-	@SuppressWarnings("rawtypes")
-	private List objets;
-	@SuppressWarnings("rawtypes")
-	private Class clz;
+	private List<T> objets;
+	private Class<T> clz;
 	private String sheetname = "sheet1";
 
 	private void getFieldname() {
@@ -53,8 +64,7 @@ public class ExcelParams {
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
-	public ExcelParams(List objets, Class clz) throws WriteException {
+	public ExcelParams(List<T> objets, Class<T> clz) throws WriteException {
 		this.objets = objets;
 		this.clz = clz;
 		WritableFont font = new WritableFont(WritableFont.TIMES, 10, WritableFont.BOLD, false,
@@ -115,23 +125,19 @@ public class ExcelParams {
 		this.mapper = mapper;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public List getObjets() {
+	public List<T> getObjets() {
 		return objets;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setObjets(List objets) {
+	public void setObjets(List<T> objets) {
 		this.objets = objets;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public Class getClz() {
+	public Class<T> getClz() {
 		return clz;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setClz(Class clz) {
+	public void setClz(Class<T> clz) {
 		this.clz = clz;
 	}
 }

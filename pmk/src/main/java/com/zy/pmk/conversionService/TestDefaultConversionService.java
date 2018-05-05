@@ -26,4 +26,36 @@ public class TestDefaultConversionService {
 		System.out.println(result.getUsername());
 		
 	}
+	
+	@Test
+	public void testparseNumber() {
+		String intvalue = "33";
+		int result = TestparseNumber.parese(intvalue, Integer.class);
+		System.out.println(result);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

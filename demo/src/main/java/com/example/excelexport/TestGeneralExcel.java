@@ -9,7 +9,7 @@ import com.example.pojo.User;
 
 import jxl.write.WriteException;
 
-public class Test {
+public class TestGeneralExcel {
 
 	public static void main(String[] args) {
 		List<User> list = new ArrayList<User>();
@@ -34,7 +34,7 @@ public class Test {
 		map.put("sex", "性别");
 		
 			try {
-				ExcelParams ep = new ExcelParams(list, User.class);
+				ExcelParams<User> ep = new ExcelParams<User>(list, User.class);
 				GerneralExcel.createExcel(ep, null);
 			} catch (WriteException e) {
 				e.printStackTrace();
