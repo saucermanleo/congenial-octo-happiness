@@ -16,6 +16,7 @@ import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.security.SpringSocialConfigurer;
 
 import com.example.properties.MyProperties;
+import com.example.security.MyAutenticationsuccessHandler;
 import com.example.social.connect.QQConnectionFactory;
 
 @EnableSocial
@@ -25,6 +26,8 @@ public class QQAutoConfig extends SocialAutoConfigurerAdapter {
 
 	@Autowired
 	DataSource datasource;
+	
+	
 
 	@Autowired(required = false)
 	ConnectionSignUp connectionSignUp;
@@ -35,7 +38,6 @@ public class QQAutoConfig extends SocialAutoConfigurerAdapter {
 				connectionFactoryLocator, Encryptors.noOpText());
 		if (connectionSignUp != null) {
 			jdbcUsersConnectionRepository.setConnectionSignUp(connectionSignUp);
-			;
 		}
 		return jdbcUsersConnectionRepository;
 	}

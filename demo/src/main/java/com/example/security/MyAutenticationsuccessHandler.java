@@ -21,8 +21,9 @@ public class MyAutenticationsuccessHandler implements AuthenticationSuccessHandl
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		response.setContentType("application/json;charset=utf-8");
-		response.getWriter().write(om.writeValueAsString(authentication));
+		response.sendRedirect("/me");
+		/*response.setContentType("application/json;charset=utf-8");
+		response.getWriter().write(om.writeValueAsString(authentication));*/
 	}
 
 }
