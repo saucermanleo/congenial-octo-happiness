@@ -64,7 +64,8 @@ public class SecruityConfig extends WebSecurityConfigurerAdapter {
 				.failureHandler(authenticationFailureHandler)
 				.and()
 			.authorizeRequests()
-				.antMatchers("/authentication/require","/authentication/mobile",mp.getLogingpage(),"/code/image").permitAll()
+				.antMatchers("/authentication/require","/authentication/mobile","qqLogin/callback.do",
+						"/signin",mp.getLogingpage(),"/code/image").permitAll()
 				.anyRequest()
 				.authenticated()
 			.and()

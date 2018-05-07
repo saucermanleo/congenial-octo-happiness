@@ -2,11 +2,11 @@ package com.example.social.QQ;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.TokenStrategy;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,9 +28,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 
 		String url = String.format(URL_GET_OPENID, accessToken);
 		String result = this.getRestTemplate().getForObject(url, String.class);
-		JSONObject resultjson = (JSONObject) JSONObject.parse(result);
-		this.openId = (String) resultjson.get("openid");
-
+		this.openId = StringUtils.substringBetween(result, "\"openid\":\"", "\"}");
 	}
 
 	@Override
@@ -42,6 +40,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 		});
 		try {
 			userinfo = objectMapper.readValue(result,QQUserinfo.class);
+			userinfo.setOpenId(this.openId);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

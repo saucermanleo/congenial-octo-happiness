@@ -5,6 +5,7 @@ import org.springframework.social.oauth2.OAuth2Template;
 
 import com.example.social.QQ.QQ;
 import com.example.social.QQ.QQImpl;
+import com.example.social.QQ.QQOAuth2Template;
 
 public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ>{
 
@@ -15,7 +16,7 @@ public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ>{
 	private String appid ;
 	
 	public QQServiceProvider(String appid,String clientSecret) {
-		super(new OAuth2Template(appid, clientSecret, URL_AUTHORIZE, URL_ACCESSTOKEN));
+		super(new QQOAuth2Template(appid, clientSecret, URL_AUTHORIZE, URL_ACCESSTOKEN));
 		this.appid = appid;
 	}
 
