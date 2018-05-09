@@ -19,13 +19,13 @@ public class MyUserdetailService implements UserDetailsService , SocialUserDetai
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		String s =  passwordEncoder.encode("123456");
-		User u = new User(username,s,AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+		User u = new User(username,s,AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER"));
 		return u;
 	}
 	@Override
 	public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
 		String s =  passwordEncoder.encode("123456");
-		SocialUser u = new SocialUser(userId,s,AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+		SocialUser u = new SocialUser(userId,s,AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER"));
 		return u;
 	}
 
