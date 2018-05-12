@@ -21,7 +21,7 @@ import com.example.properties.MyProperties;
 import com.example.security.ValidateCodeFilter;
 import com.example.security.sms.SmsSecruityConfig;
 
-@Configuration
+/*@Configuration*/
 public class SecruityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyProperties mp;
