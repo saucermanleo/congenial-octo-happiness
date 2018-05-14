@@ -98,7 +98,7 @@ public class TestLocalDateTime {
 		System.out.println(zoneid.getId());
 		System.out.println(zoneid.getRules());
 		System.out.println(zoneid.getDisplayName(TextStyle.FULL, Locale.ENGLISH));
-		Locale.getAvailableLocales();
+		
 
 		// Period Duration ChronoUnit
 		// 两个时间相隔多久的封装

@@ -17,13 +17,13 @@ import org.springframework.stereotype.Component;
 /**
  * @author Zangy 定时任务
  */
-/* @Component */
+ @Component 
 public class ScheduleTask implements InitializingBean {
 
 	@Override
 	@Test
 	public void afterPropertiesSet() throws Exception {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		/*
@@ -36,7 +36,7 @@ public class ScheduleTask implements InitializingBean {
 		Date startime = calendar.getTime();
 		//一分钟后启动第二种实现
 		LocalDateTime ltime1 = LocalDateTime.now().plusMinutes(1);
-		Date startime1 = Date.from(ltime1.atZone(ZoneId.systemDefault()).toInstant());
+		startime = Date.from(ltime1.atZone(ZoneId.systemDefault()).toInstant());
 		
 		//设置为系统启动时间点的第二天早上8点启动
 		LocalDate ltime = LocalDate.now().plusDays(1);
