@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.time.MonthDay;
 import java.time.OffsetDateTime;
@@ -47,6 +48,13 @@ public class TestLocalDateTime {
 
 	@Test
 	public void testLocalDate() throws InterruptedException {
+		//设置属性
+		zonetime = zonetime.withDayOfMonth(4);
+		
+		//组装在一起
+		LocalDate ltime = LocalDate.now().plusDays(1);
+		LocalTime localtime = LocalTime.of(8, 0, 0);
+		LocalDateTime time = ltime.atTime(localtime);
 		
 		System.out.println(zonetime);
 		System.out.println(date);
