@@ -9,3 +9,4 @@
 9.remerberme
 10.验证码登陆
 11.localdatetime代替date和canlerdar.
+12.Internationalization,i18n,国际化,Localization,l10n,本地化
