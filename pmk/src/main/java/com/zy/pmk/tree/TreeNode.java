@@ -83,6 +83,7 @@ public class TreeNode {
 	
 	/**
 	 *动态生成二叉查找树
+	 *生成的树按中序遍历会按序排列
 	 * @param rootTreeNode
 	 * @param value
 	 * @return
@@ -111,11 +112,7 @@ public class TreeNode {
 					headNode = headNode.getRightTreeNode();
 				}
 			}
-			
-			
-			
 		}
-		
 		return rootTreeNode;
 	}
 	
