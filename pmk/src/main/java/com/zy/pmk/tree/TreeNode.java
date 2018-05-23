@@ -116,4 +116,48 @@ public class TreeNode {
 		return rootTreeNode;
 	}
 	
+	/**
+	 * 查詢樹的高度
+	 * @param rootTreeNode
+	 * @return
+	 */
+	public static int getHeight(TreeNode rootTreeNode) {
+		if(rootTreeNode == null) {
+			return 0 ;
+		}
+		int left = getHeight(rootTreeNode.getLeftTreeNode());
+		
+		int right = getHeight(rootTreeNode.getRightTreeNode());
+		
+		int max = right ;
+		if(left>max) {
+			max = left;
+		}
+		
+		return max+1;
+	}
+	
+	/**
+	 * 查詢二叉樹節點中的最大值
+	 * @param rootTreeNode
+	 * @return
+	 */
+	public static int getMax(TreeNode rootTreeNode) {
+		if(rootTreeNode.getLeftTreeNode()==null&&rootTreeNode.getRightTreeNode()==null) {
+			return rootTreeNode.getValue();
+		}
+		
+		int max = rootTreeNode.getValue();
+		if(rootTreeNode.getLeftTreeNode()!=null) {
+		int left = getMax(rootTreeNode.getLeftTreeNode());
+		max = Math.max(left, max);
+		}
+		
+		if(rootTreeNode.getRightTreeNode()!=null) {
+		int right = getMax(rootTreeNode.getRightTreeNode());
+		max = Math.max(right, max);
+		}
+		return max;
+	}
+	
 }

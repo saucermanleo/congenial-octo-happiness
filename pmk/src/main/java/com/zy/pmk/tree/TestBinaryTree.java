@@ -23,6 +23,9 @@ public class TestBinaryTree {
 		TreeNode.inTraverseBTree(root);
 		System.out.println();
 		TreeNode.postTraverseBTree(root);
+		System.out.println();
+		System.out.println(TreeNode.getHeight(root));
+		System.out.println(TreeNode.getMax(root));
 	}
 
 }
