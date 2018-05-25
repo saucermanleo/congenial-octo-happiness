@@ -1,13 +1,13 @@
-package com.zy.pmk.tree.stack;
+package com.zy.pmk.thread;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class MyBlockingQueue<E> {
+public class BlockingQueue<E> {
 	private int limit;
 	private List<E> list = new LinkedList<E>();
 	
-	public MyBlockingQueue(int limit) {
+	public BlockingQueue(int limit) {
 		super();
 		this.limit = limit;
 	}
