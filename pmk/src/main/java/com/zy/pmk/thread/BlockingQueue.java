@@ -2,6 +2,7 @@ package com.zy.pmk.thread;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class BlockingQueue<E> {
 	private int limit;
@@ -13,6 +14,8 @@ public class BlockingQueue<E> {
 	}
 	
 	public synchronized E dequeue() {
+		AtomicLong l  = new AtomicLong();
+		l.compareAndSet(1, 2);
 		while(list.size() == 0) {
 			try {
 				this.wait();
