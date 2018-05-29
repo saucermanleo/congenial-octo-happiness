@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author Zangy
@@ -40,17 +41,23 @@ public class LocaleTest {
 	 */
 	@Test
 	public void localization() {
+		NumberFormat format=NumberFormat.getCurrencyInstance(Locale.US);
+		double money = 13.14;
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("res/res", Locale.US);
 		String cancel = resourceBundle.getString("cancelKey");
 		String hello = resourceBundle.getString("hello");
 		hello = MessageFormat.format(hello, "Amy");
 		System.out.println(cancel);
 		System.out.println(hello);
+		System.out.println(format.format(money));
+		
+		format=NumberFormat.getCurrencyInstance(Locale.CHINA);
 		resourceBundle = ResourceBundle.getBundle("res/res", Locale.CHINA);
 		cancel = resourceBundle.getString("cancelKey");
 		hello = resourceBundle.getString("hello");
 		hello = MessageFormat.format(hello, "张阳");
 		System.out.println(cancel);
 		System.out.println(hello);
+		System.out.println(format.format(money));
 	}
 }
