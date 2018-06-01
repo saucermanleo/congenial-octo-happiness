@@ -17,7 +17,7 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	public int insert(UserInfo userinfo) {
 		try (SqlSession session = this.openSession()) {
 			int i =  session.getMapper(UserInfoMapper.class).insert(userinfo);
-			session.commit();
+			//session.commit();
 			return i;
 		}
 	}
