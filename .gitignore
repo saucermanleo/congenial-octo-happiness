@@ -11,3 +11,7 @@ demo.zip
 
 demo/.mvn/*
 demo/src/main/java/com/example/util/Test.java
+mybatistest/.settings/org.eclipse.m2e.core.prefs
+mybatistest/.settings/org.eclipse.jdt.core.prefs
+mybatistest/.classpath
+mybatistest/.project
