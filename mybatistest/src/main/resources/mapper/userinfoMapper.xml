@@ -6,4 +6,8 @@
   <select id="select"  resultType="UserInfo">
     select * from User_info where id = #{id}
   </select>
+  
+  <insert id="insert" parameterType="UserInfo">
+  	INSERT ignore INTO user_info (`name`, `password`) VALUES (#{name}, #{password});
+  </insert>
 </mapper>

@@ -12,6 +12,7 @@ public class BaseDao {
 	
 	private volatile static SqlSessionFactory sqlSessionFactory = null;
 	
+	
 	public  SqlSessionFactory  SingotenInstence() throws IOException {
 		if(sqlSessionFactory == null) {
 			synchronized(this) {
