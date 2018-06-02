@@ -22,4 +22,20 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 		}
 	}
 
+	@Override
+	public void insertbyparam(String name, String password) {
+		try (SqlSession session = this.openSession()) {
+			session.getMapper(UserInfoMapper.class).insertbyparam(name,password);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public void update(int id , String password) {
+		try (SqlSession session = this.openSession()) {
+			session.getMapper(UserInfoMapper.class).update(id,password);
+			//session.commit();
+		}
+	}
+
 }

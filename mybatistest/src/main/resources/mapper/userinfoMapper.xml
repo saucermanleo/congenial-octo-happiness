@@ -10,4 +10,12 @@
   <insert id="insert" parameterType="UserInfo">
   	INSERT ignore INTO user_info (`name`, `password`) VALUES (#{name}, #{password});
   </insert>
+  
+  <insert id="insertbyparam" >
+  	INSERT ignore INTO user_info (`name`, `password`) VALUES (#{name}, #{password});
+  </insert>
+  
+  <update id="update">
+  	update user_info set password = #{password} where id = #{id}
+  </update>
 </mapper>

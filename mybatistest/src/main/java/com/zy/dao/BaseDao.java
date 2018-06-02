@@ -13,9 +13,9 @@ public class BaseDao {
 	private volatile static SqlSessionFactory sqlSessionFactory = null;
 	
 	
-	public  SqlSessionFactory  SingotenInstence() throws IOException {
+	public  static SqlSessionFactory  SingotenInstence() throws IOException {
 		if(sqlSessionFactory == null) {
-			synchronized(this) {
+			synchronized(BaseDao.class) {
 				if(sqlSessionFactory == null) {
 					String resource = "mybatis-config.xml";
 					InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -26,10 +26,10 @@ public class BaseDao {
 		return sqlSessionFactory;
 	}
 	
-	public SqlSession openSession() {
+	public static SqlSession openSession() {
 		SqlSession sqlSession = null;
 		try {
-			sqlSession=  this.SingotenInstence().openSession();
+			sqlSession=  SingotenInstence().openSession();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
