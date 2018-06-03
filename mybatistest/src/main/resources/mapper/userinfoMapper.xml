@@ -3,19 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zy.dao.UserInfoMapper">
-  <select id="select"  resultType="UserInfo">
-    select * from User_info where id = #{id}
-  </select>
-  
-  <insert id="insert" parameterType="UserInfo">
-  	INSERT ignore INTO user_info (`name`, `password`) VALUES (#{name}, #{password});
-  </insert>
-  
-  <insert id="insertbyparam" >
-  	INSERT ignore INTO user_info (`name`, `password`) VALUES (#{name}, #{password});
-  </insert>
-  
-  <update id="update">
-  	update user_info set password = #{password} where id = #{id}
-  </update>
+
+	<cache />
+
+	<select id="select" resultType="UserInfo">
+		select * from User_info where id
+		= #{id}
+	</select>
+
+	<insert id="insert" parameterType="UserInfo" flushCache="false">
+		INSERT
+		ignore INTO user_info (`name`, `password`) VALUES (#{name},
+		#{password});
+	</insert>
+
+	<insert id="insertbyparam" flushCache="false">
+		INSERT ignore INTO
+		user_info (`name`, `password`) VALUES (#{name},
+		#{password});
+	</insert>
+
+	<update id="update">
+		update user_info set password = #{password} where id
+		= #{id}
+	</update>
+
+	<select id="call" statementType="CALLABLE" parameterType="hashmap" useCache="false">
+		call myprocedure3(#{SP_name,jdbcType=VARCHAR,mode=OUT },
+						#{id1,jdbcType=INTEGER,mode=IN },
+						#{path1,jdbcType=INTEGER,mode=OUT })
+	</select>
 </mapper>

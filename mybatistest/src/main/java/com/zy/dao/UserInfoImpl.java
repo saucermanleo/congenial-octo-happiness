@@ -1,5 +1,7 @@
 package com.zy.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.zy.pojo.UserInfo;
@@ -34,6 +36,14 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	public void update(int id , String password) {
 		try (SqlSession session = this.openSession()) {
 			session.getMapper(UserInfoMapper.class).update(id,password);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public void call(Map<String,Object> map) {
+		try (SqlSession session = this.openSession()) {
+			session.getMapper(UserInfoMapper.class).call(map);
 			//session.commit();
 		}
 	}
