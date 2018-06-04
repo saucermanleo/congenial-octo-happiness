@@ -17,6 +17,7 @@ public class Testcacke {
 	 * 同一个sqlseesion中的查询具有一级缓存
 	 */
 	private UserInfoMapper uidao = getUserMapper();
+
 	@Test
 	public void testcache() {
 		// 从数据库查询
@@ -36,7 +37,7 @@ public class Testcacke {
 	@Test
 	public void testsecendcache() {
 		SqlSession sqlsession1 = BaseDao.openSession();
-		UserInfoMapper uidao1 =  getUserMapper();
+		UserInfoMapper uidao1 = getUserMapper();
 
 		SqlSession sqlsession2 = BaseDao.openSession();
 		UserInfoMapper uidao2 = sqlsession2.getMapper(UserInfoMapper.class);
@@ -59,21 +60,45 @@ public class Testcacke {
 		System.out.println(map.get("SP_name"));
 	}
 
+	/**
+	 * 关联查询
+	 */
 	@Test
 	public void testAsociation() {
-		
+
 		// 一对多collection查询
 		UserInfo u = uidao.getUserCardByColleciotn(2);
 		pirntUserInfo(u);
 		// 一对一普通查询
 		u = uidao.getUserMytable(2);
 		pirntUserInfo(u);
-		//一对一 association查询
+		// 一对一 association查询
 		u = uidao.getUserMytableByAsociation(2);
 		pirntUserInfo(u);
-		
+
 		u = uidao.getUser(2);
 		pirntUserInfo(u);
+
+		u = uidao.getUser1(2);
+		pirntUserInfo(u);
+	}
+
+	/**
+	 * 递归查询
+	 */
+	@Test
+	public void RecursionSelect() {
+		Card c = uidao.selectcard1(9);
+		print(c);
+	}
+	
+	private  void print(Card d) {
+		System.out.println(d);
+		if(d.getCard()==null) {
+			return;
+		}else {
+			print(d.getCard());
+		}
 	}
 	
 	private void pirntUserInfo(UserInfo u) {
@@ -84,7 +109,7 @@ public class Testcacke {
 			System.out.println(c);
 		}
 	}
-	
+
 	private UserInfoMapper getUserMapper() {
 		SqlSession sqlsession = BaseDao.openSession();
 		return sqlsession.getMapper(UserInfoMapper.class);

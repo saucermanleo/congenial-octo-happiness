@@ -6,6 +6,77 @@
 
 	<cache />
 
+	<resultMap type="UserInfo" id="userinfoResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<association property="mytable"  javaType="Mytable">
+			<id property="id" column="id" />
+			<result property="age" column="age"/>
+			<result property="idnumber" column="idnumber"/>
+			<result property="sex" column="sex"/>
+		</association> 
+		<collection property="cards" ofType="Card">
+			<id property="id" column="id"/>
+			<result property="userId" column="user_id"/>
+			<result property="cardNumber" column="card_number"/>
+			<result property="createTime" column="create_time"/>
+		</collection>
+	</resultMap>
+	
+	<resultMap type="Card" id="CardResultMap"  autoMapping="true">
+		<id property="id" column="id"/>
+		<result property="cardNumber" column="card_number"/>
+		<result property="createTime" column="create_time"/>
+		<result property="parentId" column="prarent_id"/>
+	</resultMap>
+	
+	<resultMap type="Card" id="CardResultMap1"  autoMapping="true">
+		<id property="id" column="id"/>
+		<result property="cardNumber" column="card_number"/>
+		<result property="createTime" column="create_time"/>
+		<result property="parentId" column="prarent_id"/>
+		<association property="card"  column="prarent_id" javaType="Card" select="selectcard1" />
+		
+	</resultMap>
+	
+	<resultMap type="Mytable" id="MytableResultMap" autoMapping="true">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="idnumber" column="idnumber"/>
+	</resultMap>
+	
+	<resultMap type="UserInfo" id="userinfoResultMap1"  autoMapping="true">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<association property="mytable" javaType="Mytable" column="name" resultMap="MytableResultMap" />
+		<collection property="cards" ofType="Card" javaType="ArrayList"   column="id" resultMap="CardResultMap" />
+	</resultMap>
+	
+	
+	<resultMap type="Card" id="CardResultMap2"  autoMapping="true">
+		<id property="id" column="id"/>
+		<result property="cardNumber" column="card_number"/>
+		<result property="createTime" column="create_time"/>
+		<result property="parentId" column="prarent_id"/>
+		<collection property="cards"  ofType="Card" javaType="ArrayList"   column="id"  select="selectByparentid" />
+	</resultMap>
+	
+	<select id="selectcard1" resultMap="CardResultMap1">
+		select * from card where id
+		= #{id}
+	</select>
+	
+	<select id="selectcard" resultMap="CardResultMap2">
+		select * from card where id
+		= #{id}
+	</select>
+	
+	<select id="selectByparentid"  resultMap="CardResultMap2">
+		select * from card where prarent_id  = #{id}
+	</select>
+	
 	<select id="select" resultType="UserInfo">
 		select * from User_info where id
 		= #{id}
@@ -33,26 +104,6 @@
 						#{id1,jdbcType=INTEGER,mode=IN },
 						#{path1,jdbcType=INTEGER,mode=OUT })
 	</select>
-	
-	<resultMap type="UserInfo" id="userinfoResultMap">
-		<id property="id" column="id" />
-		<result property="name" column="name"/>
-		<result property="password" column="password"/>
-		<association property="mytable"  javaType="Mytable">
-			<id property="id" column="id" />
-			<result property="age" column="age"/>
-			<result property="idnumber" column="idnumber"/>
-			<result property="sex" column="sex"/>
-		</association> 
-		<collection property="cards" ofType="Card">
-			<id property="id" column="id"/>
-			<result property="userId" column="user_id"/>
-			<result property="cardNumber" column="card_number"/>
-			<result property="createTime" column="create_time"/>
-		</collection>
-		
-	</resultMap>
-	
 	
 	<select id="getUserCardByColleciotn" parameterType="int" resultMap="userinfoResultMap">
 		SELECT 
@@ -105,5 +156,28 @@
 		WHERE
 		    u.id = #{id};
 	</select>
+	
+	<select id="getUser1" resultMap="userinfoResultMap1" parameterType="int">
+		SELECT 
+		    u.name,
+		    u.password,
+		    c.card_number,
+		    c.create_time,
+		    m.age,
+		    m.idnumber,
+		    m.sex
+		FROM
+		    user_info u
+		        LEFT JOIN
+		    card c ON u.id = c.user_id
+		        INNER JOIN
+		    mytable m ON m.name = u.name
+		WHERE
+		    u.id = #{id};
+	</select>
+	
+	
+	
+	
 	
 </mapper>

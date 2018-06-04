@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.zy.pojo.Card;
 import com.zy.pojo.UserInfo;
 
 public interface UserInfoMapper {
@@ -20,6 +21,12 @@ public interface UserInfoMapper {
 	UserInfo getUserCardByColleciotn(int id);
 	
 	UserInfo getUser(int id);
+	
+	UserInfo getUser1(int id);
+	
+	Card selectcard(int id);
+	
+	Card selectcard1(int id);
 	
 	UserInfo getUserMytable(int id);
 	

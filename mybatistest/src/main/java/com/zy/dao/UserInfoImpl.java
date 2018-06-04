@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.zy.pojo.Card;
 import com.zy.pojo.UserInfo;
 
 public class UserInfoImpl extends BaseDao implements UserInfoMapper {
@@ -77,6 +78,30 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	public UserInfo getUser(int id) {
 		try (SqlSession session = BaseDao.openSession()) {
 			return session.getMapper(UserInfoMapper.class).getUser(id);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public UserInfo getUser1(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).getUser1(id);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public Card selectcard(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).selectcard(id);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public Card selectcard1(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).selectcard1(id);
 			//session.commit();
 		}
 	}

@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.mysql.cj.xdevapi.JsonParser;
 import com.zy.dao.BaseDao;
 import com.zy.dao.UserInfoImpl;
 import com.zy.dao.UserInfoMapper;
@@ -41,14 +44,28 @@ public class Test {
 			System.out.println(c);
 		}*/
 		
-		UserInfo u = uidao.getUserCardByColleciotn(2);
-		 u = uidao.getUserMytable(2);
-		 u = uidao.getUserMytableByAsociation(2);
-		System.out.println(u);
-		Mytable m = u.getMytable();
-		System.out.println(m);
-		for(Card c : u.getCards()) {
-			System.out.println(c);
+		Card u = uidao.selectcard(4);
+		printcard(u);
+		System.out.println(JSONObject.toJSON(u).toString());
+	}
+	
+	private static void print(Card d) {
+		System.out.println(d);
+		if(d.getCard()==null) {
+			return;
+		}else {
+			print(d.getCard());
+		}
+	}
+	
+	private static void printcard(Card c) {
+		System.out.println(c);
+		if(c.getCards().isEmpty()) {
+			return;
+		}else {
+			for(Card card :c.getCards()) {
+				printcard(card);
+			}
 		}
 	}
 }
