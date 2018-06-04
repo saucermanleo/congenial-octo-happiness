@@ -1,6 +1,5 @@
 package com.zy.dao;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -17,4 +16,16 @@ public interface UserInfoMapper {
 	void update(@Param(value = "id") int id, @Param(value = "password") String password);
 	
 	void call(Map<String,Object> map);
+	
+	UserInfo getUserCardByColleciotn(int id);
+	
+	UserInfo getUser(int id);
+	
+	UserInfo getUserMytable(int id);
+	
+	UserInfo getUserMytableByAsociation(int id);
+	
+	
+	
+	
 }

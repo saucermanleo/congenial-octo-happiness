@@ -1,9 +1,32 @@
 package com.zy.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInfo {
 	private int id;
 	private String name;
 	private String password;
+	private List<Card> cards = new ArrayList<Card>();
+	private Mytable mytable;
+	
+	
+
+	public Mytable getMytable() {
+		return mytable;
+	}
+
+	public void setMytable(Mytable mytable) {
+		this.mytable = mytable;
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
 
 	public UserInfo() {
 	}

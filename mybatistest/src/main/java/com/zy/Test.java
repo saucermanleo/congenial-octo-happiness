@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.zy.dao.BaseDao;
 import com.zy.dao.UserInfoImpl;
 import com.zy.dao.UserInfoMapper;
+import com.zy.pojo.Card;
+import com.zy.pojo.Mytable;
 import com.zy.pojo.UserInfo;
 
 public class Test {
@@ -28,11 +30,25 @@ public class Test {
 		//uidao.update(2,"修改密码");
 		//从数据库查询
 		uidao.select(2);*/
-		HashMap map = new HashMap();
+		/*HashMap map = new HashMap();
 		//map.put("SP_name", "");
 		map.put("id1", 1);
 		uidao.call(map);
-		System.out.println(map.get("SP_name"));
+		System.out.println(map.get("SP_name"));*/
+		/*UserInfo u = uidao.getUserMytable(2);
+		System.out.println(u);
+		for(Card c : u.getCards()) {
+			System.out.println(c);
+		}*/
 		
+		UserInfo u = uidao.getUserCardByColleciotn(2);
+		 u = uidao.getUserMytable(2);
+		 u = uidao.getUserMytableByAsociation(2);
+		System.out.println(u);
+		Mytable m = u.getMytable();
+		System.out.println(m);
+		for(Card c : u.getCards()) {
+			System.out.println(c);
+		}
 	}
 }

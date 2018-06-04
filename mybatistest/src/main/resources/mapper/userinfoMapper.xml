@@ -33,4 +33,77 @@
 						#{id1,jdbcType=INTEGER,mode=IN },
 						#{path1,jdbcType=INTEGER,mode=OUT })
 	</select>
+	
+	<resultMap type="UserInfo" id="userinfoResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<association property="mytable"  javaType="Mytable">
+			<id property="id" column="id" />
+			<result property="age" column="age"/>
+			<result property="idnumber" column="idnumber"/>
+			<result property="sex" column="sex"/>
+		</association> 
+		<collection property="cards" ofType="Card">
+			<id property="id" column="id"/>
+			<result property="userId" column="user_id"/>
+			<result property="cardNumber" column="card_number"/>
+			<result property="createTime" column="create_time"/>
+		</collection>
+		
+	</resultMap>
+	
+	
+	<select id="getUserCardByColleciotn" parameterType="int" resultMap="userinfoResultMap">
+		SELECT 
+		    u.name, u.password, c.card_number, c.create_time
+		FROM
+		    user_info u
+		        LEFT JOIN
+		    card c ON u.id = c.user_id
+		WHERE
+		    u.id = #{id}
+	</select>
+	
+	<select id="getUserMytable" resultType="UserInfo" parameterType="int">
+		SELECT 
+		    u.name, u.password, mytable.age 'mytable.age', mytable.idnumber 'mytable.idnumber', mytable.sex 'mytable.sex '
+		FROM
+		    user_info u
+		        INNER JOIN
+		    mytable mytable ON u.name = mytable.name
+		WHERE
+		    u.id = #{id};
+	</select>
+	
+	<select id="getUserMytableByAsociation" resultMap="userinfoResultMap" parameterType="int">
+		SELECT 
+		    u.name, u.password, mytable.age, mytable.idnumber , mytable.sex 
+		FROM
+		    user_info u
+		        INNER JOIN
+		    mytable mytable ON u.name = mytable.name
+		WHERE
+		    u.id = #{id};
+	</select>
+	
+	<select id="getUser" resultMap="userinfoResultMap" parameterType="int">
+		SELECT 
+		    u.name,
+		    u.password,
+		    c.card_number,
+		    c.create_time,
+		    m.age,
+		    m.idnumber,
+		    m.sex
+		FROM
+		    user_info u
+		        LEFT JOIN
+		    card c ON u.id = c.user_id
+		        INNER JOIN
+		    mytable m ON m.name = u.name
+		WHERE
+		    u.id = #{id};
+	</select>
+	
 </mapper>

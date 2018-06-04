@@ -9,7 +9,7 @@ import com.zy.pojo.UserInfo;
 public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	@Override
 	public UserInfo select(int id) {
-		try (SqlSession session = this.openSession()) {
+		try (SqlSession session = BaseDao.openSession()) {
 			return session.getMapper(UserInfoMapper.class).select(id);
 		}
 
@@ -17,7 +17,7 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 
 	@Override
 	public int insert(UserInfo userinfo) {
-		try (SqlSession session = this.openSession()) {
+		try (SqlSession session = BaseDao.openSession()) {
 			int i =  session.getMapper(UserInfoMapper.class).insert(userinfo);
 			//session.commit();
 			return i;
@@ -26,7 +26,7 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 
 	@Override
 	public void insertbyparam(String name, String password) {
-		try (SqlSession session = this.openSession()) {
+		try (SqlSession session = BaseDao.openSession()) {
 			session.getMapper(UserInfoMapper.class).insertbyparam(name,password);
 			//session.commit();
 		}
@@ -34,7 +34,7 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 
 	@Override
 	public void update(int id , String password) {
-		try (SqlSession session = this.openSession()) {
+		try (SqlSession session = BaseDao.openSession()) {
 			session.getMapper(UserInfoMapper.class).update(id,password);
 			//session.commit();
 		}
@@ -42,10 +42,44 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 
 	@Override
 	public void call(Map<String,Object> map) {
-		try (SqlSession session = this.openSession()) {
+		try (SqlSession session = BaseDao.openSession()) {
 			session.getMapper(UserInfoMapper.class).call(map);
 			//session.commit();
 		}
 	}
+
+	@Override
+	public UserInfo getUserCardByColleciotn(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).getUserCardByColleciotn(id);
+			//session.commit();
+		}
+	}
+	
+	
+	@Override
+	public UserInfo getUserMytable(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).getUserMytable(id);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public UserInfo getUserMytableByAsociation(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).getUserMytableByAsociation(id);
+			//session.commit();
+		}
+	}
+
+	@Override
+	public UserInfo getUser(int id) {
+		try (SqlSession session = BaseDao.openSession()) {
+			return session.getMapper(UserInfoMapper.class).getUser(id);
+			//session.commit();
+		}
+	}
+
 
 }
