@@ -26,7 +26,11 @@ public class Testcacke {
 	 */
 	private UserInfoMapper uidao = getUserMapper();
 
-	@Test
+    /**
+     * 造数据(每次100w)
+     * @throws InterruptedException
+     */
+	//@Test
     public void gerateData( ) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
         int count = 10;
@@ -150,15 +154,19 @@ public class Testcacke {
 
 	}
 
+    /**
+     * 返回自动生成主键
+     */
 	@Test
     public void getGenerateKey(){
         UserInfo u  = new UserInfo("zy","wd" );
         int i = uidao.insert(u);
-        //List<UserInfo> list =  uidao.selectByName("6uiq66buntpe63y592ot4tp27c5nhnieqsaiwj83xqk9");
-
-        //System.out.println(list.size());
-        //System.out.println(u.getId());
+        System.out.println(i);
+        System.out.println(u.getId());
     }
+
+
+
 
 	private  void printcard(Card c) {
 		System.out.println(c);
