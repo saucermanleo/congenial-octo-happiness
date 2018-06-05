@@ -1,0 +1,46 @@
+-- 1.按id排序分页(id自增)
+-- 未优化
+select * from user_info limit 3300000, 10;
+-- 优化后
+select * from user_info where id>=(select id from user_info  limit 3300000,1) limit 10;
+
+-- 2.按其他字段排序分页
+-- 按name排序,在name上建立索引
+-- create index name_index on user_info (name(45));
+select u.* from user_info u ,(select id from user_info order by name limit 3300000 , 10) b
+where u.id = b.id;
+
+select password from user_info order by password limit 3300000 , 10;
+
+-- 3有where条件的分页
+-- 按其他条件分页 最好的办法是建立组合索引
+-- create index type_name_index on User_info (type(1),name(45));
+select * from user_info u ,(select id from user_info where type = 4 order by name limit 30000 , 10) b
+ where b.id = u.id;
+-- id自增
+select * from user_info where id >= (select id from user_info where type = 4 order by name limit 30000 , 1) limit 10;
+-- name唯一
+select * from user_info u ,(select name from user_info where type = 4 order by name limit 30000 , 10) b
+ where b.name = u.name;
+
+-- 未优化的情况
+
+ select id from user_info where type1 = 4 order by password limit 300000, 10;
+
+ select id from user_info where type1 = 4 order by name limit 300000, 10;
+
+-- 按id排序 在where条件中的字段加索引
+-- create index type1_index on user_info (type1);
+  select * from user_info u ,(select id from user_info where type1 = 4 order by id limit 300000 , 10) b
+ where b.id = u.id;
+
+ select id from user_info where typetest =4 order by id limit 300000 , 10;
+
+
+-- 4查询语句
+-- 做了索引
+select * from user_info where name  = 'd2pve1xcz7tlriplagu1ozv17gpxt1js1ef6873291wr';
+select * from user_info where name like 'd2pve1xcz7tlriplagu1ozv17gpxt1js1ef6873291%';
+-- 没做索引
+select * from user_info where password = 'nx08s8jfpxb8hlqna4bk5kwo1yw3y4uvei0rgzdpd4hm';
+select * from user_info where password like 'nx08s8jfpxb8hlqna4bk5kwo1yw3y4uvei0rgzdpd4%';

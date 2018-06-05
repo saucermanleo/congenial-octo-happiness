@@ -3,6 +3,10 @@ package com.zy.test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
@@ -21,6 +25,37 @@ public class Testcacke {
 	 * 同一个sqlseesion中的查询具有一级缓存
 	 */
 	private UserInfoMapper uidao = getUserMapper();
+
+	@Test
+    public void gerateData( ) throws InterruptedException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        int count = 10;
+        CountDownLatch countDownLatch = new CountDownLatch(count);
+        for(int i = 0;i<count;i++){
+            executorService.execute(()->{
+                SqlSession sqlsession = BaseDao.openSession();
+                UserInfoMapper uidao1 = sqlsession.getMapper(UserInfoMapper.class);
+                for(int j=0;j<100000;j++){
+                    UserInfo u = new UserInfo(getRandomString(44),getRandomString(44));
+                    uidao1.insert(u);
+                }
+                countDownLatch.countDown();
+            });
+        }
+        countDownLatch.await();
+        System.out.println("ok");
+    }
+
+    public  String getRandomString(int length) { //length表示生成字符串的长度
+        String base = "abcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(base.length());
+            sb.append(base.charAt(number));
+        }
+        return sb.toString();
+    }
 
 	@Test
 	public void testcache() {
@@ -105,7 +140,7 @@ public class Testcacke {
 	 */
 	@Test
 	public void PageHelperTest(	){
-		Page page = PageHelper.startPage(1,10,true	);
+		Page page = PageHelper.startPage(100000,10,true	);
 		List<UserInfo> list = uidao.selectbypage();
 		long tatal = page.getTotal();
 		System.out.println(tatal);
@@ -114,6 +149,17 @@ public class Testcacke {
 		}
 
 	}
+
+	@Test
+    public void getGenerateKey(){
+        UserInfo u  = new UserInfo("zy","wd" );
+        int i = uidao.insert(u);
+        //List<UserInfo> list =  uidao.selectByName("6uiq66buntpe63y592ot4tp27c5nhnieqsaiwj83xqk9");
+
+        //System.out.println(list.size());
+        //System.out.println(u.getId());
+    }
+
 	private  void printcard(Card c) {
 		System.out.println(c);
 		if(c.getCards().isEmpty()) {

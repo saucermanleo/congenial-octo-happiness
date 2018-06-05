@@ -18,6 +18,11 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	}
 
 	@Override
+	public List<UserInfo> selectByName(String name) {
+		return null;
+	}
+
+	@Override
 	public int insert(UserInfo userinfo) {
 		try (SqlSession session = BaseDao.openSession()) {
 			int i =  session.getMapper(UserInfoMapper.class).insert(userinfo);
@@ -27,9 +32,9 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 	}
 
 	@Override
-	public void insertbyparam(String name, String password) {
+	public int insertbyparam(String name, String password) {
 		try (SqlSession session = BaseDao.openSession()) {
-			session.getMapper(UserInfoMapper.class).insertbyparam(name,password);
+			return session.getMapper(UserInfoMapper.class).insertbyparam(name,password);
 			//session.commit();
 		}
 	}

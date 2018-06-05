@@ -9,10 +9,12 @@ import java.util.Map;
 
 public interface UserInfoMapper {
 	UserInfo select(int id);
-	
+
+	List<UserInfo> selectByName(String name);
+
 	int insert(UserInfo userinfo);
 	
-	void insertbyparam(@Param(value = "name") String name,@Param(value = "password") String password);
+	int insertbyparam(@Param(value = "name") String name,@Param(value = "password") String password);
 
 	void update(@Param(value = "id") int id, @Param(value = "password") String password);
 	

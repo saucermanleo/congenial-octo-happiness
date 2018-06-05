@@ -83,12 +83,18 @@
 	</select>
 
 	<insert id="insert" parameterType="UserInfo" flushCache="false">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
 		INSERT
 		ignore INTO user_info (`name`, `password`) VALUES (#{name},
 		#{password});
 	</insert>
 
 	<insert id="insertbyparam" flushCache="false">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
 		INSERT ignore INTO
 		user_info (`name`, `password`) VALUES (#{name},
 		#{password});
@@ -177,10 +183,12 @@
 	</select>
 
 	<select id="selectbypage" resultType="UserInfo">
-		select * from user_info where name = 'zy'
+		select * from user_info
 	</select>
-	
-	
+
+	<select id="selectByName" resultType="UserInfo">
+        select * from user_info where name = #{name}
+    </select>
 	
 	
 </mapper>
