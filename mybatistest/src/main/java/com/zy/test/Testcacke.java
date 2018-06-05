@@ -3,6 +3,7 @@ package com.zy.test;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -90,8 +91,21 @@ public class Testcacke {
 	public void RecursionSelect() {
 		Card c = uidao.selectcard1(9);
 		print(c);
+
+		c = uidao.selectcard(4);
+		printcard(c);
+		System.out.println(JSONObject.toJSON(c).toString());
 	}
-	
+	private  void printcard(Card c) {
+		System.out.println(c);
+		if(c.getCards().isEmpty()) {
+			return;
+		}else {
+			for(Card card :c.getCards()) {
+				printcard(card);
+			}
+		}
+	}
 	private  void print(Card d) {
 		System.out.println(d);
 		if(d.getCard()==null) {
