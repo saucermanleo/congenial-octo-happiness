@@ -1,9 +1,12 @@
 package com.zy.test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -95,6 +98,21 @@ public class Testcacke {
 		c = uidao.selectcard(4);
 		printcard(c);
 		System.out.println(JSONObject.toJSON(c).toString());
+	}
+
+	/**
+	 * 分页插件测试
+	 */
+	@Test
+	public void PageHelperTest(	){
+		Page page = PageHelper.startPage(1,10,true	);
+		List<UserInfo> list = uidao.selectbypage();
+		long tatal = page.getTotal();
+		System.out.println(tatal);
+		for(UserInfo u : list	){
+			System.out.println(u);
+		}
+
 	}
 	private  void printcard(Card c) {
 		System.out.println(c);

@@ -175,7 +175,10 @@
 		WHERE
 		    u.id = #{id};
 	</select>
-	
+
+	<select id="selectbypage" resultType="UserInfo">
+		select * from user_info where name = 'zy'
+	</select>
 	
 	
 	

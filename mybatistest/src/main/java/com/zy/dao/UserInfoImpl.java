@@ -1,5 +1,6 @@
 package com.zy.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -72,6 +73,11 @@ public class UserInfoImpl extends BaseDao implements UserInfoMapper {
 			return session.getMapper(UserInfoMapper.class).getUserMytableByAsociation(id);
 			//session.commit();
 		}
+	}
+
+	@Override
+	public List<UserInfo> selectbypage() {
+		return null;
 	}
 
 	@Override

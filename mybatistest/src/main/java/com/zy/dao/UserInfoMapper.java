@@ -1,11 +1,11 @@
 package com.zy.dao;
 
-import java.util.Map;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.zy.pojo.Card;
 import com.zy.pojo.UserInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 public interface UserInfoMapper {
 	UserInfo select(int id);
@@ -32,7 +32,7 @@ public interface UserInfoMapper {
 	
 	UserInfo getUserMytableByAsociation(int id);
 	
-	
+	List<UserInfo> selectbypage();
 	
 	
 }
