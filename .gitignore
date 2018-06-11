@@ -22,3 +22,6 @@ mybatistest/.idea/misc.xml
 mybatistest/.idea/uiDesigner.xml
 mybatistest/.idea/workspace.xml
 mybatistest/.idea/vcs.xml
+*/target/*
+*/target
+*/.idea/*
