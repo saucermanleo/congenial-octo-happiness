@@ -31,3 +31,5 @@ mybatistest/.idea/vcs.xml
 *.class
 
 */*/target/
+.idea/vcs.xml
+.idea/workspace.xml
