@@ -64,16 +64,18 @@ public class HdfsClientUtil {
 
     @Test
     public void removetest(){
-        remove("/output/");
+        remove("/output/qq/");
+        remove("/output/qq1/");
+        //remove("/input/qqfriends.txt");
     }
 
-    @Test
+    //@Test
     public void uploadtest(){
-        upload("D:/test.txt","/input/test.txt");
+        upload("D:/qqfriends.txt","/input/qqfriends.txt");
     }
 
 
-    @Test
+    //@Test
     public void mkdertest(  ){
         mkdir("/input/");
     }
