@@ -19,9 +19,9 @@ public class HdfsClientUtil {
             synchronized (HdfsClientUtil.class) {
                 if (filesystem == null) {
                     Configuration conf = new Configuration();
-                    conf.set("fs.default.name", "hdfs://node1:9000");
+                    //conf.set("fs.default.name", "hdfs://node1:9000");
                     try {
-                        filesystem = FileSystem.get(new URI("hdfs://node1:9000"),conf,"root");
+                        filesystem = FileSystem.get(new URI("hdfs://node1:8020"),conf,"root");
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
@@ -62,7 +62,7 @@ public class HdfsClientUtil {
 
 
 
-    @Test
+    //@Test
     public void removetest(){
         remove("/output/qq/");
         remove("/output/qq1/");
@@ -75,8 +75,8 @@ public class HdfsClientUtil {
     }
 
 
-    //@Test
+    @Test
     public void mkdertest(  ){
-        mkdir("/input/");
+        mkdir("/output/");
     }
 }

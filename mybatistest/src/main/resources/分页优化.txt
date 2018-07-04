@@ -44,3 +44,6 @@ select * from user_info where name like 'd2pve1xcz7tlriplagu1ozv17gpxt1js1ef6873
 -- 没做索引
 select * from user_info where password = 'nx08s8jfpxb8hlqna4bk5kwo1yw3y4uvei0rgzdpd4hm';
 select * from user_info where password like 'nx08s8jfpxb8hlqna4bk5kwo1yw3y4uvei0rgzdpd4%';
+
+
+MySQL只对以下操作符才使用索引：<,<=,=,>,>=,between,in,以及某些时候的like(不以通配符%或_开头的情形)。
