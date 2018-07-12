@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.*;
 
 
@@ -32,6 +33,21 @@ import java.util.function.*;
      *
      */
     public class Lamdatest2 {
+        private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+        private static final int COUNT_BITS = Integer.SIZE - 3;
+        private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
+
+        // runState is stored in the high-order bits
+        private static final int RUNNING    = -1 << COUNT_BITS;
+        private static final int SHUTDOWN   =  0 << COUNT_BITS;
+        private static final int STOP       =  1 << COUNT_BITS;
+        private static final int TIDYING    =  2 << COUNT_BITS;
+        private static final int TERMINATED =  3 << COUNT_BITS;
+
+        // Packing and unpacking ctl
+        private static int runStateOf(int c)     { return c & ~CAPACITY; }
+        private static int workerCountOf(int c)  { return c & CAPACITY; }
+        private static int ctlOf(int rs, int wc) { return rs | wc; }
         //数组引用
         @Test
         public void test8(){
@@ -136,6 +152,27 @@ import java.util.function.*;
             con2.accept("Hello Java8！");
 
             Consumer<String> con3 = System.out::println;
+        }
+        @Test
+        public void test10(){
+            /*private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+            private static final int COUNT_BITS = Integer.SIZE - 3;
+            private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
+
+            // runState is stored in the high-order bits
+            private static final int RUNNING    = -1 << COUNT_BITS;
+            private static final int SHUTDOWN   =  0 << COUNT_BITS;
+            private static final int STOP       =  1 << COUNT_BITS;
+            private static final int TIDYING    =  2 << COUNT_BITS;
+            private static final int TERMINATED =  3 << COUNT_BITS;*/
+            System.out.println("COUNT_BITS:"+COUNT_BITS+":"+Integer.toString(COUNT_BITS,2));
+            System.out.println("CAPACITY:"+CAPACITY+":"+Integer.toString(CAPACITY,2));
+            System.out.println("RUNNING:"+RUNNING+":"+Integer.toString(RUNNING,2));
+            System.out.println("SHUTDOWN:"+SHUTDOWN+":"+Integer.toString(SHUTDOWN,2));
+            System.out.println("STOP:"+STOP+":"+Integer.toString(STOP,2));
+            System.out.println("TIDYING:"+TIDYING+":"+Integer.toString(TIDYING,2));
+            System.out.println("TERMINATED:"+TERMINATED+":"+Integer.toString(TERMINATED,2));
+            System.out.println(workerCountOf(ctl.get()));
         }
 
     }
