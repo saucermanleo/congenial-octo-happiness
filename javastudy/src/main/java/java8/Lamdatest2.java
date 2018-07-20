@@ -153,9 +153,9 @@ import java.util.function.*;
 
             Consumer<String> con3 = System.out::println;
         }
-        @Test
+        /*@Test
         public void test10(){
-            /*private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+            *//*private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
             private static final int COUNT_BITS = Integer.SIZE - 3;
             private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
 
@@ -164,7 +164,7 @@ import java.util.function.*;
             private static final int SHUTDOWN   =  0 << COUNT_BITS;
             private static final int STOP       =  1 << COUNT_BITS;
             private static final int TIDYING    =  2 << COUNT_BITS;
-            private static final int TERMINATED =  3 << COUNT_BITS;*/
+            private static final int TERMINATED =  3 << COUNT_BITS;*//*
             System.out.println("COUNT_BITS:"+COUNT_BITS+":"+Integer.toString(COUNT_BITS,2));
             System.out.println("CAPACITY:"+CAPACITY+":"+Integer.toString(CAPACITY,2));
             System.out.println("RUNNING:"+RUNNING+":"+Integer.toString(RUNNING,2));
@@ -173,6 +173,6 @@ import java.util.function.*;
             System.out.println("TIDYING:"+TIDYING+":"+Integer.toString(TIDYING,2));
             System.out.println("TERMINATED:"+TERMINATED+":"+Integer.toString(TERMINATED,2));
             System.out.println(workerCountOf(ctl.get()));
-        }
+        }*/
 
     }
