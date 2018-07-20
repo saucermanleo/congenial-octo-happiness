@@ -98,6 +98,9 @@ public class ChannelTest {
         System.out.println(end - start);
     }
 
+    /**
+     * 直接缓冲区
+     */
     @Test
     public void test3() {
         long start = System.currentTimeMillis();

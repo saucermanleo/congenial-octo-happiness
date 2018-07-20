@@ -90,21 +90,21 @@ public class PipeTest {
                 try {
                     Selector s = Selector.open();
                     sourceChannel.register(s, SelectionKey.OP_READ);
-                    ByteBuffer bb = ByteBuffer.allocate(1024);
                     while (s.select() > 0) {
                         Iterator<SelectionKey> it = s.selectedKeys().iterator();
                         while (it.hasNext()) {
-                           /* it.next();
-                            it.remove();*/
-                            while(sourceChannel.read(bb)!=0) {
-                                bb.flip();
-                                byte[] bytes = new byte[bb.limit()];
-                                bb.get(bytes, 0, bb.limit());
-                                System.out.println(new String(bytes, 0, bytes.length));
-                                bb.clear();
+                            SelectionKey sk =  it.next();
+                            if(sk.isReadable()){
+                                ByteBuffer buffer = ByteBuffer.allocate(1024);
+                                sourceChannel.read(buffer);
+                                buffer.flip();
+                                System.out.println(new String(buffer.array(),0,buffer.limit()));
+                                buffer.clear();
                             }
+                            it.remove();
                         }
                     }
+
                     countDownLatch.countDown();
 
                 } catch (IOException e) {
