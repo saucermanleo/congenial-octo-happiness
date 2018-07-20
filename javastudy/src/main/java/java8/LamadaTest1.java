@@ -48,7 +48,7 @@ public class LamadaTest1 {
      */
     @Test
     public void predicate(){
-        Predicate<String> predicate = (String)->String.equals("text");
+        Predicate<String> predicate = (s)->s.equals("text");
         System.out.println(predicate.test("text"));
     }
 
