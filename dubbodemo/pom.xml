@@ -14,6 +14,7 @@
         <module>dubbo-demo-api</module>
         <module>dubbo-demo-proveider</module>
         <module>dubbo-demo-cosumer</module>
+        <module>zookeeper</module>
     </modules>
     <dependencyManagement>
         <dependencies>
