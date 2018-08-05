@@ -12,7 +12,7 @@ public class ProxyTest {
 			@Override
 			public Object invoke(Object arg0, Method arg1, Object[] arg2) throws Throwable {
 				System.out.println("run before");
-				Object o = arg1.invoke(arg0, arg2);
+				Object o = arg1.invoke(pp, arg2);
 				System.out.println("run after");
 				return o;
 			}
