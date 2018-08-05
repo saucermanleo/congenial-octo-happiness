@@ -33,3 +33,7 @@ mybatistest/.idea/vcs.xml
 */*/target/
 .idea/vcs.xml
 .idea/workspace.xml
+javastudy/.classpath
+javastudy/.project
+javastudy/.settings/org.eclipse.m2e.core.prefs
+javastudy/.settings/org.eclipse.jdt.core.prefs
