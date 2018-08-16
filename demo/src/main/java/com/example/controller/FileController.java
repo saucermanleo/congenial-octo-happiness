@@ -46,7 +46,7 @@ public class FileController {
 	public void download( HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		try (InputStream inputStream = new FileInputStream(new File(folder,  "test.txt"));
-				OutputStream outputStream = response.getOutputStream();) {
+				OutputStream outputStream = response.getOutputStream()) {
 			
 			response.setContentType("application/x-download");
 			response.addHeader("Content-Disposition", "attachment;filename=test.txt");

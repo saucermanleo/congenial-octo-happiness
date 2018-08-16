@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,8 +20,17 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.Map;
+
 @org.springframework.context.annotation.Configuration
 public class PDFCreator {
+
+
+    private String fontDir = "C:/Windows/fonts/simsun.ttc";
+
+    private String templatePath = "/index.html";
+
+    private GroupTemplate groupTemplate;
+
     @Test
     public void test() throws IOException, DocumentException {
         ResourceLoader resourceLoader = new ClasspathResourceLoader();
@@ -34,7 +45,7 @@ public class PDFCreator {
         OutputStream os = new FileOutputStream(outputFile);
         ITextRenderer renderer = new ITextRenderer();
         ITextFontResolver fontResolver = renderer.getFontResolver();
-        fontResolver.addFont("C:/Windows/fonts/simsun.ttc", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+        fontResolver.addFont(fontDir, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         renderer.setDocumentFromString(render);
         renderer.layout();
         renderer.createPDF(os);
@@ -42,15 +53,9 @@ public class PDFCreator {
         groupTemplate.close();
     }
 
-    private String fontDir;
-
-    private String templatepath = "/index.html";
-
-    private GroupTemplate groupTemplate;
-
 
     public void generatePDFDownload(String fileName, HttpServletResponse response, Map map) throws IOException, DocumentException {
-        Template t = groupTemplate.getTemplate(templatepath);
+        Template t = groupTemplate.getTemplate(templatePath);
         t.binding(map);
 
         ITextRenderer renderer = new ITextRenderer();
@@ -60,13 +65,14 @@ public class PDFCreator {
         renderer.layout();
 
         response.setContentType("application/x-download");
-        fileName = URLEncoder.encode(fileName,"utf-8");
-        response.addHeader("Content-Disposition", "attachment;filename="+fileName);
+        fileName = URLEncoder.encode(fileName, "utf-8");
+        response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
 
         renderer.createPDF(response.getOutputStream());
+        renderer.finishPDF();
     }
 
-
+    @PostConstruct
     public void init() throws IOException {
         ResourceLoader resourceLoader = new ClasspathResourceLoader();
         Configuration config = Configuration.defaultConfiguration();
@@ -75,8 +81,10 @@ public class PDFCreator {
 
     }
 
-    public void destry(){
-        groupTemplate.close();
+    @PreDestroy
+    public void destroy() {
+        if (groupTemplate != null)
+            groupTemplate.close();
     }
 
 
