@@ -1,4 +1,4 @@
-package com.example.PDFutil;
+package com.zy.pmk.util;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -25,6 +25,7 @@ import org.beetl.core.Template;
 import org.beetl.core.exception.BeetlException;
 import org.beetl.core.resource.ClasspathResourceLoader;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
@@ -41,17 +42,18 @@ import lombok.Data;
  *
  */
 @Data
+@org.springframework.context.annotation.Configuration
 public class PDFCreator {
 
 	/**
 	 * 引入字体uri
 	 */
-	String fontDirs;
+	String fontDirs = "C:/Windows/fonts/simsun.ttc";
 
 	/**
 	 * 模板路径
 	 */
-	String templatePath;
+	String templatePath = "/index.html";
 
 	private GroupTemplate gt;
 
