@@ -1,50 +1,36 @@
 package com.zy.pmk.util;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-import org.beetl.core.Configuration;
-import org.beetl.core.GroupTemplate;
-import org.beetl.core.Template;
-import org.beetl.core.exception.BeetlException;
-import org.beetl.core.resource.ClasspathResourceLoader;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
-import org.xhtmlrenderer.pdf.ITextFontResolver;
-import org.xhtmlrenderer.pdf.ITextRenderer;
 import com.google.common.collect.Maps;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.beetl.core.Configuration;
+import org.beetl.core.GroupTemplate;
+import org.beetl.core.Template;
+import org.beetl.core.exception.BeetlException;
+import org.beetl.core.resource.ClasspathResourceLoader;
+import org.xhtmlrenderer.pdf.ITextFontResolver;
+import org.xhtmlrenderer.pdf.ITextRenderer;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
+import java.io.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.URLEncoder;
+import java.util.Base64;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * @author EX-ZHANGYANG009
@@ -53,90 +39,38 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Data
+@org.springframework.context.annotation.Configuration
 public class PDFCreator {
+
     ITextRenderer renderer = new ITextRenderer();
+
     /**
      * 模板路径
      */
-    private String templatePath;
+    private String templatePath = "index.html";
+
     private GroupTemplate gt;
-    @Value("${rcsp.jwt.systemName}")
-    private String systemName;
-    @Value("${rcsp.jwt.systemKey}")
-    private String systemKey;
-    @Value("${rcsp.domain}")
-    private String domain;
-    /**
-     * token路径
-     */
-    private String tokenUrl = "/rcsp/jwt/getToken";
-    /**
-     * 下载路径
-     */
-    private String downloadUrl = "/rcsp/iobs/download?fileKey=";
-    public static String rcsptoken = "";
-
-    /**
-     * 得到token
-     *
-     * @return
-     * @throws Exception
-     */
-    protected JSONObject getToken() throws Exception {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("getTokenUrl", domain + tokenUrl);
-        params.put("systemName", systemName);
-        params.put("systemKey", systemKey);
-        HttpClient httpclient = HttpClients.createDefault();
-        HttpGet get = new HttpGet(params.get("getTokenUrl") + "?systemName=" + params.get("systemName") + "&amp;systemKey=" + params.get("systemKey"));
-        HttpResponse httpresponse = httpclient.execute(get);
-        return parseHttpResponse(httpresponse);
-    }
-
-    /**
-     * 解析结果JOSNObject
-     *
-     * @param httpresponse
-     * @return
-     * @throws Exception
-     */
-    protected JSONObject parseHttpResponse(HttpResponse httpresponse) throws Exception {
-        httpresponse.getStatusLine();
-        String result = EntityUtils.toString(httpresponse.getEntity(), "UTF-8");
-        return new JSONObject(result);
-    }
 
     /**
      * 下载图片并转化为base64码
      *
-     * @param fileId
+     * @param url
      * @return
      */
-    public String getImgBase64(String fileId) {
-        if (StringUtils.isBlank(fileId)) {
-            return "";
-        }
+    public static String getImgBase64(@NotNull String url) {
         HttpClient httpclient = HttpClients.createDefault();
         byte[] data = null;
-        InputStream in = null;        // 读取图片字节数组        
+        InputStream in = null;
+        // 读取图片字节数组
         try {
-            URIBuilder uriBuilder = new URIBuilder(domain + downloadUrl + fileId);
+            URIBuilder uriBuilder = new URIBuilder(url);
             HttpGet get = new HttpGet(uriBuilder.build());
-            get.addHeader("RCSP-SUPPORT-JWT", rcsptoken);
             HttpResponse httpresponse = httpclient.execute(get);
-            Header[] head = httpresponse.getHeaders("responseCode");
-            // 10017验证Token失败，最大的可能性是因为Token过期，重新获取Token           
-            if ("10017".equals(head[0].getValue())) {
-                get.removeHeaders("RCSP-SUPPORT-JWT");
-                get.addHeader("RCSP-SUPPORT-JWT", rcsptoken = getToken().getString("data"));
-                httpresponse = httpclient.execute(get);
-            }
             in = httpresponse.getEntity().getContent();
             ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
             byte[] buff = new byte[100];
             int rc = 0;
-            while ((rc = in.read(buff, 0, 100)) >
-                    0) {
+            while ((rc = in.read(buff, 0, 100)) > 0) {
                 swapStream.write(buff, 0, rc);
             }
             data = swapStream.toByteArray();
@@ -188,9 +122,9 @@ public class PDFCreator {
         // pdf工具初始化
         ITextFontResolver fontResolver = renderer.getFontResolver();
         // 解决中文乱码
-        URL url = this.getClass().getClassLoader().getResource("template/simsun.ttc");
+        //URL url = this.getClass().getClassLoader().getResource("C:/Windows/fonts/simsun.ttc");
         try {
-            fontResolver.addFont(url.getPath(), BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            fontResolver.addFont("C:/Windows/fonts/simsun.ttc", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
