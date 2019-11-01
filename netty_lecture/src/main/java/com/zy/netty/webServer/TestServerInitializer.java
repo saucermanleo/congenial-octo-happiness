@@ -1,4 +1,4 @@
-package com.zy.netty.firstexample;
+package com.zy.netty.webServer;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

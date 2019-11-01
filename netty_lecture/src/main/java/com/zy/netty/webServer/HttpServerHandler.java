@@ -1,4 +1,4 @@
-package com.zy.netty.firstexample;
+package com.zy.netty.webServer;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
