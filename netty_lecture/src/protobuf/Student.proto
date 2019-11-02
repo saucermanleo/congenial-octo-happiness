@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package tutorial;
+
+option java_package = "com.zy.netty.protobufnetty";
+option java_outer_classname = "AddressBookProtos";
+
+message Student {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+  }
