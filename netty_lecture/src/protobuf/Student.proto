@@ -5,8 +5,30 @@ package tutorial;
 option java_package = "com.zy.netty.protobufnetty";
 option java_outer_classname = "AddressBookProtos";
 
+
+message MyMessage{
+    enum DataType{
+       PersonType = 1;
+       DogType = 2;
+       CatType = 3;
+    }
+    required DataType data_type = 1;
+    oneof dataBody {
+          Student student = 2;
+          Dog dog = 3;
+          Cat cat = 4;
+    }
+}
 message Student {
-  required string name = 1;
-  required int32 id = 2;
+  optional string name = 1;
+  optional int32 id = 2;
   optional string email = 3;
+  }
+message Dog {
+  optional string name = 1;
+  optional int32 age = 2;
+  }
+message Cat {
+  optional string name = 1;
+  optional int32 age = 2;
   }

@@ -12,7 +12,7 @@ public class ProtoServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new ProtobufVarint32FrameDecoder()).addLast(new ProtobufDecoder(AddressBookProtos.Student.getDefaultInstance()))
+        pipeline.addLast(new ProtobufVarint32FrameDecoder()).addLast(new ProtobufDecoder(AddressBookProtos.MyMessage.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender()).addLast(new ProtobufEncoder()).addLast(new ProtoServerHandler());
     }
 }
