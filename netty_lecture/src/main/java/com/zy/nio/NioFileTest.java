@@ -15,6 +15,8 @@ public class NioFileTest {
         FileChannel fileChannel1 = fileOutputStream.getChannel();
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+        //直接使用堆外内存,零拷贝
+        //ByteBuffer byteBuffer = ByteBuffer.allocateDirect(512);
 
         while(true){
             int read = fileChannel.read(byteBuffer);
