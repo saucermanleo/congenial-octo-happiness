@@ -13,7 +13,7 @@ public class Client {
         try{
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new ClientInitializer());
-            ChannelFuture future = bootstrap.connect("localhost",8899).sync();
+            ChannelFuture future = bootstrap.connect("localhost",5000).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
