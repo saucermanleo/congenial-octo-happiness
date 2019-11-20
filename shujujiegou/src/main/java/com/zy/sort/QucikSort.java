@@ -1,7 +1,7 @@
 package com.zy.sort;
 
 import java.util.Arrays;
-//¿ìËÙÅÅĞò  Æ½¾ùÊ±¼ä¸´ÔÓ¶Ènlogn ×î»µn^2.
+//å¿«é€Ÿæ’åº  å¹³å‡æ—¶é—´å¤æ‚åº¦nlogn æœ€ån^2.
 public class QucikSort {
     public static int partition(int[] arrs,int start,int end){
         int tmp = arrs[start];
