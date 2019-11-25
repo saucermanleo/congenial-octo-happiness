@@ -17,20 +17,20 @@ public class MergeSort {
 
     private static void mergeSort(int[] arrays, int start, int end) {
         if (start < end) {
-            int midle = (start + end) / 2;
-            mergeSort(arrays, start, midle);
-            mergeSort(arrays, midle + 1, end);
-            merge(arrays, start, midle, end);
+            int middle = (start + end) / 2;
+            mergeSort(arrays, start, middle);
+            mergeSort(arrays, middle + 1, end);
+            merge(arrays, start, middle, end);
         }
 
     }
 
-    private static void merge(int[] arrays, int low, int midle, int high) {
+    private static void merge(int[] arrays, int low, int middle, int high) {
         int[] temp = new int[high - low + 1];
         int index = 0;
         int x = low;
-        int y = midle + 1;
-        while (x <= midle && y <= high) {
+        int y = middle + 1;
+        while (x <= middle && y <= high) {
             if (arrays[x] <= arrays[y]) {
                 temp[index] = arrays[x];
                 x++;
@@ -40,8 +40,8 @@ public class MergeSort {
             }
             index++;
         }
-        if (x <= midle) {
-            for (; x <= midle; x++) {
+        if (x <= middle) {
+            for (; x <= middle; x++) {
                 temp[index] = arrays[x];
                 index++;
             }
