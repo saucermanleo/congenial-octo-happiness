@@ -1,7 +1,7 @@
 package com.zy.proxy;
 
 public class ProxyProject implements Project {
-    //ÕâÀïÃ»ÓĞÊ¹ÓÃ¶àÌ¬(½Ó¿Ú)
+    //è¿™é‡Œæ²¡æœ‰ä½¿ç”¨å¤šæ€(æ¥å£)
     RealProject realProject;
 
     public ProxyProject(RealProject realProject) {
