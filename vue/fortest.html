@@ -1,0 +1,48 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <p v-for ="(key,i) in arrays">id:{{key.id}}-----名字:{{key.name}}------index:{{i}}</p>
+    <p v-for ="(key,value,i) in user">key:{{key}}-----value:{{value}}------index:{{i}}</p>
+    <p v-for ="i in 10">{{i}}</p>
+
+    <label>name:
+        <input type="text" v-model="name">
+    </label>
+    <label>id:
+        <input type="text" v-model="id">
+    </label>
+    <input type="button" value="添加" @click="tianjia">
+    <!-- 这个:key可以防止绑定数据,不会错位 -->
+    <p v-for="item in arrays" :key="item.id">
+        <input type="checkbox">{{item.id}}---{{item.name}}
+    </p>
+</div>
+
+<script>
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            arrays:[
+                {id:2,name:"zy1"},
+                {id:3,name:"zy1"},
+                {id:24,name:"zy1"},
+                {id:25,name:"zy1"},
+                {id:26,name:"zy1"},
+                {id:27,name:"zy1"},
+                {id:28,name:"zy1"},
+            ],
+            user:{
+                name:"zzyy",
+                id:"num1",
+                sg:"1.8",
+            },
+            name:"",
+            id:"",
+        },
+        methods:{
+            tianjia(){
+                this.arrays.unshift({id:this.id,name:this.name});
+            }
+        }
+    });
+</script>

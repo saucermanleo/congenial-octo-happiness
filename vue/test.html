@@ -1,0 +1,56 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+     [v-cloak] {
+      display: none;
+    }
+    .red{
+      color: red;
+    }
+    .thin{
+      font-weight: 200;
+    }
+    .italic{
+      font-style: italic;
+    }
+
+    .active{
+      letter-spacing: 0.5em;
+    }
+</style>
+ 
+<div id="app"  v-cloak>
+    <h1 :class="classvalue">大大h1</h1>
+    <input type="button" value="浪起来" :title="message"   @click="lang">
+    <input type="button" value="别浪,猥琐发育" :title="message"   @click="bielang">
+    <input type="text" v-model="message">
+    <h4>{{message}}</h4>
+  </div>
+  
+
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+          message: '别浪,猥琐发育!!!',
+          intervalId:null,
+          classvalue:{red:true,thin:true,italic:false,active:false}
+        },
+        methods:{
+          lang:function(){
+
+            if(this.intervalId != null) return;
+            this.intervalId = setInterval(()=>{
+              var first = this.message.substring(0,1);
+            var end = this.message.substring(1);
+            this.message = end+first;
+            },400)
+           
+          },
+          bielang:function(){
+            clearInterval(this.intervalId);
+            this.intervalId =null;
+          }
+        }
+      })
+</script>

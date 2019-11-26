@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <input type="text" v-model="n1">
+    <select v-model="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" v-model="n2">
+    <input type="button" value="=" @click="calc">
+    <input type="text" v-model="n3">
+</div>
+
+
+<script>
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            n1:"0",
+            n2:"0",
+            n3:"0",
+            opt:"+",
+        },
+        methods:{
+            calc(){
+               this.n3 = eval(this.n1+this.opt+this.n2);
+            }
+        }
+    })
+</script>
