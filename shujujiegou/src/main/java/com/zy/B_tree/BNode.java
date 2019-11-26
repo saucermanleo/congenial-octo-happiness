@@ -1,12 +1,11 @@
 package com.zy.B_tree;
 
 public class BNode {
-    private  String value;
-    private  BNode right;
+    private String value;
+    private BNode right;
     private BNode left;
 
-
-    public BNode(String value, BNode left,BNode right) {
+    public BNode(String value, BNode left, BNode right) {
         this.value = value;
         this.right = right;
         this.left = left;

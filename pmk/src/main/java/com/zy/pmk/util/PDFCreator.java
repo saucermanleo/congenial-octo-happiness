@@ -6,10 +6,10 @@ import com.lowagie.text.pdf.BaseFont;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
@@ -57,15 +57,16 @@ public class PDFCreator {
      * @param url
      * @return
      */
-    public static String getImgBase64(@NotNull String url) {
-        HttpClient httpclient = HttpClients.createDefault();
+    public static String getImgBase64(@NotNull String url) throws IOException {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
         byte[] data = null;
         InputStream in = null;
+        CloseableHttpResponse httpresponse = null;
         // 读取图片字节数组
         try {
             URIBuilder uriBuilder = new URIBuilder(url);
             HttpGet get = new HttpGet(uriBuilder.build());
-            HttpResponse httpresponse = httpclient.execute(get);
+            httpresponse = httpclient.execute(get);
             in = httpresponse.getEntity().getContent();
             ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
             byte[] buff = new byte[100];
@@ -76,6 +77,9 @@ public class PDFCreator {
             data = swapStream.toByteArray();
         } catch (Exception e) {
             return "";
+        } finally {
+            httpclient.close();
+            httpresponse.close();
         }
         return Base64.getEncoder().encodeToString(data);
     }
