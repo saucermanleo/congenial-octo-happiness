@@ -2,8 +2,12 @@ package com.zy.sort;
 
 import java.util.Arrays;
 
-// 算法稳定性 -- 假设在数列中存在a[i]=a[j]，若在排序之前，a[i]在a[j]前面；并且排序之后，a[i]仍然在a[j]前面。则这个排序算法是稳定的！
-// 不稳地算法 O(N²) O(N3/2)
+/**
+ * 算法稳定性 -- 假设在数列中存在a[i]=a[j]，若在排序之前，a[i]在a[j]前面；并且排序之后，a[i]仍然在a[j]前面。则这个排序算法是稳定的！ 不稳地算法 O(N²) O(N3/2)
+ * 
+ * @author : 生态环境-张阳
+ * @date : 2019/11/28 0028 16:05
+ */
 public class ShellSort {
     public static void main(String[] args) {
         int[] arrays = {1, 4, 5, 3, 2, 9, 8, 7, 10, 11, 16, 14, 19, 6};

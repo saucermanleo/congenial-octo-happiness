@@ -2,7 +2,12 @@ package com.zy.sort;
 
 import java.util.Arrays;
 
-// 插入排序 o(n) o(n^2)
+/**
+ * 插入排序 o(n) o(n^2)
+ * 
+ * @author : 生态环境-张阳
+ * @date : 2019/11/28 0028 16:03
+ */
 public class InsertSort {
     public static void main(String[] args) {
         int[] arrays = {1, 4, 5, 3, 2, 9, 8, 7, 10, 11, 16, 14};

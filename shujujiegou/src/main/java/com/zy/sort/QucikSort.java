@@ -2,7 +2,12 @@ package com.zy.sort;
 
 import java.util.Arrays;
 
-// 快速排序 平均时间复杂度nlogn 最坏n^2.
+/**
+ * 快速排序 平均时间复杂度nlogn 最坏n^2.
+ * 
+ * @author : 生态环境-张阳
+ * @date : 2019/11/28 0028 16:04
+ */
 public class QucikSort {
     public static int partition(int[] arrs, int start, int end) {
         int tmp = arrs[start];
