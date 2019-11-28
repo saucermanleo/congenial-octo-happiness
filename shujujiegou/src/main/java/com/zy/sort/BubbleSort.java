@@ -3,7 +3,7 @@ package com.zy.sort;
 import java.util.Arrays;
 
 /**
- * 冒泡排序
+ * 冒泡排序 从0开始两个相邻的位置比较,交换位置,一次循环数组末尾为最大值.
  * 
  * @author : 生态环境-张阳
  * @date : 2019/11/28 0028 15:29

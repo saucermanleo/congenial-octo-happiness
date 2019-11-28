@@ -3,7 +3,7 @@ package com.zy.sort;
 import java.util.Arrays;
 
 /**
- * 快速排序 平均时间复杂度nlogn 最坏n^2.
+ * 快速排序 平均时间复杂度nlogn 最坏n^2. 取第一个值, 让这个值的左边小于这个值,右边大于这个值(递归) 取index=0放在temp中  然后用temp与index=length-1比较 然后交换位置  然后在反向操作
  * 
  * @author : 生态环境-张阳
  * @date : 2019/11/28 0028 16:04

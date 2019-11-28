@@ -3,7 +3,7 @@ package com.zy.sort;
 import java.util.Arrays;
 
 /**
- * 插入排序 o(n) o(n^2)
+ * 插入排序 o(n) o(n^2) 默认index前面的值是有序的 从index+1处于前面的值比较,找到位置插入进相应的位置.
  * 
  * @author : 生态环境-张阳
  * @date : 2019/11/28 0028 16:03
