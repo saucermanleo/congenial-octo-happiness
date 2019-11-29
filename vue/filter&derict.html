@@ -18,6 +18,11 @@
                 <input type="text" class="form-control" v-model="name">
             </label>
             <input type="button" value="add" class="btn btn-primay" @click="add">
+            <label>
+                搜索:
+                <input type="text" class="form-control" v-model="keywords" >
+            </label>
+            
         </div>
 
     </div>
@@ -34,9 +39,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in list" :key="item.id">
+            <tr v-for="item in search(keywords)" :key="item.id">
                 <td>{{item.id}}</td>
-                <td v-text="item.name"></td>
+                <td>{{item.name|messageFormat('beng')}}</td>
                 <td>{{item.ctime}}</td>
                 <td>
                     <a href="" @click.prevent="del(item.id)">删除</a>
@@ -46,11 +51,15 @@
     </table>
 </div>
 <script>
+    Vue.filter("messageFormat",function(data,arg){
+        return data.replace(/奔/g,arg)
+    })
     var app = new Vue({
         el: "#app",
         data: {
             name: "",
             id: "",
+            keywords:"",
             list: [
                 { id: 1, name: "奔驰", ctime: new Date() },
                 { id: 2, name: "大众", ctime: new Date() },
@@ -79,7 +88,27 @@
                    }
                })
                this.list.splice(index,1);
+            },
+            search(keywords){
+                // let resultArray = new Array()
+                // this.list.forEach(item=>{
+                //     if(item.name.indexOf(keywords)!=-1){
+                //         resultArray.push(item)
+                //     }
+                // })
+                // return resultArray
+
+                // forEach 不能结束 
+                // some return true结束 
+                // filter  返回新的数组
+                // findIndex 返回找到的下标
+                return this.list.filter((item,i)=>{
+                    if(item.name.includes(keywords)){
+                        return item
+                    }
+                })
             }
         }
     })
+    
 </script>
