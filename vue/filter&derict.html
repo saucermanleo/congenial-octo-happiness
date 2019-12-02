@@ -15,14 +15,14 @@
             </label>
             <label>
                 name:
-                <input type="text" class="form-control" v-model="name">
+                <input type="text" class="form-control" v-model="name" @keyup.f2.enter="add">
             </label>
             <input type="button" value="add" class="btn btn-primay" @click="add">
             <label>
                 搜索:
-                <input type="text" class="form-control" v-model="keywords" >
+                <input type="text" class="form-control" v-model="keywords">
             </label>
-            
+
         </div>
 
     </div>
@@ -42,7 +42,7 @@
             <tr v-for="item in search(keywords)" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.name|messageFormat('beng')}}</td>
-                <td>{{item.ctime}}</td>
+                <td>{{item.ctime|dateFormat('yyyy-mm-dd')}}</td>
                 <td>
                     <a href="" @click.prevent="del(item.id)">删除</a>
                 </td>
@@ -51,15 +51,34 @@
     </table>
 </div>
 <script>
-    Vue.filter("messageFormat",function(data,arg){
-        return data.replace(/奔/g,arg)
+    //键盘码修饰符
+    Vue.config.keyCodes.f2 = 113
+    //全局过滤器
+    Vue.filter("messageFormat", function (data, arg) {
+        return data.replace(/奔/g, arg)
+    })
+
+    Vue.filter("dateFormat", function (stringDate, pattern = '') {
+        let date = new Date(stringDate)
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        month = month.toString().padStart(2, '0');
+        let day = date.getDate().toString().padStart(2, '0');
+        if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+            return `${year}-${month}-${day}`
+        } else {
+            let hour = date.getHours().toString().padStart(2, '0');
+            let minute = date.getMinutes().toString().padStart(2, '0');
+            let secend = date.getSeconds().toString().padStart(2, '0');
+            return `${year}-${month}-${day}:${hour}-${minute}-${secend}`
+        }
     })
     var app = new Vue({
         el: "#app",
         data: {
             name: "",
             id: "",
-            keywords:"",
+            keywords: "",
             list: [
                 { id: 1, name: "奔驰", ctime: new Date() },
                 { id: 2, name: "大众", ctime: new Date() },
@@ -74,7 +93,7 @@
                 this.list.push(temp)
                 this.name = this.id = ""
             },
-            del: function(id) {
+            del: function (id) {
                 // this.list.some((item,i)=>{
                 //     if(item.id == id){
                 //         this.list.splice(i,1);
@@ -82,14 +101,14 @@
                 //     return true;
                 // })
 
-              let index =  this.list.findIndex(item=>{
-                   if(item.id == id ){
-                       return true;
-                   }
-               })
-               this.list.splice(index,1);
+                let index = this.list.findIndex(item => {
+                    if (item.id == id) {
+                        return true;
+                    }
+                })
+                this.list.splice(index, 1);
             },
-            search(keywords){
+            search(keywords) {
                 // let resultArray = new Array()
                 // this.list.forEach(item=>{
                 //     if(item.name.indexOf(keywords)!=-1){
@@ -102,13 +121,17 @@
                 // some return true结束 
                 // filter  返回新的数组
                 // findIndex 返回找到的下标
-                return this.list.filter((item,i)=>{
-                    if(item.name.includes(keywords)){
+                return this.list.filter((item, i) => {
+                    if (item.name.includes(keywords)) {
                         return item
                     }
                 })
             }
+        },
+        //局部过滤器
+        filters: {
+
         }
     })
-    
+
 </script>
