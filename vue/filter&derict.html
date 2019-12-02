@@ -1,5 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://github.com/vuejs/vue-devtools"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 
 <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +21,7 @@
             <input type="button" value="add" class="btn btn-primay" @click="add">
             <label>
                 搜索:
-                <input type="text" class="form-control" v-model="keywords">
+                <input type="text" class="form-control" v-model="keywords" v-focus>
             </label>
 
         </div>
@@ -49,8 +50,27 @@
             </tr>
         </tbody>
     </table>
+    <h1 v-color="'red'">test</h1>
+    <input type="button" value="get" @click='getInfo'>
 </div>
 <script>
+    //vue-resoure 全局配置
+    Vue.http.options.root = '/root'
+    Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk'
+    // If your web server can't handle requests encoded as application/json, 
+    // you can enable the emulateJSON option. This will send the request as application/x-www-form-urlencoded MIME type, as if from an normal HTML form.
+    Vue.http.options.emulateJSON = true;
+
+
+    Vue.directive('focus', {
+        inserted: function (el) {
+            el.focus()
+        }
+    })
+
+    Vue.directive('color', function (el, binding) {
+        el.style.color = binding.value
+    })
     //键盘码修饰符
     Vue.config.keyCodes.f2 = 113
     //全局过滤器
@@ -126,6 +146,9 @@
                         return item
                     }
                 })
+            },
+            getInfo() {
+
             }
         },
         //局部过滤器

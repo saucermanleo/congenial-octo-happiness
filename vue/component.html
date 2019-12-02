@@ -1,0 +1,31 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <my-com1></my-com1>
+    <my-com2></my-com2>
+    <my-com3></my-com3>
+</div>
+<template id='temp'>
+        <h3>通过引入template创建的组件</h3>
+</template>
+
+<script>
+    Vue.component('myCom1',Vue.extend({
+        template:'<h3>通过vue.extend创建的组件</h3>'
+    }))
+
+    Vue.component('myCom2', {
+        template:'<h3>通过{}创建的组件</h3>'
+    })
+
+    Vue.component('myCom3',{
+        template:'#temp'
+    })
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+        },
+        methods: {
+        }
+    })
+</script>
