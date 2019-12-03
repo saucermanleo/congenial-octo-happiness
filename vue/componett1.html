@@ -1,0 +1,34 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <test @parentshow="show"></test>
+</div>
+<template id='temp'>
+    <div>
+        <input type="button" value="点击" @click='get'>
+    </div>
+</template>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg : ""
+        },
+        methods: {
+            show : function(data){
+                console.log('来自子组件的值:'+data.name)
+                this.msg = data
+            }
+        },
+        components:{
+            test:{
+                template:'#temp',
+                methods:{
+                    get:function(){
+                        this.$emit('parentshow',{name:'zy',id:1});
+                    }
+                }
+            }
+            
+        }
+    })
+</script>
