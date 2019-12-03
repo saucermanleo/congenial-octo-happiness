@@ -1,31 +1,84 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <div id="app">
     <my-com1></my-com1>
-    <my-com2></my-com2>
-    <my-com3></my-com3>
+
+    <input type="button" @click="com='myCom2'" value="com2">
+    <input type="button" @click="com='myCom3'" value="com3">
+    <componet :is="com"></componet>
+    <counter></counter>
+    <counter></counter>
+    <componeth1 :value='msg'></componeth1>
+
+
 </div>
 <template id='temp'>
-        <h3>通过引入template创建的组件</h3>
+    <h3>通过引入template创建的组件{{msg}}</h3>
+</template>
+
+<template id='counter'>
+    <div>
+        <input type="button" value="+1" @click="count++">
+        <h1>{{count}}</h1>
+    </div>
+</template>
+
+<template id='temp1'>
+    <h1>{{value}}</h1>
 </template>
 
 <script>
-    Vue.component('myCom1',Vue.extend({
-        template:'<h3>通过vue.extend创建的组件</h3>'
+
+
+    //定义component的方式
+    Vue.component('myCom1', Vue.extend({
+        template: '<h3>通过vue.extend创建的组件</h3>'
     }))
 
     Vue.component('myCom2', {
-        template:'<h3>通过{}创建的组件</h3>'
+        template: '<h3>通过{}创建的组件</h3>'
     })
 
-    Vue.component('myCom3',{
-        template:'#temp'
+    let object = {
+        count: 0
+    }
+
+    Vue.component('myCom3', {
+        template: '#temp',
+        data: function () {
+            return {
+                msg: 'components data'
+            }
+        }
+    })
+
+    //计数器 
+    Vue.component('counter', {
+        template: '#counter',
+        data: function () {
+            //全局变量
+            //return object
+            //局部变量
+            return {
+                count: 0
+            }
+        }
     })
 
     var app = new Vue({
         el: "#app",
         data: {
+            com: 'myCom2',
+            msg : "来自父组件的值"
         },
         methods: {
+        },
+        //私有组件 从父组件得到值
+        components:{
+            componeth1:{
+                template:'#temp1',
+                props:['value']
+            }
+            
         }
     })
 </script>
