@@ -6,8 +6,17 @@ package com.zy.state;
  */
 public class StateTest {
     public static void main(String[] args) {
-        Content content = new Content(new MonState());
-        content.setWeather("wed");
+        //有if判断的
+        Content content = new Content(new MonChainState());
+        content.setWeather("mon");
+        content.feel();
+        //普通的状态转换
+        State state = new ThursdayState();
+        content.setState(state);
+        content.feel();
+        content.feel();
+        content.feel();
+        content.feel();
         content.feel();
     }
 }
