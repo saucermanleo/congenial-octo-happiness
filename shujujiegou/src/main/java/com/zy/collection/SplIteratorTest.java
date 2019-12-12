@@ -12,13 +12,12 @@ public class SplIteratorTest {
     public static void main(String[] args) throws InterruptedException {
 
         List<Spliterator> spliterators;
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new LinkedList<>();
         for (int i = 0; i < 32; i++) {
             list.add(i);
         }
 
-
-        spliterators = split(list.spliterator(), 2);
+        spliterators = split(list.spliterator().trySplit(), 2);
         System.out.println(spliterators.size());
 
         for (Spliterator spliterator : spliterators) {
