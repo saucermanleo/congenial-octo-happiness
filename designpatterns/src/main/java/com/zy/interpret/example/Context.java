@@ -1,35 +1,22 @@
-package com.zy.interpret;
+package com.zy.interpret.example;
 
-import java.util.Stack;
-import java.util.StringTokenizer;
+import com.zy.interpret.AbstractContext;
+
 
 /**
  * @author : 生态环境-张阳
  * @date : 2020/4/14 0014 16:39
  */
-public class Context {
-    private StringTokenizer stringTokenizer;
-    private String concurrentToken;
-    private Stack<AbstractExpression> stack = new Stack<>();
+public class Context extends AbstractContext {
 
     public Context(String command) {
-        stringTokenizer = new StringTokenizer(command);
-        init();
+        super(command);
     }
 
-    public int concurrentInt(){
-        return Integer.parseInt(concurrentToken);
-    }
-
-    public String nextToken(){
-        concurrentToken = stringTokenizer.hasMoreTokens() ? stringTokenizer.nextToken():null;
-        return concurrentToken;
-    }
-
-    private void init(){
+    @Override
+    public void init(){
         while(stringTokenizer.hasMoreTokens() ){
             if(stack.isEmpty()){
-
                 stack.push(makeSentence());
             }else {
                 this.nextToken();
@@ -41,16 +28,29 @@ public class Context {
 
     private Sentence makeSentence(){
         Direction direction = new Direction();
-        direction.interpret(this);
+        direction.compile(this);
         Action action = new Action();
-        action.interpret(this);
+        action.compile(this);
         Distance distance = new Distance();
-        distance.interpret(this);
+        distance.compile(this);
         Sentence sentence = new Sentence(direction,action,distance);
         return sentence;
     }
 
+//    @Override
+//    public void execute(){
+//        stack.pop().interpret();
+//    }
+
+    @Override
     public void execute(){
-        stack.pop().execute();
+        while(stringTokenizer.hasMoreTokens()){
+            Direction direction = new Direction();
+            direction.interpret(this);
+            Action action = new Action();
+            action.interpret(this);
+            Distance distance = new Distance();
+            distance.interpret(this);
+        }
     }
 }

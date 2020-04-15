@@ -1,4 +1,6 @@
-package com.zy.interpret;
+package com.zy.interpret.example;
+
+import com.zy.interpret.AbstractContext;
 
 /**
  * @author : 生态环境-张阳
@@ -19,14 +21,21 @@ public class Sentence extends AbstractExpression {
     }
 
     @Override
-    void interpret(Context context) {
+    public void compile(Context context) {
 
     }
 
     @Override
-    void execute() {
-        direction.execute();
-        action.execute();
-        distance.execute();
+    public void interpret() {
+        direction.interpret();
+        action.interpret();
+        distance.interpret();
+    }
+
+    @Override
+    public void interpret(AbstractContext context) {
+        direction.interpret(context);
+        action.interpret(context);
+        distance.interpret(context);
     }
 }

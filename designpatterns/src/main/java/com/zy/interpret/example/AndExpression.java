@@ -1,4 +1,6 @@
-package com.zy.interpret;
+package com.zy.interpret.example;
+
+import com.zy.interpret.AbstractContext;
 
 /**
  * @author : 生态环境-张阳
@@ -15,13 +17,19 @@ public class AndExpression extends AbstractExpression {
     }
 
     @Override
-    void interpret(Context context) {
+    public void compile(Context context) {
 
     }
 
     @Override
-    void execute() {
-        left.execute();
-        right.execute();
+    public void interpret() {
+        left.interpret();
+        right.interpret();
+    }
+
+    @Override
+    public void interpret(AbstractContext context) {
+        left.interpret(context);
+        right.interpret(context);
     }
 }

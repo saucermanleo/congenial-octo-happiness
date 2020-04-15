@@ -1,4 +1,4 @@
-package com.zy.interpret;
+package com.zy.interpret.example;
 
 /**
  * 解释器模式  主要用于解释自定义语言
