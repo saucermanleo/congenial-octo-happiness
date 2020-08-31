@@ -1,11 +1,13 @@
 package org.zy.tinygame.handler;
 
 import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import org.zy.tinygame.GameMsgProtocol;
+import org.zy.tinygame.GameMsgRecognizer;
 
 /**
  * @author : 生态环境-张阳
@@ -21,21 +23,11 @@ public class GameMsgDecoder extends SimpleChannelInboundHandler<BinaryWebSocketF
         content.readBytes(bytes);
         GeneratedMessageV3 cmd = null;
 
+        Message.Builder builder = GameMsgRecognizer.getBuilder(msgCode);
 
-        switch (msgCode) {
-            case GameMsgProtocol.MsgCode.USER_ENTRY_CMD_VALUE:
-                cmd = GameMsgProtocol.UserEntryCmd.parseFrom(bytes);
-                break;
-            case GameMsgProtocol.MsgCode.WHO_ELSE_IS_HERE_CMD_VALUE:
-                cmd = GameMsgProtocol.WhoElseIsHereCmd.parseFrom(bytes);
-                break;
-            case GameMsgProtocol.MsgCode.USER_MOVE_TO_CMD_VALUE:
-                cmd = GameMsgProtocol.UserMoveToCmd.parseFrom(bytes);
-                break;
-        }
-
-        if (null != cmd) {
-            ctx.fireChannelRead(cmd);
+        if (null != builder) {
+            builder.clear();
+            ctx.fireChannelRead(builder.mergeFrom(bytes).build());
         }
 
     }
