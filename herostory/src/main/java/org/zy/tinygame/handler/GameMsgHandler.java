@@ -50,7 +50,6 @@ public class GameMsgHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println(msg.getClass());
         Handle<?> handle = HandleFactory.getHandle(msg);
         if (handle != null) {
             handle.handle(ctx, msg);
