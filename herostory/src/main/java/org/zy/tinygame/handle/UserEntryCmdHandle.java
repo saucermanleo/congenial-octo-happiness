@@ -12,20 +12,26 @@ import org.zy.tinygame.handler.GameMsgHandler;
  */
 public class UserEntryCmdHandle implements Handle<GameMsgProtocol.UserEntryCmd> {
     @Override
-    public void handle(ChannelHandlerContext ctx,Object msg) {
-        GameMsgProtocol.UserEntryCmd userEntryCmd =(GameMsgProtocol.UserEntryCmd) msg;
+    public void handle(ChannelHandlerContext ctx, Object msg) {
+        Integer userId = (Integer) ctx.channel().attr(AttributeKey.valueOf("userId")).get();
+        if (null == userId) {
+            return;
+        }
 
-        GameMsgProtocol.UserEntryResult.Builder builder = GameMsgProtocol.UserEntryResult.newBuilder();
-        builder.setUserId(userEntryCmd.getUserId()  );
-        builder.setHeroAvatar(userEntryCmd.getHeroAvatar());
+        // 获取已有用户
+        User existUser = GameMsgHandler.users.get(userId);
+        if (null == existUser) {
+            return;
+        }
 
-        User user = new User();
-        user.setUserId(userEntryCmd.getUserId());
-        user.setRole(userEntryCmd.getHeroAvatar());
-        GameMsgHandler.users.put(user.getUserId(),user);
+        // 获取英雄形象
+        String heroAvatar = existUser.getRole();
 
-        ctx.channel().attr(AttributeKey.valueOf("userId")).set(user.getUserId());
+        GameMsgProtocol.UserEntryResult.Builder resultBuilder = GameMsgProtocol.UserEntryResult.newBuilder();
+        resultBuilder.setUserId(userId);
+        resultBuilder.setHeroAvatar(heroAvatar);
+        resultBuilder.setUserName(existUser.name);
 
-        GameMsgHandler.CHANNELS.writeAndFlush(builder.build());
+        GameMsgHandler.CHANNELS.writeAndFlush(resultBuilder.build());
     }
 }

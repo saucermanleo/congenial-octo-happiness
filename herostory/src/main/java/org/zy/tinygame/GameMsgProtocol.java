@@ -6,13 +6,13 @@ package org.zy.tinygame;
 public final class GameMsgProtocol {
   private GameMsgProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+          com.google.protobuf.ExtensionRegistryLite registry) {
   }
 
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+          com.google.protobuf.ExtensionRegistry registry) {
     registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+            (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * <pre>
@@ -22,7 +22,7 @@ public final class GameMsgProtocol {
    * Protobuf enum {@code msg.MsgCode}
    */
   public enum MsgCode
-      implements com.google.protobuf.ProtocolMessageEnum {
+          implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>USER_ENTRY_CMD = 0;</code>
      */
@@ -75,6 +75,22 @@ public final class GameMsgProtocol {
      * <code>USER_DIE_RESULT = 12;</code>
      */
     USER_DIE_RESULT(12),
+    /**
+     * <code>USER_LOGIN_CMD = 13;</code>
+     */
+    USER_LOGIN_CMD(13),
+    /**
+     * <code>USER_LOGIN_RESULT = 14;</code>
+     */
+    USER_LOGIN_RESULT(14),
+    /**
+     * <code>SELECT_HERO_CMD = 15;</code>
+     */
+    SELECT_HERO_CMD(15),
+    /**
+     * <code>SELECT_HERO_RESULT = 16;</code>
+     */
+    SELECT_HERO_RESULT(16),
     UNRECOGNIZED(-1),
     ;
 
@@ -130,12 +146,28 @@ public final class GameMsgProtocol {
      * <code>USER_DIE_RESULT = 12;</code>
      */
     public static final int USER_DIE_RESULT_VALUE = 12;
+    /**
+     * <code>USER_LOGIN_CMD = 13;</code>
+     */
+    public static final int USER_LOGIN_CMD_VALUE = 13;
+    /**
+     * <code>USER_LOGIN_RESULT = 14;</code>
+     */
+    public static final int USER_LOGIN_RESULT_VALUE = 14;
+    /**
+     * <code>SELECT_HERO_CMD = 15;</code>
+     */
+    public static final int SELECT_HERO_CMD_VALUE = 15;
+    /**
+     * <code>SELECT_HERO_RESULT = 16;</code>
+     */
+    public static final int SELECT_HERO_RESULT_VALUE = 16;
 
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
+        throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
       }
       return value;
     }
@@ -145,7 +177,7 @@ public final class GameMsgProtocol {
      * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static MsgCode valueOf(int value) {
       return forNumber(value);
     }
@@ -169,42 +201,46 @@ public final class GameMsgProtocol {
         case 10: return USER_ATTK_RESULT;
         case 11: return USER_SUBTRACT_HP_RESULT;
         case 12: return USER_DIE_RESULT;
+        case 13: return USER_LOGIN_CMD;
+        case 14: return USER_LOGIN_RESULT;
+        case 15: return SELECT_HERO_CMD;
+        case 16: return SELECT_HERO_RESULT;
         default: return null;
       }
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<MsgCode>
-        internalGetValueMap() {
+    internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        MsgCode> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<MsgCode>() {
-            public MsgCode findValueByNumber(int number) {
-              return MsgCode.forNumber(number);
-            }
-          };
+            MsgCode> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<MsgCode>() {
+              public MsgCode findValueByNumber(int number) {
+                return MsgCode.forNumber(number);
+              }
+            };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+    getDescriptorForType() {
       return getDescriptor();
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return GameMsgProtocol.getDescriptor().getEnumTypes().get(0);
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final MsgCode[] VALUES = values();
 
     public static MsgCode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+                "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -222,38 +258,8 @@ public final class GameMsgProtocol {
   }
 
   public interface UserEntryCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserEntryCmd)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * 用户 Id
-     * </pre>
-     *
-     * <code>uint32 userId = 1;</code>
-     * @return The userId.
-     */
-    int getUserId();
-
-    /**
-     * <pre>
-     * 英雄形象
-     * </pre>
-     *
-     * <code>string heroAvatar = 2;</code>
-     * @return The heroAvatar.
-     */
-    String getHeroAvatar();
-    /**
-     * <pre>
-     * 英雄形象
-     * </pre>
-     *
-     * <code>string heroAvatar = 2;</code>
-     * @return The bytes for heroAvatar.
-     */
-    com.google.protobuf.ByteString
-        getHeroAvatarBytes();
+          // @@protoc_insertion_point(interface_extends:msg.UserEntryCmd)
+          com.google.protobuf.MessageOrBuilder {
   }
   /**
    * <pre>
@@ -266,40 +272,39 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserEntryCmd}
    */
   public  static final class UserEntryCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserEntryCmd)
-      UserEntryCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserEntryCmd)
+          UserEntryCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserEntryCmd.newBuilder() to construct.
     private UserEntryCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private UserEntryCmd() {
-      heroAvatar_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserEntryCmd();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserEntryCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -308,20 +313,9 @@ public final class GameMsgProtocol {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              userId_ = input.readUInt32();
-              break;
-            }
-            case 18: {
-              String s = input.readStringRequireUtf8();
-
-              heroAvatar_ = s;
-              break;
-            }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -332,85 +326,27 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserEntryCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserEntryCmd.class, GameMsgProtocol.UserEntryCmd.Builder.class);
-    }
-
-    public static final int USERID_FIELD_NUMBER = 1;
-    private int userId_;
-    /**
-     * <pre>
-     * 用户 Id
-     * </pre>
-     *
-     * <code>uint32 userId = 1;</code>
-     * @return The userId.
-     */
-    public int getUserId() {
-      return userId_;
-    }
-
-    public static final int HEROAVATAR_FIELD_NUMBER = 2;
-    private volatile Object heroAvatar_;
-    /**
-     * <pre>
-     * 英雄形象
-     * </pre>
-     *
-     * <code>string heroAvatar = 2;</code>
-     * @return The heroAvatar.
-     */
-    public String getHeroAvatar() {
-      Object ref = heroAvatar_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        heroAvatar_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * 英雄形象
-     * </pre>
-     *
-     * <code>string heroAvatar = 2;</code>
-     * @return The bytes for heroAvatar.
-     */
-    public com.google.protobuf.ByteString
-        getHeroAvatarBytes() {
-      Object ref = heroAvatar_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        heroAvatar_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserEntryCmd.class, org.zy.tinygame.GameMsgProtocol.UserEntryCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -420,157 +356,136 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (userId_ != 0) {
-        output.writeUInt32(1, userId_);
-      }
-      if (!getHeroAvatarBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, heroAvatar_);
-      }
+            throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (userId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, userId_);
-      }
-      if (!getHeroAvatarBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, heroAvatar_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserEntryCmd)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserEntryCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserEntryCmd other = (GameMsgProtocol.UserEntryCmd) obj;
+      org.zy.tinygame.GameMsgProtocol.UserEntryCmd other = (org.zy.tinygame.GameMsgProtocol.UserEntryCmd) obj;
 
-      if (getUserId()
-          != other.getUserId()) return false;
-      if (!getHeroAvatar()
-          .equals(other.getHeroAvatar())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserId();
-      hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
-      hash = (53 * hash) + getHeroAvatar().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserEntryCmd prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserEntryCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -585,29 +500,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserEntryCmd}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserEntryCmd)
-        GameMsgProtocol.UserEntryCmdOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserEntryCmd)
+            org.zy.tinygame.GameMsgProtocol.UserEntryCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserEntryCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserEntryCmd.class, GameMsgProtocol.UserEntryCmd.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserEntryCmd.class, org.zy.tinygame.GameMsgProtocol.UserEntryCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserEntryCmd.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserEntryCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -616,116 +531,103 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
-        userId_ = 0;
-
-        heroAvatar_ = "";
-
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryCmd_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserEntryCmd.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserEntryCmd.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryCmd build() {
-        GameMsgProtocol.UserEntryCmd result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryCmd build() {
+        org.zy.tinygame.GameMsgProtocol.UserEntryCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryCmd buildPartial() {
-        GameMsgProtocol.UserEntryCmd result = new GameMsgProtocol.UserEntryCmd(this);
-        result.userId_ = userId_;
-        result.heroAvatar_ = heroAvatar_;
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserEntryCmd result = new org.zy.tinygame.GameMsgProtocol.UserEntryCmd(this);
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserEntryCmd) {
-          return mergeFrom((GameMsgProtocol.UserEntryCmd)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserEntryCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserEntryCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserEntryCmd other) {
-        if (other == GameMsgProtocol.UserEntryCmd.getDefaultInstance()) return this;
-        if (other.getUserId() != 0) {
-          setUserId(other.getUserId());
-        }
-        if (!other.getHeroAvatar().isEmpty()) {
-          heroAvatar_ = other.heroAvatar_;
-          onChanged();
-        }
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserEntryCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserEntryCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserEntryCmd parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserEntryCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserEntryCmd) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserEntryCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -734,153 +636,15 @@ public final class GameMsgProtocol {
         }
         return this;
       }
-
-      private int userId_ ;
-      /**
-       * <pre>
-       * 用户 Id
-       * </pre>
-       *
-       * <code>uint32 userId = 1;</code>
-       * @return The userId.
-       */
-      public int getUserId() {
-        return userId_;
-      }
-      /**
-       * <pre>
-       * 用户 Id
-       * </pre>
-       *
-       * <code>uint32 userId = 1;</code>
-       * @param value The userId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUserId(int value) {
-
-        userId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 用户 Id
-       * </pre>
-       *
-       * <code>uint32 userId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUserId() {
-
-        userId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private Object heroAvatar_ = "";
-      /**
-       * <pre>
-       * 英雄形象
-       * </pre>
-       *
-       * <code>string heroAvatar = 2;</code>
-       * @return The heroAvatar.
-       */
-      public String getHeroAvatar() {
-        Object ref = heroAvatar_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          heroAvatar_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * 英雄形象
-       * </pre>
-       *
-       * <code>string heroAvatar = 2;</code>
-       * @return The bytes for heroAvatar.
-       */
-      public com.google.protobuf.ByteString
-          getHeroAvatarBytes() {
-        Object ref = heroAvatar_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          heroAvatar_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * 英雄形象
-       * </pre>
-       *
-       * <code>string heroAvatar = 2;</code>
-       * @param value The heroAvatar to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHeroAvatar(
-          String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-
-        heroAvatar_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 英雄形象
-       * </pre>
-       *
-       * <code>string heroAvatar = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearHeroAvatar() {
-
-        heroAvatar_ = getDefaultInstance().getHeroAvatar();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 英雄形象
-       * </pre>
-       *
-       * <code>string heroAvatar = 2;</code>
-       * @param value The bytes for heroAvatar to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHeroAvatarBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-
-        heroAvatar_ = value;
-        onChanged();
-        return this;
-      }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -889,22 +653,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserEntryCmd)
-    private static final GameMsgProtocol.UserEntryCmd DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserEntryCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserEntryCmd();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserEntryCmd();
     }
 
-    public static GameMsgProtocol.UserEntryCmd getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserEntryCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserEntryCmd>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserEntryCmd>() {
+      @java.lang.Override
       public UserEntryCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserEntryCmd(input, extensionRegistry);
       }
     };
@@ -913,21 +677,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserEntryCmd> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserEntryResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserEntryResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserEntryResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -941,23 +705,43 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
-     * 英雄形象
+     * 用户名称
      * </pre>
      *
-     * <code>string heroAvatar = 2;</code>
-     * @return The heroAvatar.
+     * <code>string userName = 2;</code>
+     * @return The userName.
      */
-    String getHeroAvatar();
+    java.lang.String getUserName();
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The bytes for userName.
+     */
+    com.google.protobuf.ByteString
+    getUserNameBytes();
+
     /**
      * <pre>
      * 英雄形象
      * </pre>
      *
-     * <code>string heroAvatar = 2;</code>
+     * <code>string heroAvatar = 3;</code>
+     * @return The heroAvatar.
+     */
+    java.lang.String getHeroAvatar();
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 3;</code>
      * @return The bytes for heroAvatar.
      */
     com.google.protobuf.ByteString
-        getHeroAvatarBytes();
+    getHeroAvatarBytes();
   }
   /**
    * <pre>
@@ -967,40 +751,41 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserEntryResult}
    */
   public  static final class UserEntryResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserEntryResult)
-      UserEntryResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserEntryResult)
+          UserEntryResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserEntryResult.newBuilder() to construct.
     private UserEntryResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private UserEntryResult() {
+      userName_ = "";
       heroAvatar_ = "";
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserEntryResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserEntryResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1015,14 +800,20 @@ public final class GameMsgProtocol {
               break;
             }
             case 18: {
-              String s = input.readStringRequireUtf8();
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
 
               heroAvatar_ = s;
               break;
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1033,23 +824,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserEntryResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserEntryResult.class, GameMsgProtocol.UserEntryResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserEntryResult.class, org.zy.tinygame.GameMsgProtocol.UserEntryResult.Builder.class);
     }
 
     public static final int USERID_FIELD_NUMBER = 1;
@@ -1066,24 +857,68 @@ public final class GameMsgProtocol {
       return userId_;
     }
 
-    public static final int HEROAVATAR_FIELD_NUMBER = 2;
-    private volatile Object heroAvatar_;
+    public static final int USERNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object userName_;
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The userName.
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The bytes for userName.
+     */
+    public com.google.protobuf.ByteString
+    getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HEROAVATAR_FIELD_NUMBER = 3;
+    private volatile java.lang.Object heroAvatar_;
     /**
      * <pre>
      * 英雄形象
      * </pre>
      *
-     * <code>string heroAvatar = 2;</code>
+     * <code>string heroAvatar = 3;</code>
      * @return The heroAvatar.
      */
-    public String getHeroAvatar() {
-      Object ref = heroAvatar_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getHeroAvatar() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
         heroAvatar_ = s;
         return s;
       }
@@ -1093,16 +928,16 @@ public final class GameMsgProtocol {
      * 英雄形象
      * </pre>
      *
-     * <code>string heroAvatar = 2;</code>
+     * <code>string heroAvatar = 3;</code>
      * @return The bytes for heroAvatar.
      */
     public com.google.protobuf.ByteString
-        getHeroAvatarBytes() {
-      Object ref = heroAvatar_;
-      if (ref instanceof String) {
+    getHeroAvatarBytes() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
         heroAvatar_ = b;
         return b;
       } else {
@@ -1111,7 +946,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1121,19 +956,22 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (userId_ != 0) {
         output.writeUInt32(1, userId_);
       }
+      if (!getUserNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userName_);
+      }
       if (!getHeroAvatarBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, heroAvatar_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, heroAvatar_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1141,35 +979,40 @@ public final class GameMsgProtocol {
       size = 0;
       if (userId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, userId_);
+                .computeUInt32Size(1, userId_);
+      }
+      if (!getUserNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userName_);
       }
       if (!getHeroAvatarBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, heroAvatar_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, heroAvatar_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserEntryResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserEntryResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserEntryResult other = (GameMsgProtocol.UserEntryResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserEntryResult other = (org.zy.tinygame.GameMsgProtocol.UserEntryResult) obj;
 
       if (getUserId()
-          != other.getUserId()) return false;
+              != other.getUserId()) return false;
+      if (!getUserName()
+              .equals(other.getUserName())) return false;
       if (!getHeroAvatar()
-          .equals(other.getHeroAvatar())) return false;
+              .equals(other.getHeroAvatar())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1178,6 +1021,8 @@ public final class GameMsgProtocol {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + USERID_FIELD_NUMBER;
       hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
       hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
       hash = (53 * hash) + getHeroAvatar().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -1185,93 +1030,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserEntryResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserEntryResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1283,29 +1128,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserEntryResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserEntryResult)
-        GameMsgProtocol.UserEntryResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserEntryResult)
+            org.zy.tinygame.GameMsgProtocol.UserEntryResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserEntryResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserEntryResult.class, GameMsgProtocol.UserEntryResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserEntryResult.class, org.zy.tinygame.GameMsgProtocol.UserEntryResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserEntryResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserEntryResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1314,91 +1159,98 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         userId_ = 0;
+
+        userName_ = "";
 
         heroAvatar_ = "";
 
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserEntryResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserEntryResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserEntryResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryResult build() {
-        GameMsgProtocol.UserEntryResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserEntryResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserEntryResult buildPartial() {
-        GameMsgProtocol.UserEntryResult result = new GameMsgProtocol.UserEntryResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserEntryResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserEntryResult result = new org.zy.tinygame.GameMsgProtocol.UserEntryResult(this);
         result.userId_ = userId_;
+        result.userName_ = userName_;
         result.heroAvatar_ = heroAvatar_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserEntryResult) {
-          return mergeFrom((GameMsgProtocol.UserEntryResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserEntryResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserEntryResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserEntryResult other) {
-        if (other == GameMsgProtocol.UserEntryResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserEntryResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserEntryResult.getDefaultInstance()) return this;
         if (other.getUserId() != 0) {
           setUserId(other.getUserId());
+        }
+        if (!other.getUserName().isEmpty()) {
+          userName_ = other.userName_;
+          onChanged();
         }
         if (!other.getHeroAvatar().isEmpty()) {
           heroAvatar_ = other.heroAvatar_;
@@ -1409,21 +1261,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserEntryResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserEntryResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserEntryResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserEntryResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1475,25 +1327,121 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private Object heroAvatar_ = "";
+      private java.lang.Object userName_ = "";
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The userName.
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The bytes for userName.
+       */
+      public com.google.protobuf.ByteString
+      getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @param value The userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserName(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserName() {
+
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @param value The bytes for userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserNameBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object heroAvatar_ = "";
       /**
        * <pre>
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @return The heroAvatar.
        */
-      public String getHeroAvatar() {
-        Object ref = heroAvatar_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getHeroAvatar() {
+        java.lang.Object ref = heroAvatar_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           heroAvatar_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1501,16 +1449,16 @@ public final class GameMsgProtocol {
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @return The bytes for heroAvatar.
        */
       public com.google.protobuf.ByteString
-          getHeroAvatarBytes() {
-        Object ref = heroAvatar_;
+      getHeroAvatarBytes() {
+        java.lang.Object ref = heroAvatar_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           heroAvatar_ = b;
           return b;
         } else {
@@ -1522,15 +1470,15 @@ public final class GameMsgProtocol {
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @param value The heroAvatar to set.
        * @return This builder for chaining.
        */
       public Builder setHeroAvatar(
-          String value) {
+              java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
+          throw new NullPointerException();
+        }
 
         heroAvatar_ = value;
         onChanged();
@@ -1541,7 +1489,7 @@ public final class GameMsgProtocol {
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearHeroAvatar() {
@@ -1555,30 +1503,30 @@ public final class GameMsgProtocol {
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @param value The bytes for heroAvatar to set.
        * @return This builder for chaining.
        */
       public Builder setHeroAvatarBytes(
-          com.google.protobuf.ByteString value) {
+              com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
 
         heroAvatar_ = value;
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -1587,22 +1535,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserEntryResult)
-    private static final GameMsgProtocol.UserEntryResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserEntryResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserEntryResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserEntryResult();
     }
 
-    public static GameMsgProtocol.UserEntryResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserEntryResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserEntryResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserEntryResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserEntryResult>() {
+      @java.lang.Override
       public UserEntryResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserEntryResult(input, extensionRegistry);
       }
     };
@@ -1611,21 +1559,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserEntryResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface WhoElseIsHereCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereCmd)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereCmd)
+          com.google.protobuf.MessageOrBuilder {
   }
   /**
    * <pre>
@@ -1637,10 +1585,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.WhoElseIsHereCmd}
    */
   public  static final class WhoElseIsHereCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereCmd)
-      WhoElseIsHereCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereCmd)
+          WhoElseIsHereCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use WhoElseIsHereCmd.newBuilder() to construct.
     private WhoElseIsHereCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1648,28 +1596,28 @@ public final class GameMsgProtocol {
     private WhoElseIsHereCmd() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new WhoElseIsHereCmd();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private WhoElseIsHereCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1680,7 +1628,7 @@ public final class GameMsgProtocol {
               break;
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1691,27 +1639,27 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.WhoElseIsHereCmd.class, GameMsgProtocol.WhoElseIsHereCmd.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1721,13 +1669,13 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1738,21 +1686,21 @@ public final class GameMsgProtocol {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.WhoElseIsHereCmd)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.WhoElseIsHereCmd other = (GameMsgProtocol.WhoElseIsHereCmd) obj;
+      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd other = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1764,93 +1712,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.WhoElseIsHereCmd prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1864,29 +1812,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.WhoElseIsHereCmd}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereCmd)
-        GameMsgProtocol.WhoElseIsHereCmdOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereCmd)
+            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.WhoElseIsHereCmd.class, GameMsgProtocol.WhoElseIsHereCmd.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.WhoElseIsHereCmd.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1895,103 +1843,103 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereCmd_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.WhoElseIsHereCmd.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereCmd build() {
-        GameMsgProtocol.WhoElseIsHereCmd result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd build() {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereCmd buildPartial() {
-        GameMsgProtocol.WhoElseIsHereCmd result = new GameMsgProtocol.WhoElseIsHereCmd(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd result = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd(this);
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.WhoElseIsHereCmd) {
-          return mergeFrom((GameMsgProtocol.WhoElseIsHereCmd)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.WhoElseIsHereCmd other) {
-        if (other == GameMsgProtocol.WhoElseIsHereCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.WhoElseIsHereCmd parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.WhoElseIsHereCmd) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2000,15 +1948,15 @@ public final class GameMsgProtocol {
         }
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -2017,22 +1965,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.WhoElseIsHereCmd)
-    private static final GameMsgProtocol.WhoElseIsHereCmd DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.WhoElseIsHereCmd();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd();
     }
 
-    public static GameMsgProtocol.WhoElseIsHereCmd getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<WhoElseIsHereCmd>
-        PARSER = new com.google.protobuf.AbstractParser<WhoElseIsHereCmd>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<WhoElseIsHereCmd>() {
+      @java.lang.Override
       public WhoElseIsHereCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new WhoElseIsHereCmd(input, extensionRegistry);
       }
     };
@@ -2041,21 +1989,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<WhoElseIsHereCmd> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.WhoElseIsHereCmd getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface WhoElseIsHereResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -2064,8 +2012,8 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo>
-        getUserInfoList();
+    java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo>
+    getUserInfoList();
     /**
      * <pre>
      * 用户信息数组
@@ -2073,7 +2021,7 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index);
+    org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index);
     /**
      * <pre>
      * 用户信息数组
@@ -2089,8 +2037,8 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    java.util.List<? extends GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
-        getUserInfoOrBuilderList();
+    java.util.List<? extends org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
+    getUserInfoOrBuilderList();
     /**
      * <pre>
      * 用户信息数组
@@ -2098,7 +2046,7 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
+    org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
             int index);
   }
   /**
@@ -2109,10 +2057,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.WhoElseIsHereResult}
    */
   public  static final class WhoElseIsHereResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereResult)
-      WhoElseIsHereResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereResult)
+          WhoElseIsHereResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use WhoElseIsHereResult.newBuilder() to construct.
     private WhoElseIsHereResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -2121,29 +2069,29 @@ public final class GameMsgProtocol {
       userInfo_ = java.util.Collections.emptyList();
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new WhoElseIsHereResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private WhoElseIsHereResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2154,16 +2102,16 @@ public final class GameMsgProtocol {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                userInfo_ = new java.util.ArrayList<GameMsgProtocol.WhoElseIsHereResult.UserInfo>();
+                userInfo_ = new java.util.ArrayList<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
               userInfo_.add(
-                  input.readMessage(GameMsgProtocol.WhoElseIsHereResult.UserInfo.parser(), extensionRegistry));
+                      input.readMessage(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.parser(), extensionRegistry));
               break;
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -2174,7 +2122,7 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           userInfo_ = java.util.Collections.unmodifiableList(userInfo_);
@@ -2184,21 +2132,21 @@ public final class GameMsgProtocol {
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.WhoElseIsHereResult.class, GameMsgProtocol.WhoElseIsHereResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.Builder.class);
     }
 
     public interface UserInfoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereResult.UserInfo)
-        com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereResult.UserInfo)
+            com.google.protobuf.MessageOrBuilder {
 
       /**
        * <pre>
@@ -2212,23 +2160,70 @@ public final class GameMsgProtocol {
 
       /**
        * <pre>
-       * 英雄形象
+       * 用户名称
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
-       * @return The heroAvatar.
+       * <code>string userName = 2;</code>
+       * @return The userName.
        */
-      String getHeroAvatar();
+      java.lang.String getUserName();
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The bytes for userName.
+       */
+      com.google.protobuf.ByteString
+      getUserNameBytes();
+
       /**
        * <pre>
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
+       * @return The heroAvatar.
+       */
+      java.lang.String getHeroAvatar();
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
        * @return The bytes for heroAvatar.
        */
       com.google.protobuf.ByteString
-          getHeroAvatarBytes();
+      getHeroAvatarBytes();
+
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       * @return Whether the moveState field is set.
+       */
+      boolean hasMoveState();
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       * @return The moveState.
+       */
+      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getMoveState();
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       */
+      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder getMoveStateOrBuilder();
     }
     /**
      * <pre>
@@ -2238,40 +2233,41 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.WhoElseIsHereResult.UserInfo}
      */
     public  static final class UserInfo extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereResult.UserInfo)
-        UserInfoOrBuilder {
-    private static final long serialVersionUID = 0L;
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereResult.UserInfo)
+            UserInfoOrBuilder {
+      private static final long serialVersionUID = 0L;
       // Use UserInfo.newBuilder() to construct.
       private UserInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
       private UserInfo() {
+        userName_ = "";
         heroAvatar_ = "";
       }
 
-      @Override
+      @java.lang.Override
       @SuppressWarnings({"unused"})
-      protected Object newInstance(
-          UnusedPrivateParameter unused) {
+      protected java.lang.Object newInstance(
+              UnusedPrivateParameter unused) {
         return new UserInfo();
       }
 
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
       }
       private UserInfo(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         this();
         if (extensionRegistry == null) {
-          throw new NullPointerException();
+          throw new java.lang.NullPointerException();
         }
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
+                com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
           boolean done = false;
           while (!done) {
@@ -2286,14 +2282,33 @@ public final class GameMsgProtocol {
                 break;
               }
               case 18: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
+
+                userName_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
 
                 heroAvatar_ = s;
                 break;
               }
+              case 34: {
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder subBuilder = null;
+                if (moveState_ != null) {
+                  subBuilder = moveState_.toBuilder();
+                }
+                moveState_ = input.readMessage(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(moveState_);
+                  moveState_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
               default: {
                 if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
+                        input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
                 break;
@@ -2304,23 +2319,898 @@ public final class GameMsgProtocol {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
+                  e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder.class);
+      }
+
+      public interface MoveStateOrBuilder extends
+              // @@protoc_insertion_point(interface_extends:msg.WhoElseIsHereResult.UserInfo.MoveState)
+              com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         * 起始位置 X
+         * </pre>
+         *
+         * <code>float fromPosX = 1;</code>
+         * @return The fromPosX.
+         */
+        float getFromPosX();
+
+        /**
+         * <pre>
+         * 起始位置 Y
+         * </pre>
+         *
+         * <code>float fromPosY = 2;</code>
+         * @return The fromPosY.
+         */
+        float getFromPosY();
+
+        /**
+         * <pre>
+         * 移动到位置 X
+         * </pre>
+         *
+         * <code>float toPosX = 3;</code>
+         * @return The toPosX.
+         */
+        float getToPosX();
+
+        /**
+         * <pre>
+         * 移动到位置 Y
+         * </pre>
+         *
+         * <code>float toPosY = 4;</code>
+         * @return The toPosY.
+         */
+        float getToPosY();
+
+        /**
+         * <pre>
+         * 启程时间戳
+         * </pre>
+         *
+         * <code>uint64 startTime = 5;</code>
+         * @return The startTime.
+         */
+        long getStartTime();
+      }
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * Protobuf type {@code msg.WhoElseIsHereResult.UserInfo.MoveState}
+       */
+      public  static final class MoveState extends
+              com.google.protobuf.GeneratedMessageV3 implements
+              // @@protoc_insertion_point(message_implements:msg.WhoElseIsHereResult.UserInfo.MoveState)
+              MoveStateOrBuilder {
+        private static final long serialVersionUID = 0L;
+        // Use MoveState.newBuilder() to construct.
+        private MoveState(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+          super(builder);
+        }
+        private MoveState() {
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+          return new MoveState();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+          return this.unknownFields;
+        }
+        private MoveState(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          this();
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                  com.google.protobuf.UnknownFieldSet.newBuilder();
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 13: {
+
+                  fromPosX_ = input.readFloat();
+                  break;
+                }
+                case 21: {
+
+                  fromPosY_ = input.readFloat();
+                  break;
+                }
+                case 29: {
+
+                  toPosX_ = input.readFloat();
+                  break;
+                }
+                case 37: {
+
+                  toPosY_ = input.readFloat();
+                  break;
+                }
+                case 40: {
+
+                  startTime_ = input.readUInt64();
+                  break;
+                }
+                default: {
+                  if (!parseUnknownField(
+                          input, unknownFields, extensionRegistry, tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(this);
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                    e).setUnfinishedMessage(this);
+          } finally {
+            this.unknownFields = unknownFields.build();
+            makeExtensionsImmutable();
+          }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+          return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+          return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder.class);
+        }
+
+        public static final int FROMPOSX_FIELD_NUMBER = 1;
+        private float fromPosX_;
+        /**
+         * <pre>
+         * 起始位置 X
+         * </pre>
+         *
+         * <code>float fromPosX = 1;</code>
+         * @return The fromPosX.
+         */
+        public float getFromPosX() {
+          return fromPosX_;
+        }
+
+        public static final int FROMPOSY_FIELD_NUMBER = 2;
+        private float fromPosY_;
+        /**
+         * <pre>
+         * 起始位置 Y
+         * </pre>
+         *
+         * <code>float fromPosY = 2;</code>
+         * @return The fromPosY.
+         */
+        public float getFromPosY() {
+          return fromPosY_;
+        }
+
+        public static final int TOPOSX_FIELD_NUMBER = 3;
+        private float toPosX_;
+        /**
+         * <pre>
+         * 移动到位置 X
+         * </pre>
+         *
+         * <code>float toPosX = 3;</code>
+         * @return The toPosX.
+         */
+        public float getToPosX() {
+          return toPosX_;
+        }
+
+        public static final int TOPOSY_FIELD_NUMBER = 4;
+        private float toPosY_;
+        /**
+         * <pre>
+         * 移动到位置 Y
+         * </pre>
+         *
+         * <code>float toPosY = 4;</code>
+         * @return The toPosY.
+         */
+        public float getToPosY() {
+          return toPosY_;
+        }
+
+        public static final int STARTTIME_FIELD_NUMBER = 5;
+        private long startTime_;
+        /**
+         * <pre>
+         * 启程时间戳
+         * </pre>
+         *
+         * <code>uint64 startTime = 5;</code>
+         * @return The startTime.
+         */
+        public long getStartTime() {
+          return startTime_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+          if (fromPosX_ != 0F) {
+            output.writeFloat(1, fromPosX_);
+          }
+          if (fromPosY_ != 0F) {
+            output.writeFloat(2, fromPosY_);
+          }
+          if (toPosX_ != 0F) {
+            output.writeFloat(3, toPosX_);
+          }
+          if (toPosY_ != 0F) {
+            output.writeFloat(4, toPosY_);
+          }
+          if (startTime_ != 0L) {
+            output.writeUInt64(5, startTime_);
+          }
+          unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (fromPosX_ != 0F) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(1, fromPosX_);
+          }
+          if (fromPosY_ != 0F) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(2, fromPosY_);
+          }
+          if (toPosX_ != 0F) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(3, toPosX_);
+          }
+          if (toPosY_ != 0F) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(4, toPosY_);
+          }
+          if (startTime_ != 0L) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeUInt64Size(5, startTime_);
+          }
+          size += unknownFields.getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+            return true;
+          }
+          if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState)) {
+            return super.equals(obj);
+          }
+          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState other = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState) obj;
+
+          if (java.lang.Float.floatToIntBits(getFromPosX())
+                  != java.lang.Float.floatToIntBits(
+                  other.getFromPosX())) return false;
+          if (java.lang.Float.floatToIntBits(getFromPosY())
+                  != java.lang.Float.floatToIntBits(
+                  other.getFromPosY())) return false;
+          if (java.lang.Float.floatToIntBits(getToPosX())
+                  != java.lang.Float.floatToIntBits(
+                  other.getToPosX())) return false;
+          if (java.lang.Float.floatToIntBits(getToPosY())
+                  != java.lang.Float.floatToIntBits(
+                  other.getToPosY())) return false;
+          if (getStartTime()
+                  != other.getStartTime()) return false;
+          if (!unknownFields.equals(other.unknownFields)) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          hash = (37 * hash) + FROMPOSX_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                  getFromPosX());
+          hash = (37 * hash) + FROMPOSY_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                  getFromPosY());
+          hash = (37 * hash) + TOPOSX_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                  getToPosX());
+          hash = (37 * hash) + TOPOSY_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                  getToPosY());
+          hash = (37 * hash) + STARTTIME_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                  getStartTime());
+          hash = (29 * hash) + unknownFields.hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input);
+        }
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+                  ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * Protobuf type {@code msg.WhoElseIsHereResult.UserInfo.MoveState}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereResult.UserInfo.MoveState)
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+            return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.WhoElseIsHereResult.UserInfo.class, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder.class);
+            return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder.class);
+          }
+
+          // Construct using org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.newBuilder()
+          private Builder() {
+            maybeForceBuilderInitialization();
+          }
+
+          private Builder(
+                  com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            super(parent);
+            maybeForceBuilderInitialization();
+          }
+          private void maybeForceBuilderInitialization() {
+            if (com.google.protobuf.GeneratedMessageV3
+                    .alwaysUseFieldBuilders) {
+            }
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            fromPosX_ = 0F;
+
+            fromPosY_ = 0F;
+
+            toPosX_ = 0F;
+
+            toPosY_ = 0F;
+
+            startTime_ = 0L;
+
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+            return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor;
+          }
+
+          @java.lang.Override
+          public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getDefaultInstanceForType() {
+            return org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState build() {
+            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState buildPartial() {
+            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState result = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState(this);
+            result.fromPosX_ = fromPosX_;
+            result.fromPosY_ = fromPosY_;
+            result.toPosX_ = toPosX_;
+            result.toPosY_ = toPosY_;
+            result.startTime_ = startTime_;
+            onBuilt();
+            return result;
+          }
+
+          @java.lang.Override
+          public Builder clone() {
+            return super.clone();
+          }
+          @java.lang.Override
+          public Builder setField(
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  java.lang.Object value) {
+            return super.setField(field, value);
+          }
+          @java.lang.Override
+          public Builder clearField(
+                  com.google.protobuf.Descriptors.FieldDescriptor field) {
+            return super.clearField(field);
+          }
+          @java.lang.Override
+          public Builder clearOneof(
+                  com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+            return super.clearOneof(oneof);
+          }
+          @java.lang.Override
+          public Builder setRepeatedField(
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  int index, java.lang.Object value) {
+            return super.setRepeatedField(field, index, value);
+          }
+          @java.lang.Override
+          public Builder addRepeatedField(
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  java.lang.Object value) {
+            return super.addRepeatedField(field, value);
+          }
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState) {
+              return mergeFrom((org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState other) {
+            if (other == org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.getDefaultInstance()) return this;
+            if (other.getFromPosX() != 0F) {
+              setFromPosX(other.getFromPosX());
+            }
+            if (other.getFromPosY() != 0F) {
+              setFromPosY(other.getFromPosY());
+            }
+            if (other.getToPosX() != 0F) {
+              setToPosX(other.getToPosX());
+            }
+            if (other.getToPosY() != 0F) {
+              setToPosY(other.getToPosY());
+            }
+            if (other.getStartTime() != 0L) {
+              setStartTime(other.getStartTime());
+            }
+            this.mergeUnknownFields(other.unknownFields);
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+                  com.google.protobuf.CodedInputStream input,
+                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                  throws java.io.IOException {
+            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState parsedMessage = null;
+            try {
+              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              parsedMessage = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState) e.getUnfinishedMessage();
+              throw e.unwrapIOException();
+            } finally {
+              if (parsedMessage != null) {
+                mergeFrom(parsedMessage);
+              }
+            }
+            return this;
+          }
+
+          private float fromPosX_ ;
+          /**
+           * <pre>
+           * 起始位置 X
+           * </pre>
+           *
+           * <code>float fromPosX = 1;</code>
+           * @return The fromPosX.
+           */
+          public float getFromPosX() {
+            return fromPosX_;
+          }
+          /**
+           * <pre>
+           * 起始位置 X
+           * </pre>
+           *
+           * <code>float fromPosX = 1;</code>
+           * @param value The fromPosX to set.
+           * @return This builder for chaining.
+           */
+          public Builder setFromPosX(float value) {
+
+            fromPosX_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <pre>
+           * 起始位置 X
+           * </pre>
+           *
+           * <code>float fromPosX = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearFromPosX() {
+
+            fromPosX_ = 0F;
+            onChanged();
+            return this;
+          }
+
+          private float fromPosY_ ;
+          /**
+           * <pre>
+           * 起始位置 Y
+           * </pre>
+           *
+           * <code>float fromPosY = 2;</code>
+           * @return The fromPosY.
+           */
+          public float getFromPosY() {
+            return fromPosY_;
+          }
+          /**
+           * <pre>
+           * 起始位置 Y
+           * </pre>
+           *
+           * <code>float fromPosY = 2;</code>
+           * @param value The fromPosY to set.
+           * @return This builder for chaining.
+           */
+          public Builder setFromPosY(float value) {
+
+            fromPosY_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <pre>
+           * 起始位置 Y
+           * </pre>
+           *
+           * <code>float fromPosY = 2;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearFromPosY() {
+
+            fromPosY_ = 0F;
+            onChanged();
+            return this;
+          }
+
+          private float toPosX_ ;
+          /**
+           * <pre>
+           * 移动到位置 X
+           * </pre>
+           *
+           * <code>float toPosX = 3;</code>
+           * @return The toPosX.
+           */
+          public float getToPosX() {
+            return toPosX_;
+          }
+          /**
+           * <pre>
+           * 移动到位置 X
+           * </pre>
+           *
+           * <code>float toPosX = 3;</code>
+           * @param value The toPosX to set.
+           * @return This builder for chaining.
+           */
+          public Builder setToPosX(float value) {
+
+            toPosX_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <pre>
+           * 移动到位置 X
+           * </pre>
+           *
+           * <code>float toPosX = 3;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearToPosX() {
+
+            toPosX_ = 0F;
+            onChanged();
+            return this;
+          }
+
+          private float toPosY_ ;
+          /**
+           * <pre>
+           * 移动到位置 Y
+           * </pre>
+           *
+           * <code>float toPosY = 4;</code>
+           * @return The toPosY.
+           */
+          public float getToPosY() {
+            return toPosY_;
+          }
+          /**
+           * <pre>
+           * 移动到位置 Y
+           * </pre>
+           *
+           * <code>float toPosY = 4;</code>
+           * @param value The toPosY to set.
+           * @return This builder for chaining.
+           */
+          public Builder setToPosY(float value) {
+
+            toPosY_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <pre>
+           * 移动到位置 Y
+           * </pre>
+           *
+           * <code>float toPosY = 4;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearToPosY() {
+
+            toPosY_ = 0F;
+            onChanged();
+            return this;
+          }
+
+          private long startTime_ ;
+          /**
+           * <pre>
+           * 启程时间戳
+           * </pre>
+           *
+           * <code>uint64 startTime = 5;</code>
+           * @return The startTime.
+           */
+          public long getStartTime() {
+            return startTime_;
+          }
+          /**
+           * <pre>
+           * 启程时间戳
+           * </pre>
+           *
+           * <code>uint64 startTime = 5;</code>
+           * @param value The startTime to set.
+           * @return This builder for chaining.
+           */
+          public Builder setStartTime(long value) {
+
+            startTime_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <pre>
+           * 启程时间戳
+           * </pre>
+           *
+           * <code>uint64 startTime = 5;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearStartTime() {
+
+            startTime_ = 0L;
+            onChanged();
+            return this;
+          }
+          @java.lang.Override
+          public final Builder setUnknownFields(
+                  final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFields(unknownFields);
+          }
+
+          @java.lang.Override
+          public final Builder mergeUnknownFields(
+                  final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.mergeUnknownFields(unknownFields);
+          }
+
+
+          // @@protoc_insertion_point(builder_scope:msg.WhoElseIsHereResult.UserInfo.MoveState)
+        }
+
+        // @@protoc_insertion_point(class_scope:msg.WhoElseIsHereResult.UserInfo.MoveState)
+        private static final org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState();
+        }
+
+        public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<MoveState>
+                PARSER = new com.google.protobuf.AbstractParser<MoveState>() {
+          @java.lang.Override
+          public MoveState parsePartialFrom(
+                  com.google.protobuf.CodedInputStream input,
+                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                  throws com.google.protobuf.InvalidProtocolBufferException {
+            return new MoveState(input, extensionRegistry);
+          }
+        };
+
+        public static com.google.protobuf.Parser<MoveState> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<MoveState> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
       }
 
       public static final int USERID_FIELD_NUMBER = 1;
@@ -2337,24 +3227,68 @@ public final class GameMsgProtocol {
         return userId_;
       }
 
-      public static final int HEROAVATAR_FIELD_NUMBER = 2;
-      private volatile Object heroAvatar_;
+      public static final int USERNAME_FIELD_NUMBER = 2;
+      private volatile java.lang.Object userName_;
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The userName.
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The bytes for userName.
+       */
+      public com.google.protobuf.ByteString
+      getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int HEROAVATAR_FIELD_NUMBER = 3;
+      private volatile java.lang.Object heroAvatar_;
       /**
        * <pre>
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @return The heroAvatar.
        */
-      public String getHeroAvatar() {
-        Object ref = heroAvatar_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getHeroAvatar() {
+        java.lang.Object ref = heroAvatar_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
           com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           heroAvatar_ = s;
           return s;
         }
@@ -2364,16 +3298,16 @@ public final class GameMsgProtocol {
        * 英雄形象
        * </pre>
        *
-       * <code>string heroAvatar = 2;</code>
+       * <code>string heroAvatar = 3;</code>
        * @return The bytes for heroAvatar.
        */
       public com.google.protobuf.ByteString
-          getHeroAvatarBytes() {
-        Object ref = heroAvatar_;
-        if (ref instanceof String) {
+      getHeroAvatarBytes() {
+        java.lang.Object ref = heroAvatar_;
+        if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           heroAvatar_ = b;
           return b;
         } else {
@@ -2381,8 +3315,43 @@ public final class GameMsgProtocol {
         }
       }
 
+      public static final int MOVESTATE_FIELD_NUMBER = 4;
+      private org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState moveState_;
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       * @return Whether the moveState field is set.
+       */
+      public boolean hasMoveState() {
+        return moveState_ != null;
+      }
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       * @return The moveState.
+       */
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getMoveState() {
+        return moveState_ == null ? org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.getDefaultInstance() : moveState_;
+      }
+      /**
+       * <pre>
+       * 移动状态
+       * </pre>
+       *
+       * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+       */
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder getMoveStateOrBuilder() {
+        return getMoveState();
+      }
+
       private byte memoizedIsInitialized = -1;
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -2392,19 +3361,25 @@ public final class GameMsgProtocol {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
+              throws java.io.IOException {
         if (userId_ != 0) {
           output.writeUInt32(1, userId_);
         }
+        if (!getUserNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userName_);
+        }
         if (!getHeroAvatarBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, heroAvatar_);
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, heroAvatar_);
+        }
+        if (moveState_ != null) {
+          output.writeMessage(4, getMoveState());
         }
         unknownFields.writeTo(output);
       }
 
-      @Override
+      @java.lang.Override
       public int getSerializedSize() {
         int size = memoizedSize;
         if (size != -1) return size;
@@ -2412,35 +3387,49 @@ public final class GameMsgProtocol {
         size = 0;
         if (userId_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, userId_);
+                  .computeUInt32Size(1, userId_);
+        }
+        if (!getUserNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userName_);
         }
         if (!getHeroAvatarBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, heroAvatar_);
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, heroAvatar_);
+        }
+        if (moveState_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+                  .computeMessageSize(4, getMoveState());
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
       }
 
-      @Override
-      public boolean equals(final Object obj) {
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-         return true;
+          return true;
         }
-        if (!(obj instanceof GameMsgProtocol.WhoElseIsHereResult.UserInfo)) {
+        if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo)) {
           return super.equals(obj);
         }
-        GameMsgProtocol.WhoElseIsHereResult.UserInfo other = (GameMsgProtocol.WhoElseIsHereResult.UserInfo) obj;
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo other = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo) obj;
 
         if (getUserId()
-            != other.getUserId()) return false;
+                != other.getUserId()) return false;
+        if (!getUserName()
+                .equals(other.getUserName())) return false;
         if (!getHeroAvatar()
-            .equals(other.getHeroAvatar())) return false;
+                .equals(other.getHeroAvatar())) return false;
+        if (hasMoveState() != other.hasMoveState()) return false;
+        if (hasMoveState()) {
+          if (!getMoveState()
+                  .equals(other.getMoveState())) return false;
+        }
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public int hashCode() {
         if (memoizedHashCode != 0) {
           return memoizedHashCode;
@@ -2449,100 +3438,106 @@ public final class GameMsgProtocol {
         hash = (19 * hash) + getDescriptor().hashCode();
         hash = (37 * hash) + USERID_FIELD_NUMBER;
         hash = (53 * hash) + getUserId();
+        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUserName().hashCode();
         hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
         hash = (53 * hash) + getHeroAvatar().hashCode();
+        if (hasMoveState()) {
+          hash = (37 * hash) + MOVESTATE_FIELD_NUMBER;
+          hash = (53 * hash) + getMoveState().hashCode();
+        }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
       }
 
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              java.nio.ByteBuffer data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              java.nio.ByteBuffer data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              com.google.protobuf.ByteString data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              com.google.protobuf.ByteString data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(byte[] data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              byte[] data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+                .parseWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseDelimitedFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+                .parseDelimitedWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseDelimitedFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              com.google.protobuf.CodedInputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+                .parseWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parseFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      @Override
+      @java.lang.Override
       public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(GameMsgProtocol.WhoElseIsHereResult.UserInfo prototype) {
+      public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-      @Override
+      @java.lang.Override
       public Builder toBuilder() {
         return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
+                ? new Builder() : new Builder().mergeFrom(this);
       }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -2554,29 +3549,29 @@ public final class GameMsgProtocol {
        * Protobuf type {@code msg.WhoElseIsHereResult.UserInfo}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereResult.UserInfo)
-          GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder {
+              com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+              // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereResult.UserInfo)
+              org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
+        getDescriptor() {
+          return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
         }
 
-        @Override
+        @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  GameMsgProtocol.WhoElseIsHereResult.UserInfo.class, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder.class);
+        internalGetFieldAccessorTable() {
+          return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder.class);
         }
 
-        // Construct using GameMsgProtocol.WhoElseIsHereResult.UserInfo.newBuilder()
+        // Construct using org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -2585,116 +3580,137 @@ public final class GameMsgProtocol {
                   .alwaysUseFieldBuilders) {
           }
         }
-        @Override
+        @java.lang.Override
         public Builder clear() {
           super.clear();
           userId_ = 0;
 
+          userName_ = "";
+
           heroAvatar_ = "";
 
+          if (moveStateBuilder_ == null) {
+            moveState_ = null;
+          } else {
+            moveState_ = null;
+            moveStateBuilder_ = null;
+          }
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
+        getDescriptorForType() {
+          return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
         }
 
-        @Override
-        public GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstanceForType() {
-          return GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance();
+        @java.lang.Override
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstanceForType() {
+          return org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance();
         }
 
-        @Override
-        public GameMsgProtocol.WhoElseIsHereResult.UserInfo build() {
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo result = buildPartial();
+        @java.lang.Override
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo build() {
+          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        @Override
-        public GameMsgProtocol.WhoElseIsHereResult.UserInfo buildPartial() {
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo result = new GameMsgProtocol.WhoElseIsHereResult.UserInfo(this);
+        @java.lang.Override
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo buildPartial() {
+          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo result = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo(this);
           result.userId_ = userId_;
+          result.userName_ = userName_;
           result.heroAvatar_ = heroAvatar_;
+          if (moveStateBuilder_ == null) {
+            result.moveState_ = moveState_;
+          } else {
+            result.moveState_ = moveStateBuilder_.build();
+          }
           onBuilt();
           return result;
         }
 
-        @Override
+        @java.lang.Override
         public Builder clone() {
           return super.clone();
         }
-        @Override
+        @java.lang.Override
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return super.setField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
+                com.google.protobuf.Descriptors.FieldDescriptor field) {
           return super.clearField(field);
         }
-        @Override
+        @java.lang.Override
         public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return super.clearOneof(oneof);
         }
-        @Override
+        @java.lang.Override
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                int index, java.lang.Object value) {
           return super.setRepeatedField(field, index, value);
         }
-        @Override
+        @java.lang.Override
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return super.addRepeatedField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof GameMsgProtocol.WhoElseIsHereResult.UserInfo) {
-            return mergeFrom((GameMsgProtocol.WhoElseIsHereResult.UserInfo)other);
+          if (other instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo) {
+            return mergeFrom((org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(GameMsgProtocol.WhoElseIsHereResult.UserInfo other) {
-          if (other == GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo other) {
+          if (other == org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance()) return this;
           if (other.getUserId() != 0) {
             setUserId(other.getUserId());
+          }
+          if (!other.getUserName().isEmpty()) {
+            userName_ = other.userName_;
+            onChanged();
           }
           if (!other.getHeroAvatar().isEmpty()) {
             heroAvatar_ = other.heroAvatar_;
             onChanged();
+          }
+          if (other.hasMoveState()) {
+            mergeMoveState(other.getMoveState());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public final boolean isInitialized() {
           return true;
         }
 
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo parsedMessage = null;
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (GameMsgProtocol.WhoElseIsHereResult.UserInfo) e.getUnfinishedMessage();
+            parsedMessage = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -2746,25 +3762,121 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private Object heroAvatar_ = "";
+        private java.lang.Object userName_ = "";
+        /**
+         * <pre>
+         * 用户名称
+         * </pre>
+         *
+         * <code>string userName = 2;</code>
+         * @return The userName.
+         */
+        public java.lang.String getUserName() {
+          java.lang.Object ref = userName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            userName_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * 用户名称
+         * </pre>
+         *
+         * <code>string userName = 2;</code>
+         * @return The bytes for userName.
+         */
+        public com.google.protobuf.ByteString
+        getUserNameBytes() {
+          java.lang.Object ref = userName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
+            userName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * 用户名称
+         * </pre>
+         *
+         * <code>string userName = 2;</code>
+         * @param value The userName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUserName(
+                java.lang.String value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+
+          userName_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 用户名称
+         * </pre>
+         *
+         * <code>string userName = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUserName() {
+
+          userName_ = getDefaultInstance().getUserName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 用户名称
+         * </pre>
+         *
+         * <code>string userName = 2;</code>
+         * @param value The bytes for userName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUserNameBytes(
+                com.google.protobuf.ByteString value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
+          userName_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object heroAvatar_ = "";
         /**
          * <pre>
          * 英雄形象
          * </pre>
          *
-         * <code>string heroAvatar = 2;</code>
+         * <code>string heroAvatar = 3;</code>
          * @return The heroAvatar.
          */
-        public String getHeroAvatar() {
-          Object ref = heroAvatar_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getHeroAvatar() {
+          java.lang.Object ref = heroAvatar_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             heroAvatar_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
@@ -2772,16 +3884,16 @@ public final class GameMsgProtocol {
          * 英雄形象
          * </pre>
          *
-         * <code>string heroAvatar = 2;</code>
+         * <code>string heroAvatar = 3;</code>
          * @return The bytes for heroAvatar.
          */
         public com.google.protobuf.ByteString
-            getHeroAvatarBytes() {
-          Object ref = heroAvatar_;
+        getHeroAvatarBytes() {
+          java.lang.Object ref = heroAvatar_;
           if (ref instanceof String) {
             com.google.protobuf.ByteString b =
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             heroAvatar_ = b;
             return b;
           } else {
@@ -2793,15 +3905,15 @@ public final class GameMsgProtocol {
          * 英雄形象
          * </pre>
          *
-         * <code>string heroAvatar = 2;</code>
+         * <code>string heroAvatar = 3;</code>
          * @param value The heroAvatar to set.
          * @return This builder for chaining.
          */
         public Builder setHeroAvatar(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
+            throw new NullPointerException();
+          }
 
           heroAvatar_ = value;
           onChanged();
@@ -2812,7 +3924,7 @@ public final class GameMsgProtocol {
          * 英雄形象
          * </pre>
          *
-         * <code>string heroAvatar = 2;</code>
+         * <code>string heroAvatar = 3;</code>
          * @return This builder for chaining.
          */
         public Builder clearHeroAvatar() {
@@ -2826,30 +3938,185 @@ public final class GameMsgProtocol {
          * 英雄形象
          * </pre>
          *
-         * <code>string heroAvatar = 2;</code>
+         * <code>string heroAvatar = 3;</code>
          * @param value The bytes for heroAvatar to set.
          * @return This builder for chaining.
          */
         public Builder setHeroAvatarBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
 
           heroAvatar_ = value;
           onChanged();
           return this;
         }
-        @Override
+
+        private org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState moveState_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder> moveStateBuilder_;
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         * @return Whether the moveState field is set.
+         */
+        public boolean hasMoveState() {
+          return moveStateBuilder_ != null || moveState_ != null;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         * @return The moveState.
+         */
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState getMoveState() {
+          if (moveStateBuilder_ == null) {
+            return moveState_ == null ? org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.getDefaultInstance() : moveState_;
+          } else {
+            return moveStateBuilder_.getMessage();
+          }
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public Builder setMoveState(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState value) {
+          if (moveStateBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            moveState_ = value;
+            onChanged();
+          } else {
+            moveStateBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public Builder setMoveState(
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder builderForValue) {
+          if (moveStateBuilder_ == null) {
+            moveState_ = builderForValue.build();
+            onChanged();
+          } else {
+            moveStateBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public Builder mergeMoveState(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState value) {
+          if (moveStateBuilder_ == null) {
+            if (moveState_ != null) {
+              moveState_ =
+                      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.newBuilder(moveState_).mergeFrom(value).buildPartial();
+            } else {
+              moveState_ = value;
+            }
+            onChanged();
+          } else {
+            moveStateBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public Builder clearMoveState() {
+          if (moveStateBuilder_ == null) {
+            moveState_ = null;
+            onChanged();
+          } else {
+            moveState_ = null;
+            moveStateBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder getMoveStateBuilder() {
+
+          onChanged();
+          return getMoveStateFieldBuilder().getBuilder();
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder getMoveStateOrBuilder() {
+          if (moveStateBuilder_ != null) {
+            return moveStateBuilder_.getMessageOrBuilder();
+          } else {
+            return moveState_ == null ?
+                    org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.getDefaultInstance() : moveState_;
+          }
+        }
+        /**
+         * <pre>
+         * 移动状态
+         * </pre>
+         *
+         * <code>.msg.WhoElseIsHereResult.UserInfo.MoveState moveState = 4;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder>
+        getMoveStateFieldBuilder() {
+          if (moveStateBuilder_ == null) {
+            moveStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                    org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveState.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.MoveStateOrBuilder>(
+                    getMoveState(),
+                    getParentForChildren(),
+                    isClean());
+            moveState_ = null;
+          }
+          return moveStateBuilder_;
+        }
+        @java.lang.Override
         public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.setUnknownFields(unknownFields);
         }
 
-        @Override
+        @java.lang.Override
         public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.mergeUnknownFields(unknownFields);
         }
 
@@ -2858,22 +4125,22 @@ public final class GameMsgProtocol {
       }
 
       // @@protoc_insertion_point(class_scope:msg.WhoElseIsHereResult.UserInfo)
-      private static final GameMsgProtocol.WhoElseIsHereResult.UserInfo DEFAULT_INSTANCE;
+      private static final org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new GameMsgProtocol.WhoElseIsHereResult.UserInfo();
+        DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo();
       }
 
-      public static GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstance() {
+      public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
       private static final com.google.protobuf.Parser<UserInfo>
-          PARSER = new com.google.protobuf.AbstractParser<UserInfo>() {
-        @Override
+              PARSER = new com.google.protobuf.AbstractParser<UserInfo>() {
+        @java.lang.Override
         public UserInfo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return new UserInfo(input, extensionRegistry);
         }
       };
@@ -2882,20 +4149,20 @@ public final class GameMsgProtocol {
         return PARSER;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<UserInfo> getParserForType() {
         return PARSER;
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstanceForType() {
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public static final int USERINFO_FIELD_NUMBER = 1;
-    private java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo> userInfo_;
+    private java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo> userInfo_;
     /**
      * <pre>
      * 用户信息数组
@@ -2903,7 +4170,7 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    public java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo> getUserInfoList() {
+    public java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo> getUserInfoList() {
       return userInfo_;
     }
     /**
@@ -2913,8 +4180,8 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    public java.util.List<? extends GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
-        getUserInfoOrBuilderList() {
+    public java.util.List<? extends org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
+    getUserInfoOrBuilderList() {
       return userInfo_;
     }
     /**
@@ -2934,7 +4201,7 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    public GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index) {
+    public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index) {
       return userInfo_.get(index);
     }
     /**
@@ -2944,13 +4211,13 @@ public final class GameMsgProtocol {
      *
      * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
      */
-    public GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
-        int index) {
+    public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
+            int index) {
       return userInfo_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2960,16 +4227,16 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       for (int i = 0; i < userInfo_.size(); i++) {
         output.writeMessage(1, userInfo_.get(i));
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2977,30 +4244,30 @@ public final class GameMsgProtocol {
       size = 0;
       for (int i = 0; i < userInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, userInfo_.get(i));
+                .computeMessageSize(1, userInfo_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.WhoElseIsHereResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.WhoElseIsHereResult other = (GameMsgProtocol.WhoElseIsHereResult) obj;
+      org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult other = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult) obj;
 
       if (!getUserInfoList()
-          .equals(other.getUserInfoList())) return false;
+              .equals(other.getUserInfoList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -3016,93 +4283,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.WhoElseIsHereResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.WhoElseIsHereResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3114,29 +4381,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.WhoElseIsHereResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereResult)
-        GameMsgProtocol.WhoElseIsHereResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.WhoElseIsHereResult)
+            org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.WhoElseIsHereResult.class, GameMsgProtocol.WhoElseIsHereResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.class, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.WhoElseIsHereResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3146,7 +4413,7 @@ public final class GameMsgProtocol {
           getUserInfoFieldBuilder();
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (userInfoBuilder_ == null) {
@@ -3158,29 +4425,29 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_WhoElseIsHereResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereResult getDefaultInstanceForType() {
-        return GameMsgProtocol.WhoElseIsHereResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereResult build() {
-        GameMsgProtocol.WhoElseIsHereResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult build() {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.WhoElseIsHereResult buildPartial() {
-        GameMsgProtocol.WhoElseIsHereResult result = new GameMsgProtocol.WhoElseIsHereResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult result = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult(this);
         int from_bitField0_ = bitField0_;
         if (userInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -3195,50 +4462,50 @@ public final class GameMsgProtocol {
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.WhoElseIsHereResult) {
-          return mergeFrom((GameMsgProtocol.WhoElseIsHereResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.WhoElseIsHereResult other) {
-        if (other == GameMsgProtocol.WhoElseIsHereResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.getDefaultInstance()) return this;
         if (userInfoBuilder_ == null) {
           if (!other.userInfo_.isEmpty()) {
             if (userInfo_.isEmpty()) {
@@ -3258,8 +4525,8 @@ public final class GameMsgProtocol {
               userInfo_ = other.userInfo_;
               bitField0_ = (bitField0_ & ~0x00000001);
               userInfoBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getUserInfoFieldBuilder() : null;
+                      com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                              getUserInfoFieldBuilder() : null;
             } else {
               userInfoBuilder_.addAllMessages(other.userInfo_);
             }
@@ -3270,21 +4537,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.WhoElseIsHereResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.WhoElseIsHereResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3295,17 +4562,17 @@ public final class GameMsgProtocol {
       }
       private int bitField0_;
 
-      private java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo> userInfo_ =
-        java.util.Collections.emptyList();
+      private java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo> userInfo_ =
+              java.util.Collections.emptyList();
       private void ensureUserInfoIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          userInfo_ = new java.util.ArrayList<GameMsgProtocol.WhoElseIsHereResult.UserInfo>(userInfo_);
+          userInfo_ = new java.util.ArrayList<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo>(userInfo_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder> userInfoBuilder_;
+              org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder> userInfoBuilder_;
 
       /**
        * <pre>
@@ -3314,7 +4581,7 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo> getUserInfoList() {
+      public java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo> getUserInfoList() {
         if (userInfoBuilder_ == null) {
           return java.util.Collections.unmodifiableList(userInfo_);
         } else {
@@ -3342,7 +4609,7 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index) {
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo getUserInfo(int index) {
         if (userInfoBuilder_ == null) {
           return userInfo_.get(index);
         } else {
@@ -3357,7 +4624,7 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder setUserInfo(
-          int index, GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
+              int index, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
         if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3378,7 +4645,7 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder setUserInfo(
-          int index, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
+              int index, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
         if (userInfoBuilder_ == null) {
           ensureUserInfoIsMutable();
           userInfo_.set(index, builderForValue.build());
@@ -3395,7 +4662,7 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public Builder addUserInfo(GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
+      public Builder addUserInfo(org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
         if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3416,7 +4683,7 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder addUserInfo(
-          int index, GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
+              int index, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo value) {
         if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3437,7 +4704,7 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder addUserInfo(
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
+              org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
         if (userInfoBuilder_ == null) {
           ensureUserInfoIsMutable();
           userInfo_.add(builderForValue.build());
@@ -3455,7 +4722,7 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder addUserInfo(
-          int index, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
+              int index, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder builderForValue) {
         if (userInfoBuilder_ == null) {
           ensureUserInfoIsMutable();
           userInfo_.add(index, builderForValue.build());
@@ -3473,11 +4740,11 @@ public final class GameMsgProtocol {
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
       public Builder addAllUserInfo(
-          Iterable<? extends GameMsgProtocol.WhoElseIsHereResult.UserInfo> values) {
+              java.lang.Iterable<? extends org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo> values) {
         if (userInfoBuilder_ == null) {
           ensureUserInfoIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, userInfo_);
+                  values, userInfo_);
           onChanged();
         } else {
           userInfoBuilder_.addAllMessages(values);
@@ -3525,8 +4792,8 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder getUserInfoBuilder(
-          int index) {
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder getUserInfoBuilder(
+              int index) {
         return getUserInfoFieldBuilder().getBuilder(index);
       }
       /**
@@ -3536,8 +4803,8 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
-          int index) {
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder getUserInfoOrBuilder(
+              int index) {
         if (userInfoBuilder_ == null) {
           return userInfo_.get(index);  } else {
           return userInfoBuilder_.getMessageOrBuilder(index);
@@ -3550,8 +4817,8 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public java.util.List<? extends GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
-           getUserInfoOrBuilderList() {
+      public java.util.List<? extends org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
+      getUserInfoOrBuilderList() {
         if (userInfoBuilder_ != null) {
           return userInfoBuilder_.getMessageOrBuilderList();
         } else {
@@ -3565,9 +4832,9 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder addUserInfoBuilder() {
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder addUserInfoBuilder() {
         return getUserInfoFieldBuilder().addBuilder(
-            GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance());
+                org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance());
       }
       /**
        * <pre>
@@ -3576,10 +4843,10 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder addUserInfoBuilder(
-          int index) {
+      public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder addUserInfoBuilder(
+              int index) {
         return getUserInfoFieldBuilder().addBuilder(
-            index, GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance());
+                index, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.getDefaultInstance());
       }
       /**
        * <pre>
@@ -3588,16 +4855,16 @@ public final class GameMsgProtocol {
        *
        * <code>repeated .msg.WhoElseIsHereResult.UserInfo userInfo = 1;</code>
        */
-      public java.util.List<GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder>
-           getUserInfoBuilderList() {
+      public java.util.List<org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder>
+      getUserInfoBuilderList() {
         return getUserInfoFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          GameMsgProtocol.WhoElseIsHereResult.UserInfo, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
-          getUserInfoFieldBuilder() {
+              org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>
+      getUserInfoFieldBuilder() {
         if (userInfoBuilder_ == null) {
           userInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              GameMsgProtocol.WhoElseIsHereResult.UserInfo, GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>(
+                  org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfo.Builder, org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult.UserInfoOrBuilder>(
                   userInfo_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -3606,15 +4873,15 @@ public final class GameMsgProtocol {
         }
         return userInfoBuilder_;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -3623,22 +4890,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.WhoElseIsHereResult)
-    private static final GameMsgProtocol.WhoElseIsHereResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.WhoElseIsHereResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult();
     }
 
-    public static GameMsgProtocol.WhoElseIsHereResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<WhoElseIsHereResult>
-        PARSER = new com.google.protobuf.AbstractParser<WhoElseIsHereResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<WhoElseIsHereResult>() {
+      @java.lang.Override
       public WhoElseIsHereResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new WhoElseIsHereResult(input, extensionRegistry);
       }
     };
@@ -3647,21 +4914,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<WhoElseIsHereResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.WhoElseIsHereResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.WhoElseIsHereResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserMoveToCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserMoveToCmd)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserMoveToCmd)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -3669,10 +4936,30 @@ public final class GameMsgProtocol {
      * XXX 注意: 用户移动指令中没有用户 Id,
      * 这是为什么?
      *
+     * 起始位置 X
+     * </pre>
+     *
+     * <code>float moveFromPosX = 1;</code>
+     * @return The moveFromPosX.
+     */
+    float getMoveFromPosX();
+
+    /**
+     * <pre>
+     * 起始位置 Y
+     * </pre>
+     *
+     * <code>float moveFromPosY = 2;</code>
+     * @return The moveFromPosY.
+     */
+    float getMoveFromPosY();
+
+    /**
+     * <pre>
      * 移动到位置 X
      * </pre>
      *
-     * <code>float moveToPosX = 1;</code>
+     * <code>float moveToPosX = 3;</code>
      * @return The moveToPosX.
      */
     float getMoveToPosX();
@@ -3682,7 +4969,7 @@ public final class GameMsgProtocol {
      * 移动到位置 Y
      * </pre>
      *
-     * <code>float moveToPosY = 2;</code>
+     * <code>float moveToPosY = 4;</code>
      * @return The moveToPosY.
      */
     float getMoveToPosY();
@@ -3698,10 +4985,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserMoveToCmd}
    */
   public  static final class UserMoveToCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserMoveToCmd)
-      UserMoveToCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserMoveToCmd)
+          UserMoveToCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserMoveToCmd.newBuilder() to construct.
     private UserMoveToCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -3709,28 +4996,28 @@ public final class GameMsgProtocol {
     private UserMoveToCmd() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserMoveToCmd();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserMoveToCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3741,17 +5028,27 @@ public final class GameMsgProtocol {
               break;
             case 13: {
 
-              moveToPosX_ = input.readFloat();
+              moveFromPosX_ = input.readFloat();
               break;
             }
             case 21: {
+
+              moveFromPosY_ = input.readFloat();
+              break;
+            }
+            case 29: {
+
+              moveToPosX_ = input.readFloat();
+              break;
+            }
+            case 37: {
 
               moveToPosY_ = input.readFloat();
               break;
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -3762,51 +5059,79 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserMoveToCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserMoveToCmd.class, GameMsgProtocol.UserMoveToCmd.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.class, org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.Builder.class);
     }
 
-    public static final int MOVETOPOSX_FIELD_NUMBER = 1;
-    private float moveToPosX_;
+    public static final int MOVEFROMPOSX_FIELD_NUMBER = 1;
+    private float moveFromPosX_;
     /**
      * <pre>
      *
      * XXX 注意: 用户移动指令中没有用户 Id,
      * 这是为什么?
      *
+     * 起始位置 X
+     * </pre>
+     *
+     * <code>float moveFromPosX = 1;</code>
+     * @return The moveFromPosX.
+     */
+    public float getMoveFromPosX() {
+      return moveFromPosX_;
+    }
+
+    public static final int MOVEFROMPOSY_FIELD_NUMBER = 2;
+    private float moveFromPosY_;
+    /**
+     * <pre>
+     * 起始位置 Y
+     * </pre>
+     *
+     * <code>float moveFromPosY = 2;</code>
+     * @return The moveFromPosY.
+     */
+    public float getMoveFromPosY() {
+      return moveFromPosY_;
+    }
+
+    public static final int MOVETOPOSX_FIELD_NUMBER = 3;
+    private float moveToPosX_;
+    /**
+     * <pre>
      * 移动到位置 X
      * </pre>
      *
-     * <code>float moveToPosX = 1;</code>
+     * <code>float moveToPosX = 3;</code>
      * @return The moveToPosX.
      */
     public float getMoveToPosX() {
       return moveToPosX_;
     }
 
-    public static final int MOVETOPOSY_FIELD_NUMBER = 2;
+    public static final int MOVETOPOSY_FIELD_NUMBER = 4;
     private float moveToPosY_;
     /**
      * <pre>
      * 移动到位置 Y
      * </pre>
      *
-     * <code>float moveToPosY = 2;</code>
+     * <code>float moveToPosY = 4;</code>
      * @return The moveToPosY.
      */
     public float getMoveToPosY() {
@@ -3814,7 +5139,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3824,162 +5149,188 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
+      if (moveFromPosX_ != 0F) {
+        output.writeFloat(1, moveFromPosX_);
+      }
+      if (moveFromPosY_ != 0F) {
+        output.writeFloat(2, moveFromPosY_);
+      }
       if (moveToPosX_ != 0F) {
-        output.writeFloat(1, moveToPosX_);
+        output.writeFloat(3, moveToPosX_);
       }
       if (moveToPosY_ != 0F) {
-        output.writeFloat(2, moveToPosY_);
+        output.writeFloat(4, moveToPosY_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
+      if (moveFromPosX_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeFloatSize(1, moveFromPosX_);
+      }
+      if (moveFromPosY_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeFloatSize(2, moveFromPosY_);
+      }
       if (moveToPosX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, moveToPosX_);
+                .computeFloatSize(3, moveToPosX_);
       }
       if (moveToPosY_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, moveToPosY_);
+                .computeFloatSize(4, moveToPosY_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserMoveToCmd)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserMoveToCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserMoveToCmd other = (GameMsgProtocol.UserMoveToCmd) obj;
+      org.zy.tinygame.GameMsgProtocol.UserMoveToCmd other = (org.zy.tinygame.GameMsgProtocol.UserMoveToCmd) obj;
 
-      if (Float.floatToIntBits(getMoveToPosX())
-          != Float.floatToIntBits(
+      if (java.lang.Float.floatToIntBits(getMoveFromPosX())
+              != java.lang.Float.floatToIntBits(
+              other.getMoveFromPosX())) return false;
+      if (java.lang.Float.floatToIntBits(getMoveFromPosY())
+              != java.lang.Float.floatToIntBits(
+              other.getMoveFromPosY())) return false;
+      if (java.lang.Float.floatToIntBits(getMoveToPosX())
+              != java.lang.Float.floatToIntBits(
               other.getMoveToPosX())) return false;
-      if (Float.floatToIntBits(getMoveToPosY())
-          != Float.floatToIntBits(
+      if (java.lang.Float.floatToIntBits(getMoveToPosY())
+              != java.lang.Float.floatToIntBits(
               other.getMoveToPosY())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MOVEFROMPOSX_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveFromPosX());
+      hash = (37 * hash) + MOVEFROMPOSY_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveFromPosY());
       hash = (37 * hash) + MOVETOPOSX_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getMoveToPosX());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveToPosX());
       hash = (37 * hash) + MOVETOPOSY_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getMoveToPosY());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveToPosY());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserMoveToCmd prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserMoveToCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3994,29 +5345,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserMoveToCmd}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserMoveToCmd)
-        GameMsgProtocol.UserMoveToCmdOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserMoveToCmd)
+            org.zy.tinygame.GameMsgProtocol.UserMoveToCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserMoveToCmd.class, GameMsgProtocol.UserMoveToCmd.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.class, org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserMoveToCmd.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4025,9 +5376,13 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
+        moveFromPosX_ = 0F;
+
+        moveFromPosY_ = 0F;
+
         moveToPosX_ = 0F;
 
         moveToPosY_ = 0F;
@@ -4035,79 +5390,87 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToCmd_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserMoveToCmd.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToCmd build() {
-        GameMsgProtocol.UserMoveToCmd result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToCmd build() {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToCmd buildPartial() {
-        GameMsgProtocol.UserMoveToCmd result = new GameMsgProtocol.UserMoveToCmd(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToCmd result = new org.zy.tinygame.GameMsgProtocol.UserMoveToCmd(this);
+        result.moveFromPosX_ = moveFromPosX_;
+        result.moveFromPosY_ = moveFromPosY_;
         result.moveToPosX_ = moveToPosX_;
         result.moveToPosY_ = moveToPosY_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserMoveToCmd) {
-          return mergeFrom((GameMsgProtocol.UserMoveToCmd)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserMoveToCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserMoveToCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserMoveToCmd other) {
-        if (other == GameMsgProtocol.UserMoveToCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserMoveToCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserMoveToCmd.getDefaultInstance()) return this;
+        if (other.getMoveFromPosX() != 0F) {
+          setMoveFromPosX(other.getMoveFromPosX());
+        }
+        if (other.getMoveFromPosY() != 0F) {
+          setMoveFromPosY(other.getMoveFromPosY());
+        }
         if (other.getMoveToPosX() != 0F) {
           setMoveToPosX(other.getMoveToPosX());
         }
@@ -4119,21 +5482,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserMoveToCmd parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserMoveToCmd) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserMoveToCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4143,21 +5506,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private float moveToPosX_ ;
+      private float moveFromPosX_ ;
       /**
        * <pre>
        *
        * XXX 注意: 用户移动指令中没有用户 Id,
        * 这是为什么?
        *
-       * 移动到位置 X
+       * 起始位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 1;</code>
-       * @return The moveToPosX.
+       * <code>float moveFromPosX = 1;</code>
+       * @return The moveFromPosX.
        */
-      public float getMoveToPosX() {
-        return moveToPosX_;
+      public float getMoveFromPosX() {
+        return moveFromPosX_;
       }
       /**
        * <pre>
@@ -4165,10 +5528,98 @@ public final class GameMsgProtocol {
        * XXX 注意: 用户移动指令中没有用户 Id,
        * 这是为什么?
        *
+       * 起始位置 X
+       * </pre>
+       *
+       * <code>float moveFromPosX = 1;</code>
+       * @param value The moveFromPosX to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMoveFromPosX(float value) {
+
+        moveFromPosX_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *
+       * XXX 注意: 用户移动指令中没有用户 Id,
+       * 这是为什么?
+       *
+       * 起始位置 X
+       * </pre>
+       *
+       * <code>float moveFromPosX = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMoveFromPosX() {
+
+        moveFromPosX_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float moveFromPosY_ ;
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 2;</code>
+       * @return The moveFromPosY.
+       */
+      public float getMoveFromPosY() {
+        return moveFromPosY_;
+      }
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 2;</code>
+       * @param value The moveFromPosY to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMoveFromPosY(float value) {
+
+        moveFromPosY_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMoveFromPosY() {
+
+        moveFromPosY_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float moveToPosX_ ;
+      /**
+       * <pre>
        * 移动到位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 1;</code>
+       * <code>float moveToPosX = 3;</code>
+       * @return The moveToPosX.
+       */
+      public float getMoveToPosX() {
+        return moveToPosX_;
+      }
+      /**
+       * <pre>
+       * 移动到位置 X
+       * </pre>
+       *
+       * <code>float moveToPosX = 3;</code>
        * @param value The moveToPosX to set.
        * @return This builder for chaining.
        */
@@ -4180,14 +5631,10 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       *
-       * XXX 注意: 用户移动指令中没有用户 Id,
-       * 这是为什么?
-       *
        * 移动到位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 1;</code>
+       * <code>float moveToPosX = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearMoveToPosX() {
@@ -4203,7 +5650,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 2;</code>
+       * <code>float moveToPosY = 4;</code>
        * @return The moveToPosY.
        */
       public float getMoveToPosY() {
@@ -4214,7 +5661,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 2;</code>
+       * <code>float moveToPosY = 4;</code>
        * @param value The moveToPosY to set.
        * @return This builder for chaining.
        */
@@ -4229,7 +5676,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 2;</code>
+       * <code>float moveToPosY = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearMoveToPosY() {
@@ -4238,15 +5685,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -4255,22 +5702,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserMoveToCmd)
-    private static final GameMsgProtocol.UserMoveToCmd DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserMoveToCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserMoveToCmd();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserMoveToCmd();
     }
 
-    public static GameMsgProtocol.UserMoveToCmd getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserMoveToCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserMoveToCmd>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserMoveToCmd>() {
+      @java.lang.Override
       public UserMoveToCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserMoveToCmd(input, extensionRegistry);
       }
     };
@@ -4279,21 +5726,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserMoveToCmd> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserMoveToCmd getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserMoveToCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserMoveToResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserMoveToResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserMoveToResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -4307,10 +5754,30 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
+     * 起始位置 X
+     * </pre>
+     *
+     * <code>float moveFromPosX = 2;</code>
+     * @return The moveFromPosX.
+     */
+    float getMoveFromPosX();
+
+    /**
+     * <pre>
+     * 起始位置 Y
+     * </pre>
+     *
+     * <code>float moveFromPosY = 3;</code>
+     * @return The moveFromPosY.
+     */
+    float getMoveFromPosY();
+
+    /**
+     * <pre>
      * 移动到位置 X
      * </pre>
      *
-     * <code>float moveToPosX = 2;</code>
+     * <code>float moveToPosX = 4;</code>
      * @return The moveToPosX.
      */
     float getMoveToPosX();
@@ -4320,10 +5787,20 @@ public final class GameMsgProtocol {
      * 移动到位置 Y
      * </pre>
      *
-     * <code>float moveToPosY = 3;</code>
+     * <code>float moveToPosY = 5;</code>
      * @return The moveToPosY.
      */
     float getMoveToPosY();
+
+    /**
+     * <pre>
+     * 启程时间戳
+     * </pre>
+     *
+     * <code>uint64 moveStartTime = 6;</code>
+     * @return The moveStartTime.
+     */
+    long getMoveStartTime();
   }
   /**
    * <pre>
@@ -4333,10 +5810,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserMoveToResult}
    */
   public  static final class UserMoveToResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserMoveToResult)
-      UserMoveToResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserMoveToResult)
+          UserMoveToResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserMoveToResult.newBuilder() to construct.
     private UserMoveToResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -4344,28 +5821,28 @@ public final class GameMsgProtocol {
     private UserMoveToResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserMoveToResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserMoveToResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -4381,17 +5858,32 @@ public final class GameMsgProtocol {
             }
             case 21: {
 
-              moveToPosX_ = input.readFloat();
+              moveFromPosX_ = input.readFloat();
               break;
             }
             case 29: {
 
+              moveFromPosY_ = input.readFloat();
+              break;
+            }
+            case 37: {
+
+              moveToPosX_ = input.readFloat();
+              break;
+            }
+            case 45: {
+
               moveToPosY_ = input.readFloat();
+              break;
+            }
+            case 48: {
+
+              moveStartTime_ = input.readUInt64();
               break;
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -4402,23 +5894,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserMoveToResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserMoveToResult.class, GameMsgProtocol.UserMoveToResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserMoveToResult.class, org.zy.tinygame.GameMsgProtocol.UserMoveToResult.Builder.class);
     }
 
     public static final int MOVEUSERID_FIELD_NUMBER = 1;
@@ -4435,36 +5927,78 @@ public final class GameMsgProtocol {
       return moveUserId_;
     }
 
-    public static final int MOVETOPOSX_FIELD_NUMBER = 2;
+    public static final int MOVEFROMPOSX_FIELD_NUMBER = 2;
+    private float moveFromPosX_;
+    /**
+     * <pre>
+     * 起始位置 X
+     * </pre>
+     *
+     * <code>float moveFromPosX = 2;</code>
+     * @return The moveFromPosX.
+     */
+    public float getMoveFromPosX() {
+      return moveFromPosX_;
+    }
+
+    public static final int MOVEFROMPOSY_FIELD_NUMBER = 3;
+    private float moveFromPosY_;
+    /**
+     * <pre>
+     * 起始位置 Y
+     * </pre>
+     *
+     * <code>float moveFromPosY = 3;</code>
+     * @return The moveFromPosY.
+     */
+    public float getMoveFromPosY() {
+      return moveFromPosY_;
+    }
+
+    public static final int MOVETOPOSX_FIELD_NUMBER = 4;
     private float moveToPosX_;
     /**
      * <pre>
      * 移动到位置 X
      * </pre>
      *
-     * <code>float moveToPosX = 2;</code>
+     * <code>float moveToPosX = 4;</code>
      * @return The moveToPosX.
      */
     public float getMoveToPosX() {
       return moveToPosX_;
     }
 
-    public static final int MOVETOPOSY_FIELD_NUMBER = 3;
+    public static final int MOVETOPOSY_FIELD_NUMBER = 5;
     private float moveToPosY_;
     /**
      * <pre>
      * 移动到位置 Y
      * </pre>
      *
-     * <code>float moveToPosY = 3;</code>
+     * <code>float moveToPosY = 5;</code>
      * @return The moveToPosY.
      */
     public float getMoveToPosY() {
       return moveToPosY_;
     }
 
+    public static final int MOVESTARTTIME_FIELD_NUMBER = 6;
+    private long moveStartTime_;
+    /**
+     * <pre>
+     * 启程时间戳
+     * </pre>
+     *
+     * <code>uint64 moveStartTime = 6;</code>
+     * @return The moveStartTime.
+     */
+    public long getMoveStartTime() {
+      return moveStartTime_;
+    }
+
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -4474,22 +6008,31 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (moveUserId_ != 0) {
         output.writeUInt32(1, moveUserId_);
       }
+      if (moveFromPosX_ != 0F) {
+        output.writeFloat(2, moveFromPosX_);
+      }
+      if (moveFromPosY_ != 0F) {
+        output.writeFloat(3, moveFromPosY_);
+      }
       if (moveToPosX_ != 0F) {
-        output.writeFloat(2, moveToPosX_);
+        output.writeFloat(4, moveToPosX_);
       }
       if (moveToPosY_ != 0F) {
-        output.writeFloat(3, moveToPosY_);
+        output.writeFloat(5, moveToPosY_);
+      }
+      if (moveStartTime_ != 0L) {
+        output.writeUInt64(6, moveStartTime_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -4497,44 +6040,64 @@ public final class GameMsgProtocol {
       size = 0;
       if (moveUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, moveUserId_);
+                .computeUInt32Size(1, moveUserId_);
+      }
+      if (moveFromPosX_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeFloatSize(2, moveFromPosX_);
+      }
+      if (moveFromPosY_ != 0F) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeFloatSize(3, moveFromPosY_);
       }
       if (moveToPosX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, moveToPosX_);
+                .computeFloatSize(4, moveToPosX_);
       }
       if (moveToPosY_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, moveToPosY_);
+                .computeFloatSize(5, moveToPosY_);
+      }
+      if (moveStartTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeUInt64Size(6, moveStartTime_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserMoveToResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserMoveToResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserMoveToResult other = (GameMsgProtocol.UserMoveToResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserMoveToResult other = (org.zy.tinygame.GameMsgProtocol.UserMoveToResult) obj;
 
       if (getMoveUserId()
-          != other.getMoveUserId()) return false;
-      if (Float.floatToIntBits(getMoveToPosX())
-          != Float.floatToIntBits(
+              != other.getMoveUserId()) return false;
+      if (java.lang.Float.floatToIntBits(getMoveFromPosX())
+              != java.lang.Float.floatToIntBits(
+              other.getMoveFromPosX())) return false;
+      if (java.lang.Float.floatToIntBits(getMoveFromPosY())
+              != java.lang.Float.floatToIntBits(
+              other.getMoveFromPosY())) return false;
+      if (java.lang.Float.floatToIntBits(getMoveToPosX())
+              != java.lang.Float.floatToIntBits(
               other.getMoveToPosX())) return false;
-      if (Float.floatToIntBits(getMoveToPosY())
-          != Float.floatToIntBits(
+      if (java.lang.Float.floatToIntBits(getMoveToPosY())
+              != java.lang.Float.floatToIntBits(
               other.getMoveToPosY())) return false;
+      if (getMoveStartTime()
+              != other.getMoveStartTime()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -4543,104 +6106,113 @@ public final class GameMsgProtocol {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MOVEUSERID_FIELD_NUMBER;
       hash = (53 * hash) + getMoveUserId();
+      hash = (37 * hash) + MOVEFROMPOSX_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveFromPosX());
+      hash = (37 * hash) + MOVEFROMPOSY_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveFromPosY());
       hash = (37 * hash) + MOVETOPOSX_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getMoveToPosX());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveToPosX());
       hash = (37 * hash) + MOVETOPOSY_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getMoveToPosY());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getMoveToPosY());
+      hash = (37 * hash) + MOVESTARTTIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getMoveStartTime());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserMoveToResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserMoveToResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserMoveToResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4652,29 +6224,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserMoveToResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserMoveToResult)
-        GameMsgProtocol.UserMoveToResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserMoveToResult)
+            org.zy.tinygame.GameMsgProtocol.UserMoveToResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserMoveToResult.class, GameMsgProtocol.UserMoveToResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserMoveToResult.class, org.zy.tinygame.GameMsgProtocol.UserMoveToResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserMoveToResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserMoveToResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4683,94 +6255,109 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         moveUserId_ = 0;
+
+        moveFromPosX_ = 0F;
+
+        moveFromPosY_ = 0F;
 
         moveToPosX_ = 0F;
 
         moveToPosY_ = 0F;
 
+        moveStartTime_ = 0L;
+
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserMoveToResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserMoveToResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserMoveToResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToResult build() {
-        GameMsgProtocol.UserMoveToResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserMoveToResult buildPartial() {
-        GameMsgProtocol.UserMoveToResult result = new GameMsgProtocol.UserMoveToResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserMoveToResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToResult result = new org.zy.tinygame.GameMsgProtocol.UserMoveToResult(this);
         result.moveUserId_ = moveUserId_;
+        result.moveFromPosX_ = moveFromPosX_;
+        result.moveFromPosY_ = moveFromPosY_;
         result.moveToPosX_ = moveToPosX_;
         result.moveToPosY_ = moveToPosY_;
+        result.moveStartTime_ = moveStartTime_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserMoveToResult) {
-          return mergeFrom((GameMsgProtocol.UserMoveToResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserMoveToResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserMoveToResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserMoveToResult other) {
-        if (other == GameMsgProtocol.UserMoveToResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserMoveToResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserMoveToResult.getDefaultInstance()) return this;
         if (other.getMoveUserId() != 0) {
           setMoveUserId(other.getMoveUserId());
+        }
+        if (other.getMoveFromPosX() != 0F) {
+          setMoveFromPosX(other.getMoveFromPosX());
+        }
+        if (other.getMoveFromPosY() != 0F) {
+          setMoveFromPosY(other.getMoveFromPosY());
         }
         if (other.getMoveToPosX() != 0F) {
           setMoveToPosX(other.getMoveToPosX());
@@ -4778,26 +6365,29 @@ public final class GameMsgProtocol {
         if (other.getMoveToPosY() != 0F) {
           setMoveToPosY(other.getMoveToPosY());
         }
+        if (other.getMoveStartTime() != 0L) {
+          setMoveStartTime(other.getMoveStartTime());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserMoveToResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserMoveToResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserMoveToResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserMoveToResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4849,13 +6439,97 @@ public final class GameMsgProtocol {
         return this;
       }
 
+      private float moveFromPosX_ ;
+      /**
+       * <pre>
+       * 起始位置 X
+       * </pre>
+       *
+       * <code>float moveFromPosX = 2;</code>
+       * @return The moveFromPosX.
+       */
+      public float getMoveFromPosX() {
+        return moveFromPosX_;
+      }
+      /**
+       * <pre>
+       * 起始位置 X
+       * </pre>
+       *
+       * <code>float moveFromPosX = 2;</code>
+       * @param value The moveFromPosX to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMoveFromPosX(float value) {
+
+        moveFromPosX_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 起始位置 X
+       * </pre>
+       *
+       * <code>float moveFromPosX = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMoveFromPosX() {
+
+        moveFromPosX_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float moveFromPosY_ ;
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 3;</code>
+       * @return The moveFromPosY.
+       */
+      public float getMoveFromPosY() {
+        return moveFromPosY_;
+      }
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 3;</code>
+       * @param value The moveFromPosY to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMoveFromPosY(float value) {
+
+        moveFromPosY_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 起始位置 Y
+       * </pre>
+       *
+       * <code>float moveFromPosY = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMoveFromPosY() {
+
+        moveFromPosY_ = 0F;
+        onChanged();
+        return this;
+      }
+
       private float moveToPosX_ ;
       /**
        * <pre>
        * 移动到位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 2;</code>
+       * <code>float moveToPosX = 4;</code>
        * @return The moveToPosX.
        */
       public float getMoveToPosX() {
@@ -4866,7 +6540,7 @@ public final class GameMsgProtocol {
        * 移动到位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 2;</code>
+       * <code>float moveToPosX = 4;</code>
        * @param value The moveToPosX to set.
        * @return This builder for chaining.
        */
@@ -4881,7 +6555,7 @@ public final class GameMsgProtocol {
        * 移动到位置 X
        * </pre>
        *
-       * <code>float moveToPosX = 2;</code>
+       * <code>float moveToPosX = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearMoveToPosX() {
@@ -4897,7 +6571,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 3;</code>
+       * <code>float moveToPosY = 5;</code>
        * @return The moveToPosY.
        */
       public float getMoveToPosY() {
@@ -4908,7 +6582,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 3;</code>
+       * <code>float moveToPosY = 5;</code>
        * @param value The moveToPosY to set.
        * @return This builder for chaining.
        */
@@ -4923,7 +6597,7 @@ public final class GameMsgProtocol {
        * 移动到位置 Y
        * </pre>
        *
-       * <code>float moveToPosY = 3;</code>
+       * <code>float moveToPosY = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearMoveToPosY() {
@@ -4932,15 +6606,57 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+
+      private long moveStartTime_ ;
+      /**
+       * <pre>
+       * 启程时间戳
+       * </pre>
+       *
+       * <code>uint64 moveStartTime = 6;</code>
+       * @return The moveStartTime.
+       */
+      public long getMoveStartTime() {
+        return moveStartTime_;
+      }
+      /**
+       * <pre>
+       * 启程时间戳
+       * </pre>
+       *
+       * <code>uint64 moveStartTime = 6;</code>
+       * @param value The moveStartTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMoveStartTime(long value) {
+
+        moveStartTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 启程时间戳
+       * </pre>
+       *
+       * <code>uint64 moveStartTime = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMoveStartTime() {
+
+        moveStartTime_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -4949,22 +6665,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserMoveToResult)
-    private static final GameMsgProtocol.UserMoveToResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserMoveToResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserMoveToResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserMoveToResult();
     }
 
-    public static GameMsgProtocol.UserMoveToResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserMoveToResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserMoveToResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserMoveToResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserMoveToResult>() {
+      @java.lang.Override
       public UserMoveToResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserMoveToResult(input, extensionRegistry);
       }
     };
@@ -4973,21 +6689,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserMoveToResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserMoveToResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserMoveToResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserQuitResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserQuitResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserQuitResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -5013,10 +6729,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserQuitResult}
    */
   public  static final class UserQuitResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserQuitResult)
-      UserQuitResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserQuitResult)
+          UserQuitResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserQuitResult.newBuilder() to construct.
     private UserQuitResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -5024,28 +6740,28 @@ public final class GameMsgProtocol {
     private UserQuitResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserQuitResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserQuitResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5061,7 +6777,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -5072,23 +6788,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserQuitResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserQuitResult.class, GameMsgProtocol.UserQuitResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserQuitResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserQuitResult.class, org.zy.tinygame.GameMsgProtocol.UserQuitResult.Builder.class);
     }
 
     public static final int QUITUSERID_FIELD_NUMBER = 1;
@@ -5106,7 +6822,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -5116,16 +6832,16 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (quitUserId_ != 0) {
         output.writeUInt32(1, quitUserId_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -5133,30 +6849,30 @@ public final class GameMsgProtocol {
       size = 0;
       if (quitUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, quitUserId_);
+                .computeUInt32Size(1, quitUserId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserQuitResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserQuitResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserQuitResult other = (GameMsgProtocol.UserQuitResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserQuitResult other = (org.zy.tinygame.GameMsgProtocol.UserQuitResult) obj;
 
       if (getQuitUserId()
-          != other.getQuitUserId()) return false;
+              != other.getQuitUserId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -5170,93 +6886,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserQuitResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserQuitResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserQuitResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserQuitResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserQuitResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5274,29 +6990,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserQuitResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserQuitResult)
-        GameMsgProtocol.UserQuitResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserQuitResult)
+            org.zy.tinygame.GameMsgProtocol.UserQuitResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserQuitResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserQuitResult.class, GameMsgProtocol.UserQuitResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserQuitResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserQuitResult.class, org.zy.tinygame.GameMsgProtocol.UserQuitResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserQuitResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserQuitResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5305,7 +7021,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         quitUserId_ = 0;
@@ -5313,78 +7029,78 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserQuitResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserQuitResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserQuitResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserQuitResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserQuitResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserQuitResult build() {
-        GameMsgProtocol.UserQuitResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserQuitResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserQuitResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserQuitResult buildPartial() {
-        GameMsgProtocol.UserQuitResult result = new GameMsgProtocol.UserQuitResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserQuitResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserQuitResult result = new org.zy.tinygame.GameMsgProtocol.UserQuitResult(this);
         result.quitUserId_ = quitUserId_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserQuitResult) {
-          return mergeFrom((GameMsgProtocol.UserQuitResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserQuitResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserQuitResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserQuitResult other) {
-        if (other == GameMsgProtocol.UserQuitResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserQuitResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserQuitResult.getDefaultInstance()) return this;
         if (other.getQuitUserId() != 0) {
           setQuitUserId(other.getQuitUserId());
         }
@@ -5393,21 +7109,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserQuitResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserQuitResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserQuitResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserQuitResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5458,15 +7174,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -5475,22 +7191,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserQuitResult)
-    private static final GameMsgProtocol.UserQuitResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserQuitResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserQuitResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserQuitResult();
     }
 
-    public static GameMsgProtocol.UserQuitResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserQuitResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserQuitResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserQuitResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserQuitResult>() {
+      @java.lang.Override
       public UserQuitResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserQuitResult(input, extensionRegistry);
       }
     };
@@ -5499,21 +7215,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserQuitResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserQuitResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserQuitResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserStopCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserStopCmd)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserStopCmd)
+          com.google.protobuf.MessageOrBuilder {
   }
   /**
    * <pre>
@@ -5525,10 +7241,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserStopCmd}
    */
   public  static final class UserStopCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserStopCmd)
-      UserStopCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserStopCmd)
+          UserStopCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserStopCmd.newBuilder() to construct.
     private UserStopCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -5536,28 +7252,28 @@ public final class GameMsgProtocol {
     private UserStopCmd() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserStopCmd();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserStopCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -5568,7 +7284,7 @@ public final class GameMsgProtocol {
               break;
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -5579,27 +7295,27 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserStopCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserStopCmd.class, GameMsgProtocol.UserStopCmd.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserStopCmd.class, org.zy.tinygame.GameMsgProtocol.UserStopCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -5609,13 +7325,13 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -5626,21 +7342,21 @@ public final class GameMsgProtocol {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserStopCmd)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserStopCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserStopCmd other = (GameMsgProtocol.UserStopCmd) obj;
+      org.zy.tinygame.GameMsgProtocol.UserStopCmd other = (org.zy.tinygame.GameMsgProtocol.UserStopCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -5652,93 +7368,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserStopCmd prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserStopCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5752,29 +7468,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserStopCmd}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserStopCmd)
-        GameMsgProtocol.UserStopCmdOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserStopCmd)
+            org.zy.tinygame.GameMsgProtocol.UserStopCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserStopCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserStopCmd.class, GameMsgProtocol.UserStopCmd.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserStopCmd.class, org.zy.tinygame.GameMsgProtocol.UserStopCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserStopCmd.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserStopCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5783,103 +7499,103 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopCmd_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserStopCmd.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserStopCmd.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserStopCmd build() {
-        GameMsgProtocol.UserStopCmd result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopCmd build() {
+        org.zy.tinygame.GameMsgProtocol.UserStopCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserStopCmd buildPartial() {
-        GameMsgProtocol.UserStopCmd result = new GameMsgProtocol.UserStopCmd(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserStopCmd result = new org.zy.tinygame.GameMsgProtocol.UserStopCmd(this);
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserStopCmd) {
-          return mergeFrom((GameMsgProtocol.UserStopCmd)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserStopCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserStopCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserStopCmd other) {
-        if (other == GameMsgProtocol.UserStopCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserStopCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserStopCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserStopCmd parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserStopCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserStopCmd) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserStopCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5888,15 +7604,15 @@ public final class GameMsgProtocol {
         }
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -5905,22 +7621,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserStopCmd)
-    private static final GameMsgProtocol.UserStopCmd DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserStopCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserStopCmd();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserStopCmd();
     }
 
-    public static GameMsgProtocol.UserStopCmd getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserStopCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserStopCmd>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserStopCmd>() {
+      @java.lang.Override
       public UserStopCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserStopCmd(input, extensionRegistry);
       }
     };
@@ -5929,21 +7645,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserStopCmd> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserStopResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserStopResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserStopResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -5983,10 +7699,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserStopResult}
    */
   public  static final class UserStopResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserStopResult)
-      UserStopResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserStopResult)
+          UserStopResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserStopResult.newBuilder() to construct.
     private UserStopResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -5994,28 +7710,28 @@ public final class GameMsgProtocol {
     private UserStopResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserStopResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserStopResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6041,7 +7757,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -6052,23 +7768,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserStopResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserStopResult.class, GameMsgProtocol.UserStopResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserStopResult.class, org.zy.tinygame.GameMsgProtocol.UserStopResult.Builder.class);
     }
 
     public static final int STOPUSERID_FIELD_NUMBER = 1;
@@ -6114,7 +7830,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -6124,9 +7840,9 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (stopUserId_ != 0) {
         output.writeUInt32(1, stopUserId_);
       }
@@ -6139,7 +7855,7 @@ public final class GameMsgProtocol {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -6147,44 +7863,44 @@ public final class GameMsgProtocol {
       size = 0;
       if (stopUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, stopUserId_);
+                .computeUInt32Size(1, stopUserId_);
       }
       if (stopAtPosX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, stopAtPosX_);
+                .computeFloatSize(2, stopAtPosX_);
       }
       if (stopAtPosY_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, stopAtPosY_);
+                .computeFloatSize(3, stopAtPosY_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserStopResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserStopResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserStopResult other = (GameMsgProtocol.UserStopResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserStopResult other = (org.zy.tinygame.GameMsgProtocol.UserStopResult) obj;
 
       if (getStopUserId()
-          != other.getStopUserId()) return false;
-      if (Float.floatToIntBits(getStopAtPosX())
-          != Float.floatToIntBits(
+              != other.getStopUserId()) return false;
+      if (java.lang.Float.floatToIntBits(getStopAtPosX())
+              != java.lang.Float.floatToIntBits(
               other.getStopAtPosX())) return false;
-      if (Float.floatToIntBits(getStopAtPosY())
-          != Float.floatToIntBits(
+      if (java.lang.Float.floatToIntBits(getStopAtPosY())
+              != java.lang.Float.floatToIntBits(
               other.getStopAtPosY())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -6194,103 +7910,103 @@ public final class GameMsgProtocol {
       hash = (37 * hash) + STOPUSERID_FIELD_NUMBER;
       hash = (53 * hash) + getStopUserId();
       hash = (37 * hash) + STOPATPOSX_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getStopAtPosX());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getStopAtPosX());
       hash = (37 * hash) + STOPATPOSY_FIELD_NUMBER;
-      hash = (53 * hash) + Float.floatToIntBits(
-          getStopAtPosY());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getStopAtPosY());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserStopResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserStopResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -6302,29 +8018,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserStopResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserStopResult)
-        GameMsgProtocol.UserStopResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserStopResult)
+            org.zy.tinygame.GameMsgProtocol.UserStopResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserStopResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserStopResult.class, GameMsgProtocol.UserStopResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserStopResult.class, org.zy.tinygame.GameMsgProtocol.UserStopResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserStopResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserStopResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6333,7 +8049,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         stopUserId_ = 0;
@@ -6345,29 +8061,29 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserStopResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserStopResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserStopResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserStopResult build() {
-        GameMsgProtocol.UserStopResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserStopResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserStopResult buildPartial() {
-        GameMsgProtocol.UserStopResult result = new GameMsgProtocol.UserStopResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserStopResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserStopResult result = new org.zy.tinygame.GameMsgProtocol.UserStopResult(this);
         result.stopUserId_ = stopUserId_;
         result.stopAtPosX_ = stopAtPosX_;
         result.stopAtPosY_ = stopAtPosY_;
@@ -6375,50 +8091,50 @@ public final class GameMsgProtocol {
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserStopResult) {
-          return mergeFrom((GameMsgProtocol.UserStopResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserStopResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserStopResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserStopResult other) {
-        if (other == GameMsgProtocol.UserStopResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserStopResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserStopResult.getDefaultInstance()) return this;
         if (other.getStopUserId() != 0) {
           setStopUserId(other.getStopUserId());
         }
@@ -6433,21 +8149,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserStopResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserStopResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserStopResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserStopResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6582,15 +8298,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -6599,22 +8315,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserStopResult)
-    private static final GameMsgProtocol.UserStopResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserStopResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserStopResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserStopResult();
     }
 
-    public static GameMsgProtocol.UserStopResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserStopResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserStopResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserStopResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserStopResult>() {
+      @java.lang.Override
       public UserStopResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserStopResult(input, extensionRegistry);
       }
     };
@@ -6623,21 +8339,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserStopResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserAttkCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserAttkCmd)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserAttkCmd)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -6659,10 +8375,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserAttkCmd}
    */
   public  static final class UserAttkCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserAttkCmd)
-      UserAttkCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserAttkCmd)
+          UserAttkCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserAttkCmd.newBuilder() to construct.
     private UserAttkCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -6670,28 +8386,28 @@ public final class GameMsgProtocol {
     private UserAttkCmd() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserAttkCmd();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserAttkCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -6707,7 +8423,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -6718,23 +8434,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserAttkCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserAttkCmd.class, GameMsgProtocol.UserAttkCmd.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserAttkCmd.class, org.zy.tinygame.GameMsgProtocol.UserAttkCmd.Builder.class);
     }
 
     public static final int TARGETUSERID_FIELD_NUMBER = 1;
@@ -6752,7 +8468,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -6762,16 +8478,16 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (targetUserId_ != 0) {
         output.writeUInt32(1, targetUserId_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -6779,30 +8495,30 @@ public final class GameMsgProtocol {
       size = 0;
       if (targetUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, targetUserId_);
+                .computeUInt32Size(1, targetUserId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserAttkCmd)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserAttkCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserAttkCmd other = (GameMsgProtocol.UserAttkCmd) obj;
+      org.zy.tinygame.GameMsgProtocol.UserAttkCmd other = (org.zy.tinygame.GameMsgProtocol.UserAttkCmd) obj;
 
       if (getTargetUserId()
-          != other.getTargetUserId()) return false;
+              != other.getTargetUserId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -6816,93 +8532,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserAttkCmd prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserAttkCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -6916,29 +8632,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserAttkCmd}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserAttkCmd)
-        GameMsgProtocol.UserAttkCmdOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserAttkCmd)
+            org.zy.tinygame.GameMsgProtocol.UserAttkCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserAttkCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserAttkCmd.class, GameMsgProtocol.UserAttkCmd.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserAttkCmd.class, org.zy.tinygame.GameMsgProtocol.UserAttkCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserAttkCmd.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserAttkCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6947,7 +8663,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         targetUserId_ = 0;
@@ -6955,78 +8671,78 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkCmd_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserAttkCmd.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserAttkCmd.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkCmd build() {
-        GameMsgProtocol.UserAttkCmd result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkCmd build() {
+        org.zy.tinygame.GameMsgProtocol.UserAttkCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkCmd buildPartial() {
-        GameMsgProtocol.UserAttkCmd result = new GameMsgProtocol.UserAttkCmd(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserAttkCmd result = new org.zy.tinygame.GameMsgProtocol.UserAttkCmd(this);
         result.targetUserId_ = targetUserId_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserAttkCmd) {
-          return mergeFrom((GameMsgProtocol.UserAttkCmd)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserAttkCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserAttkCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserAttkCmd other) {
-        if (other == GameMsgProtocol.UserAttkCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserAttkCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserAttkCmd.getDefaultInstance()) return this;
         if (other.getTargetUserId() != 0) {
           setTargetUserId(other.getTargetUserId());
         }
@@ -7035,21 +8751,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserAttkCmd parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserAttkCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserAttkCmd) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserAttkCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7100,15 +8816,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -7117,22 +8833,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserAttkCmd)
-    private static final GameMsgProtocol.UserAttkCmd DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserAttkCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserAttkCmd();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserAttkCmd();
     }
 
-    public static GameMsgProtocol.UserAttkCmd getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserAttkCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserAttkCmd>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserAttkCmd>() {
+      @java.lang.Override
       public UserAttkCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserAttkCmd(input, extensionRegistry);
       }
     };
@@ -7141,21 +8857,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserAttkCmd> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserAttkCmd getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserAttkCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserAttkResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserAttkResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserAttkResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -7185,10 +8901,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserAttkResult}
    */
   public  static final class UserAttkResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserAttkResult)
-      UserAttkResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserAttkResult)
+          UserAttkResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserAttkResult.newBuilder() to construct.
     private UserAttkResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -7196,28 +8912,28 @@ public final class GameMsgProtocol {
     private UserAttkResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserAttkResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserAttkResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7238,7 +8954,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -7249,23 +8965,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserAttkResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserAttkResult.class, GameMsgProtocol.UserAttkResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserAttkResult.class, org.zy.tinygame.GameMsgProtocol.UserAttkResult.Builder.class);
     }
 
     public static final int ATTKUSERID_FIELD_NUMBER = 1;
@@ -7297,7 +9013,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -7307,9 +9023,9 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (attkUserId_ != 0) {
         output.writeUInt32(1, attkUserId_);
       }
@@ -7319,7 +9035,7 @@ public final class GameMsgProtocol {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -7327,36 +9043,36 @@ public final class GameMsgProtocol {
       size = 0;
       if (attkUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, attkUserId_);
+                .computeUInt32Size(1, attkUserId_);
       }
       if (targetUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, targetUserId_);
+                .computeUInt32Size(2, targetUserId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserAttkResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserAttkResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserAttkResult other = (GameMsgProtocol.UserAttkResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserAttkResult other = (org.zy.tinygame.GameMsgProtocol.UserAttkResult) obj;
 
       if (getAttkUserId()
-          != other.getAttkUserId()) return false;
+              != other.getAttkUserId()) return false;
       if (getTargetUserId()
-          != other.getTargetUserId()) return false;
+              != other.getTargetUserId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -7372,93 +9088,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserAttkResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserAttkResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserAttkResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -7470,29 +9186,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserAttkResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserAttkResult)
-        GameMsgProtocol.UserAttkResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserAttkResult)
+            org.zy.tinygame.GameMsgProtocol.UserAttkResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserAttkResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserAttkResult.class, GameMsgProtocol.UserAttkResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserAttkResult.class, org.zy.tinygame.GameMsgProtocol.UserAttkResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserAttkResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserAttkResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -7501,7 +9217,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         attkUserId_ = 0;
@@ -7511,79 +9227,79 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserAttkResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserAttkResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserAttkResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkResult build() {
-        GameMsgProtocol.UserAttkResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserAttkResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserAttkResult buildPartial() {
-        GameMsgProtocol.UserAttkResult result = new GameMsgProtocol.UserAttkResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserAttkResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserAttkResult result = new org.zy.tinygame.GameMsgProtocol.UserAttkResult(this);
         result.attkUserId_ = attkUserId_;
         result.targetUserId_ = targetUserId_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserAttkResult) {
-          return mergeFrom((GameMsgProtocol.UserAttkResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserAttkResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserAttkResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserAttkResult other) {
-        if (other == GameMsgProtocol.UserAttkResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserAttkResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserAttkResult.getDefaultInstance()) return this;
         if (other.getAttkUserId() != 0) {
           setAttkUserId(other.getAttkUserId());
         }
@@ -7595,21 +9311,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserAttkResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserAttkResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserAttkResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserAttkResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7702,15 +9418,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -7719,22 +9435,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserAttkResult)
-    private static final GameMsgProtocol.UserAttkResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserAttkResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserAttkResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserAttkResult();
     }
 
-    public static GameMsgProtocol.UserAttkResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserAttkResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserAttkResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserAttkResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserAttkResult>() {
+      @java.lang.Override
       public UserAttkResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserAttkResult(input, extensionRegistry);
       }
     };
@@ -7743,21 +9459,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserAttkResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserAttkResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserAttkResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserSubtractHpResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserSubtractHpResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserSubtractHpResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -7787,10 +9503,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserSubtractHpResult}
    */
   public  static final class UserSubtractHpResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserSubtractHpResult)
-      UserSubtractHpResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserSubtractHpResult)
+          UserSubtractHpResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserSubtractHpResult.newBuilder() to construct.
     private UserSubtractHpResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -7798,28 +9514,28 @@ public final class GameMsgProtocol {
     private UserSubtractHpResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserSubtractHpResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserSubtractHpResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -7840,7 +9556,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -7851,23 +9567,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserSubtractHpResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserSubtractHpResult.class, GameMsgProtocol.UserSubtractHpResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserSubtractHpResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.class, org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.Builder.class);
     }
 
     public static final int TARGETUSERID_FIELD_NUMBER = 1;
@@ -7899,7 +9615,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -7909,9 +9625,9 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (targetUserId_ != 0) {
         output.writeUInt32(1, targetUserId_);
       }
@@ -7921,7 +9637,7 @@ public final class GameMsgProtocol {
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -7929,36 +9645,36 @@ public final class GameMsgProtocol {
       size = 0;
       if (targetUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, targetUserId_);
+                .computeUInt32Size(1, targetUserId_);
       }
       if (subtractHp_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, subtractHp_);
+                .computeUInt32Size(2, subtractHp_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserSubtractHpResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserSubtractHpResult other = (GameMsgProtocol.UserSubtractHpResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult other = (org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult) obj;
 
       if (getTargetUserId()
-          != other.getTargetUserId()) return false;
+              != other.getTargetUserId()) return false;
       if (getSubtractHp()
-          != other.getSubtractHp()) return false;
+              != other.getSubtractHp()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -7974,93 +9690,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserSubtractHpResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserSubtractHpResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8072,29 +9788,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserSubtractHpResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserSubtractHpResult)
-        GameMsgProtocol.UserSubtractHpResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserSubtractHpResult)
+            org.zy.tinygame.GameMsgProtocol.UserSubtractHpResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserSubtractHpResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserSubtractHpResult.class, GameMsgProtocol.UserSubtractHpResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserSubtractHpResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.class, org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserSubtractHpResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8103,7 +9819,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         targetUserId_ = 0;
@@ -8113,79 +9829,79 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserSubtractHpResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserSubtractHpResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserSubtractHpResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserSubtractHpResult build() {
-        GameMsgProtocol.UserSubtractHpResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserSubtractHpResult buildPartial() {
-        GameMsgProtocol.UserSubtractHpResult result = new GameMsgProtocol.UserSubtractHpResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult result = new org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult(this);
         result.targetUserId_ = targetUserId_;
         result.subtractHp_ = subtractHp_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserSubtractHpResult) {
-          return mergeFrom((GameMsgProtocol.UserSubtractHpResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserSubtractHpResult other) {
-        if (other == GameMsgProtocol.UserSubtractHpResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult.getDefaultInstance()) return this;
         if (other.getTargetUserId() != 0) {
           setTargetUserId(other.getTargetUserId());
         }
@@ -8197,21 +9913,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserSubtractHpResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserSubtractHpResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8304,15 +10020,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -8321,22 +10037,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserSubtractHpResult)
-    private static final GameMsgProtocol.UserSubtractHpResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserSubtractHpResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult();
     }
 
-    public static GameMsgProtocol.UserSubtractHpResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserSubtractHpResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserSubtractHpResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserSubtractHpResult>() {
+      @java.lang.Override
       public UserSubtractHpResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserSubtractHpResult(input, extensionRegistry);
       }
     };
@@ -8345,21 +10061,21 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserSubtractHpResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserSubtractHpResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserSubtractHpResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   public interface UserDieResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:msg.UserDieResult)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:msg.UserDieResult)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
@@ -8379,10 +10095,10 @@ public final class GameMsgProtocol {
    * Protobuf type {@code msg.UserDieResult}
    */
   public  static final class UserDieResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:msg.UserDieResult)
-      UserDieResultOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserDieResult)
+          UserDieResultOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use UserDieResult.newBuilder() to construct.
     private UserDieResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -8390,28 +10106,28 @@ public final class GameMsgProtocol {
     private UserDieResult() {
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
       return new UserDieResult();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private UserDieResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -8427,7 +10143,7 @@ public final class GameMsgProtocol {
             }
             default: {
               if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -8438,23 +10154,23 @@ public final class GameMsgProtocol {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_msg_UserDieResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserDieResult.class, GameMsgProtocol.UserDieResult.Builder.class);
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserDieResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserDieResult.class, org.zy.tinygame.GameMsgProtocol.UserDieResult.Builder.class);
     }
 
     public static final int TARGETUSERID_FIELD_NUMBER = 1;
@@ -8472,7 +10188,7 @@ public final class GameMsgProtocol {
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -8482,16 +10198,16 @@ public final class GameMsgProtocol {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+            throws java.io.IOException {
       if (targetUserId_ != 0) {
         output.writeUInt32(1, targetUserId_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -8499,30 +10215,30 @@ public final class GameMsgProtocol {
       size = 0;
       if (targetUserId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, targetUserId_);
+                .computeUInt32Size(1, targetUserId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserDieResult)) {
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserDieResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserDieResult other = (GameMsgProtocol.UserDieResult) obj;
+      org.zy.tinygame.GameMsgProtocol.UserDieResult other = (org.zy.tinygame.GameMsgProtocol.UserDieResult) obj;
 
       if (getTargetUserId()
-          != other.getTargetUserId()) return false;
+              != other.getTargetUserId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -8536,93 +10252,93 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserDieResult prototype) {
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserDieResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8634,29 +10350,29 @@ public final class GameMsgProtocol {
      * Protobuf type {@code msg.UserDieResult}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:msg.UserDieResult)
-        GameMsgProtocol.UserDieResultOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserDieResult)
+            org.zy.tinygame.GameMsgProtocol.UserDieResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_msg_UserDieResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserDieResult.class, GameMsgProtocol.UserDieResult.Builder.class);
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserDieResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserDieResult.class, org.zy.tinygame.GameMsgProtocol.UserDieResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserDieResult.newBuilder()
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserDieResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8665,7 +10381,7 @@ public final class GameMsgProtocol {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         targetUserId_ = 0;
@@ -8673,78 +10389,78 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserDieResult_descriptor;
       }
 
-      @Override
-      public GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserDieResult.getDefaultInstance();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserDieResult.getDefaultInstance();
       }
 
-      @Override
-      public GameMsgProtocol.UserDieResult build() {
-        GameMsgProtocol.UserDieResult result = buildPartial();
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserDieResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserDieResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public GameMsgProtocol.UserDieResult buildPartial() {
-        GameMsgProtocol.UserDieResult result = new GameMsgProtocol.UserDieResult(this);
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserDieResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserDieResult result = new org.zy.tinygame.GameMsgProtocol.UserDieResult(this);
         result.targetUserId_ = targetUserId_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserDieResult) {
-          return mergeFrom((GameMsgProtocol.UserDieResult)other);
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserDieResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserDieResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserDieResult other) {
-        if (other == GameMsgProtocol.UserDieResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserDieResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserDieResult.getDefaultInstance()) return this;
         if (other.getTargetUserId() != 0) {
           setTargetUserId(other.getTargetUserId());
         }
@@ -8753,21 +10469,21 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.UserDieResult parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserDieResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserDieResult) e.getUnfinishedMessage();
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserDieResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8818,15 +10534,15 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -8835,22 +10551,22 @@ public final class GameMsgProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:msg.UserDieResult)
-    private static final GameMsgProtocol.UserDieResult DEFAULT_INSTANCE;
+    private static final org.zy.tinygame.GameMsgProtocol.UserDieResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserDieResult();
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserDieResult();
     }
 
-    public static GameMsgProtocol.UserDieResult getDefaultInstance() {
+    public static org.zy.tinygame.GameMsgProtocol.UserDieResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<UserDieResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserDieResult>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<UserDieResult>() {
+      @java.lang.Override
       public UserDieResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new UserDieResult(input, extensionRegistry);
       }
     };
@@ -8859,215 +10575,3205 @@ public final class GameMsgProtocol {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserDieResult> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserLoginCmdOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:msg.UserLoginCmd)
+          com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 1;</code>
+     * @return The userName.
+     */
+    java.lang.String getUserName();
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 1;</code>
+     * @return The bytes for userName.
+     */
+    com.google.protobuf.ByteString
+    getUserNameBytes();
+
+    /**
+     * <pre>
+     * 用户密码
+     * </pre>
+     *
+     * <code>string password = 2;</code>
+     * @return The password.
+     */
+    java.lang.String getPassword();
+    /**
+     * <pre>
+     * 用户密码
+     * </pre>
+     *
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
+     */
+    com.google.protobuf.ByteString
+    getPasswordBytes();
+  }
+  /**
+   * <pre>
+   * 用户登录
+   * /////////////////////////////////////////////////////////////////////
+   * 指令
+   * </pre>
+   *
+   * Protobuf type {@code msg.UserLoginCmd}
+   */
+  public  static final class UserLoginCmd extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserLoginCmd)
+          UserLoginCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use UserLoginCmd.newBuilder() to construct.
+    private UserLoginCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserLoginCmd() {
+      userName_ = "";
+      password_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+      return new UserLoginCmd();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserLoginCmd(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userName_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              password_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginCmd_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserLoginCmd.class, org.zy.tinygame.GameMsgProtocol.UserLoginCmd.Builder.class);
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object userName_;
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 1;</code>
+     * @return The userName.
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 1;</code>
+     * @return The bytes for userName.
+     */
+    public com.google.protobuf.ByteString
+    getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object password_;
+    /**
+     * <pre>
+     * 用户密码
+     * </pre>
+     *
+     * <code>string password = 2;</code>
+     * @return The password.
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        password_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 用户密码
+     * </pre>
+     *
+     * <code>string password = 2;</code>
+     * @return The bytes for password.
+     */
+    public com.google.protobuf.ByteString
+    getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+      if (!getUserNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+      }
+      if (!getPasswordBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUserNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+      }
+      if (!getPasswordBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserLoginCmd)) {
+        return super.equals(obj);
+      }
+      org.zy.tinygame.GameMsgProtocol.UserLoginCmd other = (org.zy.tinygame.GameMsgProtocol.UserLoginCmd) obj;
+
+      if (!getUserName()
+              .equals(other.getUserName())) return false;
+      if (!getPassword()
+              .equals(other.getPassword())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
+      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getPassword().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserLoginCmd prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 用户登录
+     * /////////////////////////////////////////////////////////////////////
+     * 指令
+     * </pre>
+     *
+     * Protobuf type {@code msg.UserLoginCmd}
+     */
+    public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserLoginCmd)
+            org.zy.tinygame.GameMsgProtocol.UserLoginCmdOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginCmd_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserLoginCmd.class, org.zy.tinygame.GameMsgProtocol.UserLoginCmd.Builder.class);
+      }
+
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserLoginCmd.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userName_ = "";
+
+        password_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginCmd_descriptor;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserLoginCmd.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginCmd build() {
+        org.zy.tinygame.GameMsgProtocol.UserLoginCmd result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserLoginCmd result = new org.zy.tinygame.GameMsgProtocol.UserLoginCmd(this);
+        result.userName_ = userName_;
+        result.password_ = password_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserLoginCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserLoginCmd)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserLoginCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserLoginCmd.getDefaultInstance()) return this;
+        if (!other.getUserName().isEmpty()) {
+          userName_ = other.userName_;
+          onChanged();
+        }
+        if (!other.getPassword().isEmpty()) {
+          password_ = other.password_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserLoginCmd parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserLoginCmd) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object userName_ = "";
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 1;</code>
+       * @return The userName.
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 1;</code>
+       * @return The bytes for userName.
+       */
+      public com.google.protobuf.ByteString
+      getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 1;</code>
+       * @param value The userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserName(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserName() {
+
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 1;</code>
+       * @param value The bytes for userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserNameBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object password_ = "";
+      /**
+       * <pre>
+       * 用户密码
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The password.
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户密码
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
+       */
+      public com.google.protobuf.ByteString
+      getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户密码
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @param value The password to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPassword(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户密码
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPassword() {
+
+        password_ = getDefaultInstance().getPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户密码
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @param value The bytes for password to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPasswordBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:msg.UserLoginCmd)
+    }
+
+    // @@protoc_insertion_point(class_scope:msg.UserLoginCmd)
+    private static final org.zy.tinygame.GameMsgProtocol.UserLoginCmd DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserLoginCmd();
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginCmd getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserLoginCmd>
+            PARSER = new com.google.protobuf.AbstractParser<UserLoginCmd>() {
+      @java.lang.Override
+      public UserLoginCmd parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserLoginCmd(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserLoginCmd> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserLoginCmd> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserLoginCmd getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserLoginResultOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:msg.UserLoginResult)
+          com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 用户 Id,
+     * 如果是 -1 则说明登录失败
+     * </pre>
+     *
+     * <code>uint32 userId = 1;</code>
+     * @return The userId.
+     */
+    int getUserId();
+
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The userName.
+     */
+    java.lang.String getUserName();
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The bytes for userName.
+     */
+    com.google.protobuf.ByteString
+    getUserNameBytes();
+
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 3;</code>
+     * @return The heroAvatar.
+     */
+    java.lang.String getHeroAvatar();
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 3;</code>
+     * @return The bytes for heroAvatar.
+     */
+    com.google.protobuf.ByteString
+    getHeroAvatarBytes();
+  }
+  /**
+   * <pre>
+   * 结果
+   * </pre>
+   *
+   * Protobuf type {@code msg.UserLoginResult}
+   */
+  public  static final class UserLoginResult extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.UserLoginResult)
+          UserLoginResultOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use UserLoginResult.newBuilder() to construct.
+    private UserLoginResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserLoginResult() {
+      userName_ = "";
+      heroAvatar_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+      return new UserLoginResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserLoginResult(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              userId_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userName_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              heroAvatar_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.UserLoginResult.class, org.zy.tinygame.GameMsgProtocol.UserLoginResult.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userId_;
+    /**
+     * <pre>
+     * 用户 Id,
+     * 如果是 -1 则说明登录失败
+     * </pre>
+     *
+     * <code>uint32 userId = 1;</code>
+     * @return The userId.
+     */
+    public int getUserId() {
+      return userId_;
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object userName_;
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The userName.
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 用户名称
+     * </pre>
+     *
+     * <code>string userName = 2;</code>
+     * @return The bytes for userName.
+     */
+    public com.google.protobuf.ByteString
+    getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HEROAVATAR_FIELD_NUMBER = 3;
+    private volatile java.lang.Object heroAvatar_;
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 3;</code>
+     * @return The heroAvatar.
+     */
+    public java.lang.String getHeroAvatar() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        heroAvatar_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 3;</code>
+     * @return The bytes for heroAvatar.
+     */
+    public com.google.protobuf.ByteString
+    getHeroAvatarBytes() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        heroAvatar_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+      if (userId_ != 0) {
+        output.writeUInt32(1, userId_);
+      }
+      if (!getUserNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userName_);
+      }
+      if (!getHeroAvatarBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, heroAvatar_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeUInt32Size(1, userId_);
+      }
+      if (!getUserNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userName_);
+      }
+      if (!getHeroAvatarBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, heroAvatar_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.UserLoginResult)) {
+        return super.equals(obj);
+      }
+      org.zy.tinygame.GameMsgProtocol.UserLoginResult other = (org.zy.tinygame.GameMsgProtocol.UserLoginResult) obj;
+
+      if (getUserId()
+              != other.getUserId()) return false;
+      if (!getUserName()
+              .equals(other.getUserName())) return false;
+      if (!getHeroAvatar()
+              .equals(other.getHeroAvatar())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
+      hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
+      hash = (53 * hash) + getHeroAvatar().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.UserLoginResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 结果
+     * </pre>
+     *
+     * Protobuf type {@code msg.UserLoginResult}
+     */
+    public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.UserLoginResult)
+            org.zy.tinygame.GameMsgProtocol.UserLoginResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.UserLoginResult.class, org.zy.tinygame.GameMsgProtocol.UserLoginResult.Builder.class);
+      }
+
+      // Construct using org.zy.tinygame.GameMsgProtocol.UserLoginResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userId_ = 0;
+
+        userName_ = "";
+
+        heroAvatar_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_UserLoginResult_descriptor;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.UserLoginResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginResult build() {
+        org.zy.tinygame.GameMsgProtocol.UserLoginResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.UserLoginResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.UserLoginResult result = new org.zy.tinygame.GameMsgProtocol.UserLoginResult(this);
+        result.userId_ = userId_;
+        result.userName_ = userName_;
+        result.heroAvatar_ = heroAvatar_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.UserLoginResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.UserLoginResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.UserLoginResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.UserLoginResult.getDefaultInstance()) return this;
+        if (other.getUserId() != 0) {
+          setUserId(other.getUserId());
+        }
+        if (!other.getUserName().isEmpty()) {
+          userName_ = other.userName_;
+          onChanged();
+        }
+        if (!other.getHeroAvatar().isEmpty()) {
+          heroAvatar_ = other.heroAvatar_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.UserLoginResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.UserLoginResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int userId_ ;
+      /**
+       * <pre>
+       * 用户 Id,
+       * 如果是 -1 则说明登录失败
+       * </pre>
+       *
+       * <code>uint32 userId = 1;</code>
+       * @return The userId.
+       */
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <pre>
+       * 用户 Id,
+       * 如果是 -1 则说明登录失败
+       * </pre>
+       *
+       * <code>uint32 userId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(int value) {
+
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户 Id,
+       * 如果是 -1 则说明登录失败
+       * </pre>
+       *
+       * <code>uint32 userId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userName_ = "";
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The userName.
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return The bytes for userName.
+       */
+      public com.google.protobuf.ByteString
+      getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @param value The userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserName(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserName() {
+
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 用户名称
+       * </pre>
+       *
+       * <code>string userName = 2;</code>
+       * @param value The bytes for userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserNameBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object heroAvatar_ = "";
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
+       * @return The heroAvatar.
+       */
+      public java.lang.String getHeroAvatar() {
+        java.lang.Object ref = heroAvatar_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          heroAvatar_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
+       * @return The bytes for heroAvatar.
+       */
+      public com.google.protobuf.ByteString
+      getHeroAvatarBytes() {
+        java.lang.Object ref = heroAvatar_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          heroAvatar_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
+       * @param value The heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatar(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHeroAvatar() {
+
+        heroAvatar_ = getDefaultInstance().getHeroAvatar();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 3;</code>
+       * @param value The bytes for heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatarBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:msg.UserLoginResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:msg.UserLoginResult)
+    private static final org.zy.tinygame.GameMsgProtocol.UserLoginResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.UserLoginResult();
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.UserLoginResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserLoginResult>
+            PARSER = new com.google.protobuf.AbstractParser<UserLoginResult>() {
+      @java.lang.Override
+      public UserLoginResult parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserLoginResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserLoginResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserLoginResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.UserLoginResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SelectHeroCmdOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:msg.SelectHeroCmd)
+          com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The heroAvatar.
+     */
+    java.lang.String getHeroAvatar();
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The bytes for heroAvatar.
+     */
+    com.google.protobuf.ByteString
+    getHeroAvatarBytes();
+  }
+  /**
+   * <pre>
+   *
+   * 选择英雄
+   * /////////////////////////////////////////////////////////////////////
+   * 指令
+   * </pre>
+   *
+   * Protobuf type {@code msg.SelectHeroCmd}
+   */
+  public  static final class SelectHeroCmd extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.SelectHeroCmd)
+          SelectHeroCmdOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use SelectHeroCmd.newBuilder() to construct.
+    private SelectHeroCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SelectHeroCmd() {
+      heroAvatar_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+      return new SelectHeroCmd();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SelectHeroCmd(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              heroAvatar_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroCmd_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroCmd_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.class, org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.Builder.class);
+    }
+
+    public static final int HEROAVATAR_FIELD_NUMBER = 1;
+    private volatile java.lang.Object heroAvatar_;
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The heroAvatar.
+     */
+    public java.lang.String getHeroAvatar() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        heroAvatar_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 英雄形象
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The bytes for heroAvatar.
+     */
+    public com.google.protobuf.ByteString
+    getHeroAvatarBytes() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        heroAvatar_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+      if (!getHeroAvatarBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, heroAvatar_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getHeroAvatarBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, heroAvatar_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.SelectHeroCmd)) {
+        return super.equals(obj);
+      }
+      org.zy.tinygame.GameMsgProtocol.SelectHeroCmd other = (org.zy.tinygame.GameMsgProtocol.SelectHeroCmd) obj;
+
+      if (!getHeroAvatar()
+              .equals(other.getHeroAvatar())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
+      hash = (53 * hash) + getHeroAvatar().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.SelectHeroCmd prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *
+     * 选择英雄
+     * /////////////////////////////////////////////////////////////////////
+     * 指令
+     * </pre>
+     *
+     * Protobuf type {@code msg.SelectHeroCmd}
+     */
+    public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.SelectHeroCmd)
+            org.zy.tinygame.GameMsgProtocol.SelectHeroCmdOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroCmd_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroCmd_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.class, org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.Builder.class);
+      }
+
+      // Construct using org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        heroAvatar_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroCmd_descriptor;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroCmd getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroCmd build() {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroCmd result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroCmd buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroCmd result = new org.zy.tinygame.GameMsgProtocol.SelectHeroCmd(this);
+        result.heroAvatar_ = heroAvatar_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.SelectHeroCmd) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.SelectHeroCmd)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.SelectHeroCmd other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.SelectHeroCmd.getDefaultInstance()) return this;
+        if (!other.getHeroAvatar().isEmpty()) {
+          heroAvatar_ = other.heroAvatar_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroCmd parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.SelectHeroCmd) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object heroAvatar_ = "";
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return The heroAvatar.
+       */
+      public java.lang.String getHeroAvatar() {
+        java.lang.Object ref = heroAvatar_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          heroAvatar_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return The bytes for heroAvatar.
+       */
+      public com.google.protobuf.ByteString
+      getHeroAvatarBytes() {
+        java.lang.Object ref = heroAvatar_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          heroAvatar_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @param value The heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatar(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHeroAvatar() {
+
+        heroAvatar_ = getDefaultInstance().getHeroAvatar();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @param value The bytes for heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatarBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:msg.SelectHeroCmd)
+    }
+
+    // @@protoc_insertion_point(class_scope:msg.SelectHeroCmd)
+    private static final org.zy.tinygame.GameMsgProtocol.SelectHeroCmd DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.SelectHeroCmd();
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroCmd getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SelectHeroCmd>
+            PARSER = new com.google.protobuf.AbstractParser<SelectHeroCmd>() {
+      @java.lang.Override
+      public SelectHeroCmd parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SelectHeroCmd(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SelectHeroCmd> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SelectHeroCmd> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.SelectHeroCmd getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SelectHeroResultOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:msg.SelectHeroResult)
+          com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 英雄形象, 
+     * 如果是空字符串则说明失败
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The heroAvatar.
+     */
+    java.lang.String getHeroAvatar();
+    /**
+     * <pre>
+     * 英雄形象, 
+     * 如果是空字符串则说明失败
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The bytes for heroAvatar.
+     */
+    com.google.protobuf.ByteString
+    getHeroAvatarBytes();
+  }
+  /**
+   * <pre>
+   * 结果
+   * </pre>
+   *
+   * Protobuf type {@code msg.SelectHeroResult}
+   */
+  public  static final class SelectHeroResult extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:msg.SelectHeroResult)
+          SelectHeroResultOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use SelectHeroResult.newBuilder() to construct.
+    private SelectHeroResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SelectHeroResult() {
+      heroAvatar_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+      return new SelectHeroResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SelectHeroResult(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              heroAvatar_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+    getDescriptor() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internalGetFieldAccessorTable() {
+      return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroResult_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      org.zy.tinygame.GameMsgProtocol.SelectHeroResult.class, org.zy.tinygame.GameMsgProtocol.SelectHeroResult.Builder.class);
+    }
+
+    public static final int HEROAVATAR_FIELD_NUMBER = 1;
+    private volatile java.lang.Object heroAvatar_;
+    /**
+     * <pre>
+     * 英雄形象, 
+     * 如果是空字符串则说明失败
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The heroAvatar.
+     */
+    public java.lang.String getHeroAvatar() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        heroAvatar_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 英雄形象, 
+     * 如果是空字符串则说明失败
+     * </pre>
+     *
+     * <code>string heroAvatar = 1;</code>
+     * @return The bytes for heroAvatar.
+     */
+    public com.google.protobuf.ByteString
+    getHeroAvatarBytes() {
+      java.lang.Object ref = heroAvatar_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8(
+                        (java.lang.String) ref);
+        heroAvatar_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+      if (!getHeroAvatarBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, heroAvatar_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getHeroAvatarBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, heroAvatar_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof org.zy.tinygame.GameMsgProtocol.SelectHeroResult)) {
+        return super.equals(obj);
+      }
+      org.zy.tinygame.GameMsgProtocol.SelectHeroResult other = (org.zy.tinygame.GameMsgProtocol.SelectHeroResult) obj;
+
+      if (!getHeroAvatar()
+              .equals(other.getHeroAvatar())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + HEROAVATAR_FIELD_NUMBER;
+      hash = (53 * hash) + getHeroAvatar().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.zy.tinygame.GameMsgProtocol.SelectHeroResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 结果
+     * </pre>
+     *
+     * Protobuf type {@code msg.SelectHeroResult}
+     */
+    public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:msg.SelectHeroResult)
+            org.zy.tinygame.GameMsgProtocol.SelectHeroResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroResult_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        org.zy.tinygame.GameMsgProtocol.SelectHeroResult.class, org.zy.tinygame.GameMsgProtocol.SelectHeroResult.Builder.class);
+      }
+
+      // Construct using org.zy.tinygame.GameMsgProtocol.SelectHeroResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        heroAvatar_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+      getDescriptorForType() {
+        return org.zy.tinygame.GameMsgProtocol.internal_static_msg_SelectHeroResult_descriptor;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroResult getDefaultInstanceForType() {
+        return org.zy.tinygame.GameMsgProtocol.SelectHeroResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroResult build() {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.zy.tinygame.GameMsgProtocol.SelectHeroResult buildPartial() {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroResult result = new org.zy.tinygame.GameMsgProtocol.SelectHeroResult(this);
+        result.heroAvatar_ = heroAvatar_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.zy.tinygame.GameMsgProtocol.SelectHeroResult) {
+          return mergeFrom((org.zy.tinygame.GameMsgProtocol.SelectHeroResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.zy.tinygame.GameMsgProtocol.SelectHeroResult other) {
+        if (other == org.zy.tinygame.GameMsgProtocol.SelectHeroResult.getDefaultInstance()) return this;
+        if (!other.getHeroAvatar().isEmpty()) {
+          heroAvatar_ = other.heroAvatar_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        org.zy.tinygame.GameMsgProtocol.SelectHeroResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.zy.tinygame.GameMsgProtocol.SelectHeroResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object heroAvatar_ = "";
+      /**
+       * <pre>
+       * 英雄形象, 
+       * 如果是空字符串则说明失败
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return The heroAvatar.
+       */
+      public java.lang.String getHeroAvatar() {
+        java.lang.Object ref = heroAvatar_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          heroAvatar_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象, 
+       * 如果是空字符串则说明失败
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return The bytes for heroAvatar.
+       */
+      public com.google.protobuf.ByteString
+      getHeroAvatarBytes() {
+        java.lang.Object ref = heroAvatar_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          heroAvatar_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 英雄形象, 
+       * 如果是空字符串则说明失败
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @param value The heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatar(
+              java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象, 
+       * 如果是空字符串则说明失败
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHeroAvatar() {
+
+        heroAvatar_ = getDefaultInstance().getHeroAvatar();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 英雄形象, 
+       * 如果是空字符串则说明失败
+       * </pre>
+       *
+       * <code>string heroAvatar = 1;</code>
+       * @param value The bytes for heroAvatar to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeroAvatarBytes(
+              com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        heroAvatar_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:msg.SelectHeroResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:msg.SelectHeroResult)
+    private static final org.zy.tinygame.GameMsgProtocol.SelectHeroResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.zy.tinygame.GameMsgProtocol.SelectHeroResult();
+    }
+
+    public static org.zy.tinygame.GameMsgProtocol.SelectHeroResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SelectHeroResult>
+            PARSER = new com.google.protobuf.AbstractParser<SelectHeroResult>() {
+      @java.lang.Override
+      public SelectHeroResult parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SelectHeroResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SelectHeroResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SelectHeroResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.zy.tinygame.GameMsgProtocol.SelectHeroResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserEntryCmd_descriptor;
+          internal_static_msg_UserEntryCmd_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserEntryCmd_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserEntryCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserEntryResult_descriptor;
+          internal_static_msg_UserEntryResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserEntryResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserEntryResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_WhoElseIsHereCmd_descriptor;
+          internal_static_msg_WhoElseIsHereCmd_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_WhoElseIsHereResult_descriptor;
+          internal_static_msg_WhoElseIsHereResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_WhoElseIsHereResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_WhoElseIsHereResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
+          internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserMoveToCmd_descriptor;
+          internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserMoveToCmd_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserMoveToResult_descriptor;
+          internal_static_msg_UserMoveToCmd_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserMoveToResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserMoveToCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserQuitResult_descriptor;
+          internal_static_msg_UserMoveToResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserQuitResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserMoveToResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserStopCmd_descriptor;
+          internal_static_msg_UserQuitResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserStopCmd_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserQuitResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserStopResult_descriptor;
+          internal_static_msg_UserStopCmd_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserStopResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserStopCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserAttkCmd_descriptor;
+          internal_static_msg_UserStopResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserAttkCmd_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserStopResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserAttkResult_descriptor;
+          internal_static_msg_UserAttkCmd_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserAttkResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserAttkCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserSubtractHpResult_descriptor;
+          internal_static_msg_UserAttkResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserSubtractHpResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserAttkResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_msg_UserDieResult_descriptor;
+          internal_static_msg_UserSubtractHpResult_descriptor;
   private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_msg_UserDieResult_fieldAccessorTable;
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserSubtractHpResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_msg_UserDieResult_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserDieResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_msg_UserLoginCmd_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserLoginCmd_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_msg_UserLoginResult_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_UserLoginResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_msg_SelectHeroCmd_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_SelectHeroCmd_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_msg_SelectHeroResult_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_msg_SelectHeroResult_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  getDescriptor() {
     return descriptor;
   }
   private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+          descriptor;
   static {
-    String[] descriptorData = {
-      "\n\025GameMsgProtocol.proto\022\003msg\"2\n\014UserEntr" +
-      "yCmd\022\016\n\006userId\030\001 \001(\r\022\022\n\nheroAvatar\030\002 \001(\t" +
-      "\"5\n\017UserEntryResult\022\016\n\006userId\030\001 \001(\r\022\022\n\nh" +
-      "eroAvatar\030\002 \001(\t\"\022\n\020WhoElseIsHereCmd\"z\n\023W" +
-      "hoElseIsHereResult\0223\n\010userInfo\030\001 \003(\0132!.m" +
-      "sg.WhoElseIsHereResult.UserInfo\032.\n\010UserI" +
-      "nfo\022\016\n\006userId\030\001 \001(\r\022\022\n\nheroAvatar\030\002 \001(\t\"" +
-      "7\n\rUserMoveToCmd\022\022\n\nmoveToPosX\030\001 \001(\002\022\022\n\n" +
-      "moveToPosY\030\002 \001(\002\"N\n\020UserMoveToResult\022\022\n\n" +
-      "moveUserId\030\001 \001(\r\022\022\n\nmoveToPosX\030\002 \001(\002\022\022\n\n" +
-      "moveToPosY\030\003 \001(\002\"$\n\016UserQuitResult\022\022\n\nqu" +
-      "itUserId\030\001 \001(\r\"\r\n\013UserStopCmd\"L\n\016UserSto" +
-      "pResult\022\022\n\nstopUserId\030\001 \001(\r\022\022\n\nstopAtPos" +
-      "X\030\002 \001(\002\022\022\n\nstopAtPosY\030\003 \001(\002\"#\n\013UserAttkC" +
-      "md\022\024\n\014targetUserId\030\001 \001(\r\":\n\016UserAttkResu" +
-      "lt\022\022\n\nattkUserId\030\001 \001(\r\022\024\n\014targetUserId\030\002" +
-      " \001(\r\"@\n\024UserSubtractHpResult\022\024\n\014targetUs" +
-      "erId\030\001 \001(\r\022\022\n\nsubtractHp\030\002 \001(\r\"%\n\rUserDi" +
-      "eResult\022\024\n\014targetUserId\030\001 \001(\r*\264\002\n\007MsgCod" +
-      "e\022\022\n\016USER_ENTRY_CMD\020\000\022\025\n\021USER_ENTRY_RESU" +
-      "LT\020\001\022\030\n\024WHO_ELSE_IS_HERE_CMD\020\002\022\033\n\027WHO_EL" +
-      "SE_IS_HERE_RESULT\020\003\022\024\n\020USER_MOVE_TO_CMD\020" +
-      "\004\022\027\n\023USER_MOVE_TO_RESULT\020\005\022\024\n\020USER_QUIT_" +
-      "RESULT\020\006\022\021\n\rUSER_STOP_CMD\020\007\022\024\n\020USER_STOP" +
-      "_RESULT\020\010\022\021\n\rUSER_ATTK_CMD\020\t\022\024\n\020USER_ATT" +
-      "K_RESULT\020\n\022\033\n\027USER_SUBTRACT_HP_RESULT\020\013\022" +
-      "\023\n\017USER_DIE_RESULT\020\014B\034\n\032org.tinygame.her" +
-      "ostory.msgb\006proto3"
+    java.lang.String[] descriptorData = {
+            "\n\025GameMsgProtocol.proto\022\003msg\"\016\n\014UserEntr" +
+                    "yCmd\"G\n\017UserEntryResult\022\016\n\006userId\030\001 \001(\r\022" +
+                    "\020\n\010userName\030\002 \001(\t\022\022\n\nheroAvatar\030\003 \001(\t\"\022\n" +
+                    "\020WhoElseIsHereCmd\"\261\002\n\023WhoElseIsHereResul" +
+                    "t\0223\n\010userInfo\030\001 \003(\0132!.msg.WhoElseIsHereR" +
+                    "esult.UserInfo\032\344\001\n\010UserInfo\022\016\n\006userId\030\001 " +
+                    "\001(\r\022\020\n\010userName\030\002 \001(\t\022\022\n\nheroAvatar\030\003 \001(" +
+                    "\t\022>\n\tmoveState\030\004 \001(\0132+.msg.WhoElseIsHere" +
+                    "Result.UserInfo.MoveState\032b\n\tMoveState\022\020" +
+                    "\n\010fromPosX\030\001 \001(\002\022\020\n\010fromPosY\030\002 \001(\002\022\016\n\006to" +
+                    "PosX\030\003 \001(\002\022\016\n\006toPosY\030\004 \001(\002\022\021\n\tstartTime\030" +
+                    "\005 \001(\004\"c\n\rUserMoveToCmd\022\024\n\014moveFromPosX\030\001" +
+                    " \001(\002\022\024\n\014moveFromPosY\030\002 \001(\002\022\022\n\nmoveToPosX" +
+                    "\030\003 \001(\002\022\022\n\nmoveToPosY\030\004 \001(\002\"\221\001\n\020UserMoveT" +
+                    "oResult\022\022\n\nmoveUserId\030\001 \001(\r\022\024\n\014moveFromP" +
+                    "osX\030\002 \001(\002\022\024\n\014moveFromPosY\030\003 \001(\002\022\022\n\nmoveT" +
+                    "oPosX\030\004 \001(\002\022\022\n\nmoveToPosY\030\005 \001(\002\022\025\n\rmoveS" +
+                    "tartTime\030\006 \001(\004\"$\n\016UserQuitResult\022\022\n\nquit" +
+                    "UserId\030\001 \001(\r\"\r\n\013UserStopCmd\"L\n\016UserStopR" +
+                    "esult\022\022\n\nstopUserId\030\001 \001(\r\022\022\n\nstopAtPosX\030" +
+                    "\002 \001(\002\022\022\n\nstopAtPosY\030\003 \001(\002\"#\n\013UserAttkCmd" +
+                    "\022\024\n\014targetUserId\030\001 \001(\r\":\n\016UserAttkResult" +
+                    "\022\022\n\nattkUserId\030\001 \001(\r\022\024\n\014targetUserId\030\002 \001" +
+                    "(\r\"@\n\024UserSubtractHpResult\022\024\n\014targetUser" +
+                    "Id\030\001 \001(\r\022\022\n\nsubtractHp\030\002 \001(\r\"%\n\rUserDieR" +
+                    "esult\022\024\n\014targetUserId\030\001 \001(\r\"2\n\014UserLogin" +
+                    "Cmd\022\020\n\010userName\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"" +
+                    "G\n\017UserLoginResult\022\016\n\006userId\030\001 \001(\r\022\020\n\010us" +
+                    "erName\030\002 \001(\t\022\022\n\nheroAvatar\030\003 \001(\t\"#\n\rSele" +
+                    "ctHeroCmd\022\022\n\nheroAvatar\030\001 \001(\t\"&\n\020SelectH" +
+                    "eroResult\022\022\n\nheroAvatar\030\001 \001(\t*\214\003\n\007MsgCod" +
+                    "e\022\022\n\016USER_ENTRY_CMD\020\000\022\025\n\021USER_ENTRY_RESU" +
+                    "LT\020\001\022\030\n\024WHO_ELSE_IS_HERE_CMD\020\002\022\033\n\027WHO_EL" +
+                    "SE_IS_HERE_RESULT\020\003\022\024\n\020USER_MOVE_TO_CMD\020" +
+                    "\004\022\027\n\023USER_MOVE_TO_RESULT\020\005\022\024\n\020USER_QUIT_" +
+                    "RESULT\020\006\022\021\n\rUSER_STOP_CMD\020\007\022\024\n\020USER_STOP" +
+                    "_RESULT\020\010\022\021\n\rUSER_ATTK_CMD\020\t\022\024\n\020USER_ATT" +
+                    "K_RESULT\020\n\022\033\n\027USER_SUBTRACT_HP_RESULT\020\013\022" +
+                    "\023\n\017USER_DIE_RESULT\020\014\022\022\n\016USER_LOGIN_CMD\020\r" +
+                    "\022\025\n\021USER_LOGIN_RESULT\020\016\022\023\n\017SELECT_HERO_C" +
+                    "MD\020\017\022\026\n\022SELECT_HERO_RESULT\020\020B\034\n\032org.tiny" +
+                    "game.herostory.msgb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+            .internalBuildGeneratedFileFrom(descriptorData,
+                    new com.google.protobuf.Descriptors.FileDescriptor[] {
+                    });
     internal_static_msg_UserEntryCmd_descriptor =
-      getDescriptor().getMessageTypes().get(0);
+            getDescriptor().getMessageTypes().get(0);
     internal_static_msg_UserEntryCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserEntryCmd_descriptor,
-        new String[] { "UserId", "HeroAvatar", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserEntryCmd_descriptor,
+            new java.lang.String[] { });
     internal_static_msg_UserEntryResult_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(1);
     internal_static_msg_UserEntryResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserEntryResult_descriptor,
-        new String[] { "UserId", "HeroAvatar", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserEntryResult_descriptor,
+            new java.lang.String[] { "UserId", "UserName", "HeroAvatar", });
     internal_static_msg_WhoElseIsHereCmd_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(2);
     internal_static_msg_WhoElseIsHereCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_WhoElseIsHereCmd_descriptor,
-        new String[] { });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_WhoElseIsHereCmd_descriptor,
+            new java.lang.String[] { });
     internal_static_msg_WhoElseIsHereResult_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(3);
     internal_static_msg_WhoElseIsHereResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_WhoElseIsHereResult_descriptor,
-        new String[] { "UserInfo", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_WhoElseIsHereResult_descriptor,
+            new java.lang.String[] { "UserInfo", });
     internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor =
-      internal_static_msg_WhoElseIsHereResult_descriptor.getNestedTypes().get(0);
+            internal_static_msg_WhoElseIsHereResult_descriptor.getNestedTypes().get(0);
     internal_static_msg_WhoElseIsHereResult_UserInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor,
-        new String[] { "UserId", "HeroAvatar", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor,
+            new java.lang.String[] { "UserId", "UserName", "HeroAvatar", "MoveState", });
+    internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor =
+            internal_static_msg_WhoElseIsHereResult_UserInfo_descriptor.getNestedTypes().get(0);
+    internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_WhoElseIsHereResult_UserInfo_MoveState_descriptor,
+            new java.lang.String[] { "FromPosX", "FromPosY", "ToPosX", "ToPosY", "StartTime", });
     internal_static_msg_UserMoveToCmd_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(4);
     internal_static_msg_UserMoveToCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserMoveToCmd_descriptor,
-        new String[] { "MoveToPosX", "MoveToPosY", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserMoveToCmd_descriptor,
+            new java.lang.String[] { "MoveFromPosX", "MoveFromPosY", "MoveToPosX", "MoveToPosY", });
     internal_static_msg_UserMoveToResult_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(5);
     internal_static_msg_UserMoveToResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserMoveToResult_descriptor,
-        new String[] { "MoveUserId", "MoveToPosX", "MoveToPosY", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserMoveToResult_descriptor,
+            new java.lang.String[] { "MoveUserId", "MoveFromPosX", "MoveFromPosY", "MoveToPosX", "MoveToPosY", "MoveStartTime", });
     internal_static_msg_UserQuitResult_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(6);
     internal_static_msg_UserQuitResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserQuitResult_descriptor,
-        new String[] { "QuitUserId", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserQuitResult_descriptor,
+            new java.lang.String[] { "QuitUserId", });
     internal_static_msg_UserStopCmd_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(7);
     internal_static_msg_UserStopCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserStopCmd_descriptor,
-        new String[] { });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserStopCmd_descriptor,
+            new java.lang.String[] { });
     internal_static_msg_UserStopResult_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(8);
     internal_static_msg_UserStopResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserStopResult_descriptor,
-        new String[] { "StopUserId", "StopAtPosX", "StopAtPosY", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserStopResult_descriptor,
+            new java.lang.String[] { "StopUserId", "StopAtPosX", "StopAtPosY", });
     internal_static_msg_UserAttkCmd_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(9);
     internal_static_msg_UserAttkCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserAttkCmd_descriptor,
-        new String[] { "TargetUserId", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserAttkCmd_descriptor,
+            new java.lang.String[] { "TargetUserId", });
     internal_static_msg_UserAttkResult_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(10);
     internal_static_msg_UserAttkResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserAttkResult_descriptor,
-        new String[] { "AttkUserId", "TargetUserId", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserAttkResult_descriptor,
+            new java.lang.String[] { "AttkUserId", "TargetUserId", });
     internal_static_msg_UserSubtractHpResult_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(11);
     internal_static_msg_UserSubtractHpResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserSubtractHpResult_descriptor,
-        new String[] { "TargetUserId", "SubtractHp", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserSubtractHpResult_descriptor,
+            new java.lang.String[] { "TargetUserId", "SubtractHp", });
     internal_static_msg_UserDieResult_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(12);
     internal_static_msg_UserDieResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_msg_UserDieResult_descriptor,
-        new String[] { "TargetUserId", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserDieResult_descriptor,
+            new java.lang.String[] { "TargetUserId", });
+    internal_static_msg_UserLoginCmd_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+    internal_static_msg_UserLoginCmd_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserLoginCmd_descriptor,
+            new java.lang.String[] { "UserName", "Password", });
+    internal_static_msg_UserLoginResult_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+    internal_static_msg_UserLoginResult_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_UserLoginResult_descriptor,
+            new java.lang.String[] { "UserId", "UserName", "HeroAvatar", });
+    internal_static_msg_SelectHeroCmd_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+    internal_static_msg_SelectHeroCmd_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_SelectHeroCmd_descriptor,
+            new java.lang.String[] { "HeroAvatar", });
+    internal_static_msg_SelectHeroResult_descriptor =
+            getDescriptor().getMessageTypes().get(16);
+    internal_static_msg_SelectHeroResult_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_msg_SelectHeroResult_descriptor,
+            new java.lang.String[] { "HeroAvatar", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
 }
+

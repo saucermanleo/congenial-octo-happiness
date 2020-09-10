@@ -28,8 +28,9 @@ public class ServerMain {
                 socketChannel.pipeline().addLast(new HttpServerCodec())
                         .addLast(new HttpObjectAggregator(65535))
                         .addLast(new WebSocketServerProtocolHandler("/websocket"))
-                        .addLast(new GameMsgDecoder())
-                        .addLast(new GameMsgHandler(),new GameMsgEncoder());
+                        .addLast(new GameMsgDecoder(),new GameMsgEncoder())
+                        .addLast(new GameMsgHandler());
+
 
             }
         }).group(boss, works).bind(12345);

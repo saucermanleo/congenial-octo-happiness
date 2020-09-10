@@ -8,6 +8,9 @@ package org.zy.tinygame;
 public class User {
     private int userId;
     private String role;
+    public MoveState moveState;
+    public int blood;
+    public String name;
 
     public int getUserId() {
         return userId;

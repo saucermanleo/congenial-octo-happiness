@@ -12,6 +12,9 @@ import org.zy.tinygame.handle.Handle;
 import org.zy.tinygame.handle.HandleFactory;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author : 生态环境-张阳
@@ -22,6 +25,9 @@ public class GameMsgHandler extends ChannelInboundHandlerAdapter {
 
     public static final ChannelGroup CHANNELS = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     public static final ConcurrentHashMap<Integer, User> users = new ConcurrentHashMap<Integer, User>();
+    public static final ConcurrentHashMap<Integer, Executor> executors = new ConcurrentHashMap<Integer, Executor>();
+    public static final Executor executor = Executors.newSingleThreadExecutor();
+    public static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(1);
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -50,6 +56,7 @@ public class GameMsgHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println(msg);
         Handle<?> handle = HandleFactory.getHandle(msg);
         if (handle != null) {
             handle.handle(ctx, msg);
