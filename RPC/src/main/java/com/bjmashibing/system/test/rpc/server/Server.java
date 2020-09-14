@@ -25,15 +25,20 @@ public class Server {
     public static ConcurrentHashMap<String,Object> beans = new ConcurrentHashMap();
 
     private int port ;
+    private Class<?> clazz;
 
-    public Server(int port) {
+    public Server(int port,Class<?> clazz) {
         this.port = port;
+        this.clazz = clazz;
     }
 
     private  void  init(){
         try {
-            String name = Server.class.getPackage().getName();
-            name = name.substring(0,name.indexOf("."));
+            Package aPackage = clazz.getPackage();
+            String name = "";
+            if(aPackage != null){
+                name= clazz.getPackage().getName();
+            }
             System.out.println(name);
             Set<Class<?>> classes = ClassReactUtil.listClazz(name, true, x -> {
                 RPCInstance declaredAnnotation = x.getDeclaredAnnotation(RPCInstance.class);

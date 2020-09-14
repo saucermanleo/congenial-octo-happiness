@@ -1,5 +1,6 @@
-package com.bjmashibing.system.test.rpc.client;
+package com.bjmashibing.system.test.rpc;
 
+import com.bjmashibing.system.test.rpc.client.RPCFactory;
 import com.bjmashibing.system.test.rpc.service.Car;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.IOException;
  */
 public class Client {
     public static void main(String[] args) throws IOException {
-        RPCFactory rpcFactory = new RPCFactory(9090,"localhost");
+        RPCFactory rpcFactory = new RPCFactory(9090,"localhost",Client.class);
         Car car = rpcFactory.getRPCInstance(Car.class);
 
         for(int i = 0 ;i<50;i++){

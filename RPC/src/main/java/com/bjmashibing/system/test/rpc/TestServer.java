@@ -1,4 +1,6 @@
-package com.bjmashibing.system.test.rpc.server;
+package com.bjmashibing.system.test.rpc;
+
+import com.bjmashibing.system.test.rpc.server.Server;
 
 /**
  * @author : 生态环境-张阳
@@ -6,7 +8,7 @@ package com.bjmashibing.system.test.rpc.server;
  */
 public class TestServer {
     public static void main(String[] args) {
-        Server server = new Server(9090);
+        Server server = new Server(9090,TestServer.class);
         try {
             server.start();
         } catch (InterruptedException e) {

@@ -20,13 +20,14 @@ public class ClassReactUtil {
     private static void listDictory(String packge, File destFile, boolean recive, Set<Class<?>> sets, Predicate<Class<?>> predicate) {
         String destPath;
         File[] files = destFile.listFiles();
+        packge = packge.equals("")?packge:packge+".";
         for (File listFile : files) {
             if (listFile.isFile()) {
                 destPath = listFile.getName();
                 if (!destPath.endsWith(".class")) {
                     continue;
                 }
-                destPath = packge + "." + destPath.replace(".class", "");
+                destPath = packge + destPath.replace(".class", "");
                 try {
                     Class<?> aClass = Class.forName(destPath);
                     if (predicate.test(aClass)) {
@@ -39,7 +40,7 @@ public class ClassReactUtil {
 
             } else if (listFile.isDirectory() && recive) {
                 queue.offer(listFile);
-                queuePackage.offer(packge + "." + listFile.getName());
+                queuePackage.offer(packge + listFile.getName());
             }
         }
     }

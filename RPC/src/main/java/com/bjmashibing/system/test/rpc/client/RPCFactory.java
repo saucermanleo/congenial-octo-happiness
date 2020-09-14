@@ -17,18 +17,23 @@ public class RPCFactory {
     private int port;
     private String ip;
 
-    public RPCFactory(int port, String ip) {
+    public RPCFactory(int port, String ip,Class<?> clazz) {
         this.port = port;
         this.ip = ip;
-        init();
+        this.init(clazz);
     }
 
-    private void init() {
+    private void init(Class<?> clazz) {
         try {
             RPCProxy rpcProxy = new RPCProxy(ip, port);
-            String name = RPCFactory.class.getPackage().getName();
-            name = name.substring(0, name.lastIndexOf("."));
+
+            Package aPackage = clazz.getPackage();
+            String name = "";
+            if(aPackage != null){
+                name= clazz.getPackage().getName();
+            }
             System.out.println(name);
+
             Set<Class<?>> classes = ClassReactUtil.listClazz(name, true, x -> {
                 RPCInterface declaredAnnotation = x.getDeclaredAnnotation(RPCInterface.class);
                 if (declaredAnnotation != null) {
