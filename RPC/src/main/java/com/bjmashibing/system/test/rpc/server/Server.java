@@ -33,7 +33,7 @@ public class Server {
     private  void  init(){
         try {
             String name = Server.class.getPackage().getName();
-            name = name.substring(0,name.lastIndexOf("."));
+            name = name.substring(0,name.indexOf("."));
             System.out.println(name);
             Set<Class<?>> classes = ClassReactUtil.listClazz(name, true, x -> {
                 RPCInstance declaredAnnotation = x.getDeclaredAnnotation(RPCInstance.class);

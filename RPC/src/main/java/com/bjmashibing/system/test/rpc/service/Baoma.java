@@ -21,7 +21,7 @@ public class Baoma implements Car {
     @Override
     public Person getOwn() {
         Person person = new Person();
-        person.setAge(1);
+        person.setAge(5);
         person.setBirthiday("3");
         person.setName("zy");
         return person;
