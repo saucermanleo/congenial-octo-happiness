@@ -1,6 +1,8 @@
 package com.bjmashibing.system.spring.bootstrap;
 
 import com.bjmashibing.system.rpc.util.ClassReactUtil;
+import com.bjmashibing.system.spring.annotation.EnableRPCClient;
+import com.bjmashibing.system.spring.annotation.EnableRPCServer;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -25,24 +27,37 @@ public class SpringApplication {
     }
 
     public void start() {
+
+
         try {
-            List<IPostProcesser> postProcesses = new LinkedList<>();
+            List<IPostProcessor> postProcesses = new LinkedList<>();
             postProcesses.add(new DefaultPostProcessor());
+            if (clazz.isAnnotationPresent(EnableRPCClient.class)) {
+                postProcesses.add(new RPCClientPostProcesser("localhost", 9090));
+            }
+            if (clazz.isAnnotationPresent(EnableRPCServer.class)) {
+                postProcesses.add(new RPCServerPostProcesser());
+            }
+
             ClassReactUtil.listClazz(clazz, true, (x) -> {
-                for (IPostProcesser postProcesser : postProcesses) {
-                    postProcesser.filter(x);
+                for (IPostProcessor postProcessor : postProcesses) {
+                    postProcessor.process(x);
                 }
                 return false;
             });
             for (Field key : list) {
-                String name;
-                if (key.getType().isInterface()) {
-                    name = interfaceToName.get(key.getType().getName());
-                } else {
+                String name = key.getType().getName();
+                name=      interfaceToName.get(name);
+                if (name == null || name.equals("")) {
                     name = key.getType().getName();
                 }
                 key.set(beans.get(key.getDeclaringClass().getName()), beans.get(name));
             }
+
+            for (IPostProcessor postProcessor : postProcesses) {
+                postProcessor.lastTodo();
+            }
+
             System.out.println(list);
             list = null;
             System.out.println(beans);
@@ -56,10 +71,11 @@ public class SpringApplication {
     }
 
     public static <T> T getBean(Class<T> t) {
-        if (t.isInterface()) {
-            return (T) beans.get(interfaceToName.get(t.getName()));
-        } else {
-            return (T) beans.get(t.getName());
+        String name = interfaceToName.get(t.getName());
+        if (name == null || name.equals("")) {
+            name = t.getName();
         }
+        return (T) beans.get(name);
+
     }
 }

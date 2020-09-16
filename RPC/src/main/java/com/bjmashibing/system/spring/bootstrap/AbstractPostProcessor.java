@@ -4,12 +4,13 @@ import com.bjmashibing.system.spring.annotation.Autowired;
 import com.bjmashibing.system.spring.util.ReflectUtil;
 
 import java.lang.reflect.Field;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author : 生态环境-张阳
  * @date : 2020/9/16 0016 15:11
  */
-public abstract class AbstractPostProcessor implements IPostProcesser{
+public abstract class AbstractPostProcessor implements IPostProcessor {
 
 
     public void add(String name,Object object){
@@ -26,6 +27,7 @@ public abstract class AbstractPostProcessor implements IPostProcesser{
             }
         }
         ReflectUtil.getInterface(SpringApplication.interfaceToName,x,x.getName());
+
     }
 
 
@@ -34,5 +36,14 @@ public abstract class AbstractPostProcessor implements IPostProcesser{
         if(this.filter(x)){
             afterProcess(x);
         }
+    }
+
+    @Override
+    public void lastTodo() {
+
+    }
+
+    ConcurrentHashMap<String, Object>  getBeansMap(){
+        return SpringApplication.beans;
     }
 }

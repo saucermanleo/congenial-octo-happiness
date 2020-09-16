@@ -22,21 +22,31 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Server {
 
-    public static ConcurrentHashMap<String,Object> beans = new ConcurrentHashMap();
+    public static ConcurrentHashMap<String, Object> beans = new ConcurrentHashMap();
 
-    private int port ;
+    private int port;
     private Class<?> clazz;
 
-    public Server(int port,Class<?> clazz) {
+    public Server(int port, Class<?> clazz) {
         this.port = port;
         this.clazz = clazz;
     }
 
-    private  void  init(){
+
+    public Server(int port) {
+        this.port = port;
+        try {
+            startServer(port);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void init() {
         try {
             Set<Class<?>> classes = ClassReactUtil.listClazz(clazz, true, x -> {
                 RPCInstance declaredAnnotation = x.getDeclaredAnnotation(RPCInstance.class);
-                if(declaredAnnotation!=null){
+                if (declaredAnnotation != null) {
                     return true;
                 }
                 return false;
@@ -44,8 +54,8 @@ public class Server {
 
             for (Class<?> aClass : classes) {
                 for (Class genericInterface : aClass.getInterfaces()) {
-                    if( genericInterface.isAnnotationPresent(RPCInterface.class)) {
-                        Server.beans.put(genericInterface.getName(),aClass.newInstance());
+                    if (genericInterface.isAnnotationPresent(RPCInterface.class)) {
+                        Server.beans.put(genericInterface.getName(), aClass.newInstance());
                     }
                 }
             }
@@ -62,9 +72,16 @@ public class Server {
     }
 
 
-
-    public void start() throws InterruptedException {
+    public void start() {
         this.init();
+        try {
+            this.startServer(this.port);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startServer(int port) throws InterruptedException {
         NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup(1);
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(nioEventLoopGroup, nioEventLoopGroup).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<SocketChannel>() {

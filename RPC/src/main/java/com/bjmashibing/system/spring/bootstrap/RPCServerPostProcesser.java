@@ -2,6 +2,7 @@ package com.bjmashibing.system.spring.bootstrap;
 
 import com.bjmashibing.system.rpc.anotation.RPCInstance;
 import com.bjmashibing.system.rpc.anotation.RPCInterface;
+import com.bjmashibing.system.rpc.server.Server;
 
 /**
  * @author : 生态环境-张阳
@@ -15,7 +16,9 @@ public class RPCServerPostProcesser extends AbstractPostProcessor {
             for (Class genericInterface : x.getInterfaces()) {
                 if (genericInterface.isAnnotationPresent(RPCInterface.class)) {
                     try {
-                        add(genericInterface.getName(), x.newInstance());
+                        Object o = x.newInstance();
+                        add(genericInterface.getName(), o);
+                        add(x.getName(),o);
                         return true;
                     } catch (InstantiationException e) {
                         e.printStackTrace();
@@ -28,4 +31,10 @@ public class RPCServerPostProcesser extends AbstractPostProcessor {
         return false;
     }
 
+    @Override
+    public void lastTodo() {
+        Server.beans = getBeansMap();
+        new Server(9090);
+
+    }
 }

@@ -10,7 +10,6 @@ public class DefaultPostProcessor extends AbstractPostProcessor {
     @Override
     public boolean filter(Class<?> x) {
         if (x.isAnnotationPresent(Component.class)) {
-            afterProcess(x);
             try {
                 add(x.getName(), x.newInstance());
                 return true;

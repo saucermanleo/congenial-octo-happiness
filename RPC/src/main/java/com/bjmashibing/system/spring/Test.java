@@ -9,7 +9,7 @@ import com.bjmashibing.system.spring.service.World;
  * @author : 生态环境-张阳
  * @date : 2020/9/16 0016 10:32
  */
-@Component
+
 public class Test {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Test.class);
