@@ -1,4 +1,4 @@
-package com.bjmashibing.system.rpc.util;
+package com.bjmashibing.system.spring.util;
 
 import java.io.File;
 import java.io.IOException;
