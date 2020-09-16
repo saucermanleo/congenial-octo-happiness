@@ -1,7 +1,7 @@
-package com.bjmashibing.system.test.rpc.server;
+package com.bjmashibing.system.rpc.server;
 
-import com.bjmashibing.system.test.rpc.request.Parameter;
-import com.bjmashibing.system.test.rpc.request.SmartCarProtocol;
+import com.bjmashibing.system.rpc.request.Parameter;
+import com.bjmashibing.system.rpc.request.SmartCarProtocol;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 

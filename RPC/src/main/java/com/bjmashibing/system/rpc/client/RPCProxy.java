@@ -1,7 +1,7 @@
-package com.bjmashibing.system.test.rpc.client;
+package com.bjmashibing.system.rpc.client;
 
-import com.bjmashibing.system.test.rpc.request.Parameter;
-import com.bjmashibing.system.test.rpc.request.SmartCarProtocol;
+import com.bjmashibing.system.rpc.request.Parameter;
+import com.bjmashibing.system.rpc.request.SmartCarProtocol;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.io.ByteArrayOutputStream;

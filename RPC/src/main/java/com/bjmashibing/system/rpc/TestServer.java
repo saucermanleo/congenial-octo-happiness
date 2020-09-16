@@ -1,6 +1,6 @@
-package com.bjmashibing.system.test.rpc;
+package com.bjmashibing.system.rpc;
 
-import com.bjmashibing.system.test.rpc.server.Server;
+import com.bjmashibing.system.rpc.server.Server;
 
 /**
  * @author : 生态环境-张阳

@@ -1,7 +1,7 @@
-package com.bjmashibing.system.test.rpc.client;
+package com.bjmashibing.system.rpc.client;
 
-import com.bjmashibing.system.test.rpc.request.SmartCarDecoder;
-import com.bjmashibing.system.test.rpc.request.SmartCarEncoder;
+import com.bjmashibing.system.rpc.request.SmartCarDecoder;
+import com.bjmashibing.system.rpc.request.SmartCarEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;

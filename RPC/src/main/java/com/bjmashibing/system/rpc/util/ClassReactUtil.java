@@ -1,4 +1,4 @@
-package com.bjmashibing.system.test.rpc.util;
+package com.bjmashibing.system.rpc.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +16,10 @@ import java.util.jar.JarFile;
 public class ClassReactUtil {
     private static Queue<File> queue = new LinkedList<>();
     private static Queue<String> queuePackage = new LinkedList<>();
+
+
+
+
 
     private static void listDictory(String packge, File destFile, boolean recive, Set<Class<?>> sets, Predicate<Class<?>> predicate) {
         String destPath;
@@ -85,6 +89,16 @@ public class ClassReactUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Set<Class<?>> listClazz(Class<?> clazz, boolean recursive, Predicate<Class<?>> filter) throws IOException {
+        Package aPackage = clazz.getPackage();
+        String name = "";
+        if(aPackage != null){
+            name= clazz.getPackage().getName();
+        }
+        System.out.println(name);
+        return ClassReactUtil.listClazz(name,recursive,filter);
     }
 
     public static Set<Class<?>> listClazz(String path, boolean recursive, Predicate<Class<?>> filter) throws IOException {

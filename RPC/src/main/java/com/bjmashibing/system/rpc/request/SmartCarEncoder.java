@@ -1,4 +1,4 @@
-package com.bjmashibing.system.test.rpc.request;
+package com.bjmashibing.system.rpc.request;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

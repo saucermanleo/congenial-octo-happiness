@@ -1,7 +1,7 @@
-package com.bjmashibing.system.test.rpc.client;
+package com.bjmashibing.system.rpc.client;
 
-import com.bjmashibing.system.test.rpc.anotation.RPCInterface;
-import com.bjmashibing.system.test.rpc.util.ClassReactUtil;
+import com.bjmashibing.system.rpc.anotation.RPCInterface;
+import com.bjmashibing.system.rpc.util.ClassReactUtil;
 
 import java.io.IOException;
 import java.util.Set;
@@ -26,15 +26,7 @@ public class RPCFactory {
     private void init(Class<?> clazz) {
         try {
             RPCProxy rpcProxy = new RPCProxy(ip, port);
-
-            Package aPackage = clazz.getPackage();
-            String name = "";
-            if(aPackage != null){
-                name= clazz.getPackage().getName();
-            }
-            System.out.println(name);
-
-            Set<Class<?>> classes = ClassReactUtil.listClazz(name, true, x -> {
+            Set<Class<?>> classes = ClassReactUtil.listClazz(clazz, true, x -> {
                 RPCInterface declaredAnnotation = x.getDeclaredAnnotation(RPCInterface.class);
                 if (declaredAnnotation != null) {
                     return true;

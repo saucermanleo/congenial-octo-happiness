@@ -1,4 +1,4 @@
-package com.bjmashibing.system.test.rpc.service;
+package com.bjmashibing.system.rpc.service;
 
 import java.io.Serializable;
 

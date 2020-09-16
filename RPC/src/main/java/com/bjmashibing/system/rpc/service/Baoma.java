@@ -1,6 +1,6 @@
-package com.bjmashibing.system.test.rpc.service;
+package com.bjmashibing.system.rpc.service;
 
-import com.bjmashibing.system.test.rpc.anotation.RPCInstance;
+import com.bjmashibing.system.rpc.anotation.RPCInstance;
 
 /**
  * @author : 生态环境-张阳

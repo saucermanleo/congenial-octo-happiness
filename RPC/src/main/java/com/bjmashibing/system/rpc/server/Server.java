@@ -1,10 +1,10 @@
-package com.bjmashibing.system.test.rpc.server;
+package com.bjmashibing.system.rpc.server;
 
-import com.bjmashibing.system.test.rpc.anotation.RPCInstance;
-import com.bjmashibing.system.test.rpc.anotation.RPCInterface;
-import com.bjmashibing.system.test.rpc.request.SmartCarDecoder;
-import com.bjmashibing.system.test.rpc.request.SmartCarEncoder;
-import com.bjmashibing.system.test.rpc.util.ClassReactUtil;
+import com.bjmashibing.system.rpc.anotation.RPCInstance;
+import com.bjmashibing.system.rpc.anotation.RPCInterface;
+import com.bjmashibing.system.rpc.request.SmartCarDecoder;
+import com.bjmashibing.system.rpc.request.SmartCarEncoder;
+import com.bjmashibing.system.rpc.util.ClassReactUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -34,13 +34,7 @@ public class Server {
 
     private  void  init(){
         try {
-            Package aPackage = clazz.getPackage();
-            String name = "";
-            if(aPackage != null){
-                name= clazz.getPackage().getName();
-            }
-            System.out.println(name);
-            Set<Class<?>> classes = ClassReactUtil.listClazz(name, true, x -> {
+            Set<Class<?>> classes = ClassReactUtil.listClazz(clazz, true, x -> {
                 RPCInstance declaredAnnotation = x.getDeclaredAnnotation(RPCInstance.class);
                 if(declaredAnnotation!=null){
                     return true;

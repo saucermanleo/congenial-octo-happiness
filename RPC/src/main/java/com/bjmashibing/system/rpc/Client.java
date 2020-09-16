@@ -1,7 +1,7 @@
-package com.bjmashibing.system.test.rpc;
+package com.bjmashibing.system.rpc;
 
-import com.bjmashibing.system.test.rpc.client.RPCFactory;
-import com.bjmashibing.system.test.rpc.service.Car;
+import com.bjmashibing.system.rpc.client.RPCFactory;
+import com.bjmashibing.system.rpc.service.Car;
 
 import java.io.IOException;
 
