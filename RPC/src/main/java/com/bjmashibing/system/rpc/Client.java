@@ -1,6 +1,7 @@
 package com.bjmashibing.system.rpc;
 
 import com.bjmashibing.system.rpc.service.Car;
+import com.bjmashibing.system.rpc.service.IHello;
 import com.bjmashibing.system.spring.annotation.EnableRPCClient;
 import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
@@ -19,6 +20,8 @@ public class Client {
         SpringApplication springApplication = new SpringApplication(Client.class);
         springApplication.start();
         Car car = SpringApplication.getBean(Car.class);
+        IHello hello = SpringApplication.getBean(IHello.class);
+        hello.sayHello();
 
         for (int i = 0; i < 50; i++) {
             new Thread(new Runnable() {

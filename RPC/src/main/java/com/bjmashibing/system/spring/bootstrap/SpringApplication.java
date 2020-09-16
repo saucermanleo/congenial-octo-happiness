@@ -47,7 +47,7 @@ public class SpringApplication {
             });
             for (Field key : list) {
                 String name = key.getType().getName();
-                name=      interfaceToName.get(name);
+                name = interfaceToName.get(name);
                 if (name == null || name.equals("")) {
                     name = key.getType().getName();
                 }
