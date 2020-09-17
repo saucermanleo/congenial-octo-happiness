@@ -33,10 +33,15 @@ public class DefaultPostProcessor extends AbstractPostProcessor {
             if (name == null || name.equals("")) {
                 name = key.getType().getName();
             }
+
+            Object o = SpringApplication.proxyBeans.get(key.getDeclaringClass().getName());
+            if (o == null) {
+                o = SpringApplication.beans.get(key.getDeclaringClass().getName());
+            }
             try {
-                key.set(SpringApplication.beans.get(key.getDeclaringClass().getName()), SpringApplication.beans.get(name));
-            }catch (IllegalAccessException e){
-                e.printStackTrace();
+                key.set(o, SpringApplication.beans.get(name));
+            } catch (IllegalAccessException e) {
+                continue;
             }
         }
     }

@@ -9,6 +9,7 @@ import com.bjmashibing.system.spring.aop.instance.AspectBean;
 import com.bjmashibing.system.spring.bootstrap.AbstractPostProcessor;
 import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -23,6 +24,7 @@ import java.util.List;
 public class AOPPostProcessor extends AbstractPostProcessor {
 
     private List<AspectBean> list = new LinkedList<>();
+    private List<Field> inserts = new LinkedList<>();
 
     @Override
     public boolean filter(Class<?> x) {
@@ -35,8 +37,9 @@ public class AOPPostProcessor extends AbstractPostProcessor {
 
                 for (Method method : methods) {
                     Pointcut p = method.getDeclaredAnnotation(Pointcut.class);
-                    if (p != null&& p.value().isInterface()) {
-                        aspectBean.setPointCut(p.value());
+                    if (p != null && p.value().isInterface()) {
+                        Class<?> value = p.value();
+                        aspectBean.setPointCut(value);
                     } else if (method.isAnnotationPresent(Before.class)) {
                         aspectBean.setBefore(method);
                     }
@@ -63,8 +66,8 @@ public class AOPPostProcessor extends AbstractPostProcessor {
                     return method.invoke(o, args);
                 }
             });
-
             SpringApplication.beans.put(SpringApplication.interfaceToName.get(clazz.getName()), o1);
+            SpringApplication.proxyBeans.put(SpringApplication.interfaceToName.get(clazz.getName()), o);
         }
     }
 }

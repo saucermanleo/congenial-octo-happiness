@@ -10,7 +10,6 @@ import com.bjmashibing.system.spring.service.World;
  * @date : 2020/9/16 0016 10:32
  */
 @EnableAOP
-//@EnableRPCServer
 public class Test {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Test.class);

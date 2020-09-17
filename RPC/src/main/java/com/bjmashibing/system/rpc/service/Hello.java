@@ -1,5 +1,6 @@
 package com.bjmashibing.system.rpc.service;
 
+import com.bjmashibing.system.spring.annotation.Autowired;
 import com.bjmashibing.system.spring.annotation.Component;
 
 
@@ -9,6 +10,11 @@ import com.bjmashibing.system.spring.annotation.Component;
  */
 @Component
 public class Hello implements IHello{
+
+//    @Autowired
+//    private Car car;
+    @Autowired
+   private World car;
 
     @Override
     public void sayHello(){

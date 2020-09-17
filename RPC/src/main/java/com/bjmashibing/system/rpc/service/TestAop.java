@@ -1,4 +1,4 @@
-package com.bjmashibing.system.spring.service;
+package com.bjmashibing.system.rpc.service;
 
 import com.bjmashibing.system.spring.aop.annotation.Aspect;
 import com.bjmashibing.system.spring.aop.annotation.Before;

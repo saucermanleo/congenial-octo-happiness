@@ -1,4 +1,4 @@
-package com.bjmashibing.system.spring.service;
+package com.bjmashibing.system.rpc.service;
 
 import com.bjmashibing.system.spring.annotation.Autowired;
 import com.bjmashibing.system.spring.annotation.Component;
@@ -15,9 +15,5 @@ public class World {
 
     public void test(){
         hello.sayHello();
-    }
-
-    public void hello(){
-        System.out.println("hello world");
     }
 }

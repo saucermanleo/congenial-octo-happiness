@@ -16,6 +16,7 @@ public class SpringApplication {
 
     public static List<Field> list = new LinkedList<>();
     public static ConcurrentHashMap<String, Object> beans = new ConcurrentHashMap<>();
+    public static ConcurrentHashMap<String, Object> proxyBeans = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, String> interfaceToName = new ConcurrentHashMap<>();
     public static List<IPostProcessor> postProcesses = new LinkedList<>();
     public static Class<?> clazz;
@@ -27,14 +28,16 @@ public class SpringApplication {
 
     public void start() {
         try {
-            //默认自带依赖注入处理器添加
-            postProcesses.add(new DefaultPostProcessor());
+
 
             //扫描Enable并添加配置了Enablexxx在启动类上的postprocessor
             ClassReactUtil.listClazz("", true, (x) -> {
                 new EnablePostProcessor().process(x);
                 return false;
             });
+
+            //默认自带依赖注入处理器添加
+            postProcesses.add(new DefaultPostProcessor());
 
             //扫描并执行所有postprocessor
             ClassReactUtil.listClazz(clazz, true, (x) -> {

@@ -1,8 +1,9 @@
 package com.bjmashibing.system.rpc;
 
+import com.bjmashibing.system.rpc.client.EnableRPCClient;
 import com.bjmashibing.system.rpc.service.Car;
 import com.bjmashibing.system.rpc.service.IHello;
-import com.bjmashibing.system.rpc.client.EnableRPCClient;
+import com.bjmashibing.system.spring.aop.annotation.EnableAOP;
 import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.IOException;
  * @date : 2020/7/29 0029 11:36
  */
 @EnableRPCClient
+@EnableAOP
 public class Client {
     public static void main(String[] args) throws IOException {
 /*        RPCFactory rpcFactory = new RPCFactory(9090,"localhost",Client.class);
