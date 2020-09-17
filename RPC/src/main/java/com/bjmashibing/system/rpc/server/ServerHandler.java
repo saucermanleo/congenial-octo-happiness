@@ -26,9 +26,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ObjectInputStream objectInputStream = new ObjectInputStream(byteInputStream);
         Parameter o = (Parameter)objectInputStream.readObject();
 
-        Class<?> aClass = Server.beans.get(o.getClassName()).getClass();
+        Class<?> aClass = o.getCalzz();
         Method method = aClass.getMethod(o.getMethodName(), o.getParameterTypes());
-        Object invoke = method.invoke(Server.beans.get(o.getClassName()), o.getArgs());
+        Object invoke = method.invoke(Server.defaultBeanManage.getBean(aClass), o.getArgs());
 
         o.setResult(invoke);
 

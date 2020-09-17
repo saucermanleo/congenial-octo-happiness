@@ -19,7 +19,6 @@ public class RPCServerPostProcesser extends AbstractPostProcessor {
                 if (genericInterface.isAnnotationPresent(RPCInterface.class)) {
                     try {
                         Object o = x.newInstance();
-                        add(genericInterface.getName(), o);
                         add(x.getName(),o);
                         return true;
                     } catch (InstantiationException e) {
@@ -35,7 +34,7 @@ public class RPCServerPostProcesser extends AbstractPostProcessor {
 
     @Override
     public void lastTodo() {
-        Server.beans = getBeansMap();
+        Server.defaultBeanManage = new SpringBeanMange();
         new Server(9090);
 
     }

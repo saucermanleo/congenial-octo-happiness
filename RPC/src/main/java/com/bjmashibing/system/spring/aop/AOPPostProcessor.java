@@ -56,19 +56,41 @@ public class AOPPostProcessor extends AbstractPostProcessor {
 
     @Override
     public void lastTodo() {
-        for (AspectBean aspectBean : list) {
-            Class<?> clazz = aspectBean.getPointCut();
-            Object o = SpringApplication.getBean(clazz);
-            Object o1 = Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    aspectBean.getBefore().invoke(aspectBean.getObject(), null);
-                    return method.invoke(o, args);
-                }
-            });
-            SpringApplication.beans.put(SpringApplication.interfaceToName.get(clazz.getName()), o1);
-            //设置被代理对象  用于注入对象
-            SpringApplication.proxyBeans.put(SpringApplication.interfaceToName.get(clazz.getName()), o);
+        try {
+            for (AspectBean aspectBean : list) {
+                Class<?> clazz = aspectBean.getPointCut();
+                Object o = SpringApplication.getBean(clazz);
+
+//                Class<?> aClass = Class.forName(SpringApplication.interfaceToName.get(clazz.getName()));
+//                Field[] declaredFields = aClass.getDeclaredFields();
+//                for (Field key : declaredFields) {
+//                    if (key.isAnnotationPresent(Autowired.class)) {
+//                        key.setAccessible(true);
+//                        String name = key.getType().getName();
+//                        name = SpringApplication.interfaceToName.get(name);
+//                        if (name == null || name.equals("")) {
+//                            name = key.getType().getName();
+//                        }
+//                        Object object = SpringApplication.beans.get(key.getDeclaringClass().getName());
+//
+//                        key.set(object, SpringApplication.beans.get(name));
+//
+//                    }
+//                }
+
+                Object o1 = Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        aspectBean.getBefore().invoke(aspectBean.getObject(), null);
+                        return method.invoke(o, args);
+                    }
+                });
+                SpringApplication.beans.put(SpringApplication.interfaceToName.get(clazz.getName()), o1);
+                //设置被代理对象  用于注入对象
+                SpringApplication.proxyBeans.put(SpringApplication.interfaceToName.get(clazz.getName()), o);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

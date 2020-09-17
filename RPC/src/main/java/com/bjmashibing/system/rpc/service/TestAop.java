@@ -15,7 +15,7 @@ public class TestAop {
         System.out.println("test before");
     }
 
-    @Pointcut(IHello.class)
+    @Pointcut(Car.class)
     public void pointCut() {
 
     }

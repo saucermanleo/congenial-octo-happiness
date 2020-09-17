@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Server {
 
-    public static ConcurrentHashMap<String, Object> beans = new ConcurrentHashMap();
+    public static BeansMange defaultBeanManage = new DefaultBeanManage();
 
     private int port;
     private Class<?> clazz;
@@ -55,12 +55,11 @@ public class Server {
             for (Class<?> aClass : classes) {
                 for (Class genericInterface : aClass.getInterfaces()) {
                     if (genericInterface.isAnnotationPresent(RPCInterface.class)) {
-                        Server.beans.put(genericInterface.getName(), aClass.newInstance());
+                        defaultBeanManage.put(genericInterface, aClass.newInstance());
                     }
                 }
             }
 
-            System.out.println(Server.beans);
 
         } catch (IOException e) {
             e.printStackTrace();
