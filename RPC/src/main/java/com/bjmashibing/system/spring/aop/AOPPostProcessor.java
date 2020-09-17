@@ -67,6 +67,7 @@ public class AOPPostProcessor extends AbstractPostProcessor {
                 }
             });
             SpringApplication.beans.put(SpringApplication.interfaceToName.get(clazz.getName()), o1);
+            //设置被代理对象  用于注入对象
             SpringApplication.proxyBeans.put(SpringApplication.interfaceToName.get(clazz.getName()), o);
         }
     }

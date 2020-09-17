@@ -13,7 +13,7 @@ import java.io.IOException;
  * @date : 2020/7/29 0029 11:36
  */
 @EnableRPCClient
-@EnableAOP
+
 public class Client {
     public static void main(String[] args) throws IOException {
 /*        RPCFactory rpcFactory = new RPCFactory(9090,"localhost",Client.class);
@@ -22,8 +22,7 @@ public class Client {
         SpringApplication springApplication = new SpringApplication(Client.class);
         springApplication.start();
         Car car = SpringApplication.getBean(Car.class);
-        IHello hello = SpringApplication.getBean(IHello.class);
-        hello.sayHello();
+
 
         for (int i = 0; i < 50; i++) {
             new Thread(new Runnable() {

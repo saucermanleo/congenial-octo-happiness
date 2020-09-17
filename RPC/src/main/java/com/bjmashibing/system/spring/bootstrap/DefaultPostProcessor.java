@@ -33,7 +33,7 @@ public class DefaultPostProcessor extends AbstractPostProcessor {
             if (name == null || name.equals("")) {
                 name = key.getType().getName();
             }
-
+            //先从被代理对象的map中取值  被代理对象不能设置属性
             Object o = SpringApplication.proxyBeans.get(key.getDeclaringClass().getName());
             if (o == null) {
                 o = SpringApplication.beans.get(key.getDeclaringClass().getName());
@@ -41,7 +41,7 @@ public class DefaultPostProcessor extends AbstractPostProcessor {
             try {
                 key.set(o, SpringApplication.beans.get(name));
             } catch (IllegalAccessException e) {
-                continue;
+                e.printStackTrace();
             }
         }
     }

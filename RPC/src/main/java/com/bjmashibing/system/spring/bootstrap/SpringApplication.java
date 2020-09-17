@@ -51,6 +51,9 @@ public class SpringApplication {
             for (IPostProcessor postProcessor : postProcesses) {
                 postProcessor.lastTodo();
             }
+            System.out.println("==========================================================================");
+            System.out.println("启动成功");
+            System.out.println("==========================================================================");
         } catch (IOException e) {
             e.printStackTrace();
         }
