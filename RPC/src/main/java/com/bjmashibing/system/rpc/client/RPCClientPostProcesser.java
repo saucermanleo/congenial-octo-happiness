@@ -3,6 +3,7 @@ package com.bjmashibing.system.rpc.client;
 import com.bjmashibing.system.rpc.anotation.RPCInterface;
 import com.bjmashibing.system.spring.annotation.Enable;
 import com.bjmashibing.system.spring.bootstrap.AbstractPostProcessor;
+import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
 /**
  * @author : 生态环境-张阳
@@ -22,6 +23,7 @@ public class RPCClientPostProcesser extends AbstractPostProcessor {
         RPCInterface declaredAnnotation = x.getDeclaredAnnotation(RPCInterface.class);
         if (declaredAnnotation != null) {
             add(x.getName(), rpcProxy.proxy(x));
+            SpringApplication.interfaceToName.put(x.getName(), x.getName());
         }
         return false;
     }

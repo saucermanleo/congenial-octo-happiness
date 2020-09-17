@@ -1,5 +1,6 @@
 package com.bjmashibing.system.spring.service;
 
+import com.bjmashibing.system.rpc.service.Car;
 import com.bjmashibing.system.spring.aop.annotation.Aspect;
 import com.bjmashibing.system.spring.aop.annotation.Before;
 import com.bjmashibing.system.spring.aop.annotation.Pointcut;
@@ -15,7 +16,7 @@ public class TestAop {
         System.out.println("test before");
     }
 
-    @Pointcut(IHello.class)
+    @Pointcut(Car.class)
     public void pointCut() {
 
     }

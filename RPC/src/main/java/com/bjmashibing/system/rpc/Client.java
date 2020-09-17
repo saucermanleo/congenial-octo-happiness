@@ -13,7 +13,7 @@ import java.io.IOException;
  * @date : 2020/7/29 0029 11:36
  */
 @EnableRPCClient
-
+@EnableAOP
 public class Client {
     public static void main(String[] args) throws IOException {
 /*        RPCFactory rpcFactory = new RPCFactory(9090,"localhost",Client.class);
