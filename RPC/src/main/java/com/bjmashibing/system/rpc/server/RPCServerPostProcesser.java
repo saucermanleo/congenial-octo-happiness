@@ -1,13 +1,15 @@
-package com.bjmashibing.system.spring.bootstrap;
+package com.bjmashibing.system.rpc.server;
 
 import com.bjmashibing.system.rpc.anotation.RPCInstance;
 import com.bjmashibing.system.rpc.anotation.RPCInterface;
-import com.bjmashibing.system.rpc.server.Server;
+import com.bjmashibing.system.spring.annotation.Enable;
+import com.bjmashibing.system.spring.bootstrap.AbstractPostProcessor;
 
 /**
  * @author : 生态环境-张阳
  * @date : 2020/9/16 0016 15:34
  */
+@Enable(value = EnableRPCServer.class)
 public class RPCServerPostProcesser extends AbstractPostProcessor {
     @Override
     public boolean filter(Class<?> x) {

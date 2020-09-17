@@ -2,7 +2,7 @@ package com.bjmashibing.system.rpc;
 
 import com.bjmashibing.system.rpc.service.Car;
 import com.bjmashibing.system.rpc.service.IHello;
-import com.bjmashibing.system.spring.annotation.EnableRPCClient;
+import com.bjmashibing.system.rpc.client.EnableRPCClient;
 import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
 import java.io.IOException;

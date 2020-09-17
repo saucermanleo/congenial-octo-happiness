@@ -1,18 +1,20 @@
-package com.bjmashibing.system.spring.bootstrap;
+package com.bjmashibing.system.rpc.client;
 
 import com.bjmashibing.system.rpc.anotation.RPCInterface;
-import com.bjmashibing.system.rpc.client.RPCProxy;
+import com.bjmashibing.system.spring.annotation.Enable;
+import com.bjmashibing.system.spring.bootstrap.AbstractPostProcessor;
 
 /**
  * @author : 生态环境-张阳
  * @date : 2020/9/16 0016 15:39
  */
+@Enable(value = EnableRPCClient.class)
 public class RPCClientPostProcesser extends AbstractPostProcessor {
 
     private RPCProxy rpcProxy;
 
-    public RPCClientPostProcesser(String ip, int port) {
-        rpcProxy = new RPCProxy(ip, port);
+    public RPCClientPostProcesser() {
+        rpcProxy = new RPCProxy("localhost", 9090);
     }
 
     @Override

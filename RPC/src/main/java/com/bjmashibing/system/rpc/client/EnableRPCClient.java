@@ -1,4 +1,4 @@
-package com.bjmashibing.system.spring.annotation;
+package com.bjmashibing.system.rpc.client;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

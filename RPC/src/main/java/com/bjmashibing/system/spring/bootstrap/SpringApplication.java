@@ -1,8 +1,6 @@
 package com.bjmashibing.system.spring.bootstrap;
 
 import com.bjmashibing.system.rpc.util.ClassReactUtil;
-import com.bjmashibing.system.spring.annotation.EnableRPCClient;
-import com.bjmashibing.system.spring.annotation.EnableRPCServer;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -19,26 +17,23 @@ public class SpringApplication {
     public static List<Field> list = new LinkedList<>();
     public static ConcurrentHashMap<String, Object> beans = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, String> interfaceToName = new ConcurrentHashMap<>();
-    private Class<?> clazz;
+    public static List<IPostProcessor> postProcesses = new LinkedList<>();
+    public static Class<?> clazz;
 
 
-    public SpringApplication(Class<?> calzz) {
-        this.clazz = calzz;
+    public SpringApplication(Class<?> c) {
+        clazz = c;
     }
 
     public void start() {
-
-
         try {
-            List<IPostProcessor> postProcesses = new LinkedList<>();
             postProcesses.add(new DefaultPostProcessor());
-            if (clazz.isAnnotationPresent(EnableRPCClient.class)) {
-                postProcesses.add(new RPCClientPostProcesser("localhost", 9090));
-            }
-            if (clazz.isAnnotationPresent(EnableRPCServer.class)) {
-                postProcesses.add(new RPCServerPostProcesser());
-            }
-
+            //扫描Enable并添加postprocessor
+            ClassReactUtil.listClazz("", true, (x) -> {
+                new EnablePostProcessor().filter(x);
+                return false;
+            });
+            //扫描并执行postprocessor
             ClassReactUtil.listClazz(clazz, true, (x) -> {
                 for (IPostProcessor postProcessor : postProcesses) {
                     postProcessor.process(x);

@@ -1,6 +1,6 @@
 package com.bjmashibing.system.rpc;
 
-import com.bjmashibing.system.spring.annotation.EnableRPCServer;
+import com.bjmashibing.system.rpc.server.EnableRPCServer;
 import com.bjmashibing.system.spring.bootstrap.SpringApplication;
 
 /**

@@ -43,7 +43,7 @@ public abstract class AbstractPostProcessor implements IPostProcessor {
 
     }
 
-    ConcurrentHashMap<String, Object>  getBeansMap(){
+    public ConcurrentHashMap<String, Object>  getBeansMap(){
         return SpringApplication.beans;
     }
 }
