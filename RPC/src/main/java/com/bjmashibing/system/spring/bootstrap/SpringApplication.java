@@ -27,41 +27,28 @@ public class SpringApplication {
 
     public void start() {
         try {
+            //默认自带依赖注入处理器添加
             postProcesses.add(new DefaultPostProcessor());
-            //扫描Enable并添加postprocessor
+
+            //扫描Enable并添加配置了Enablexxx在启动类上的postprocessor
             ClassReactUtil.listClazz("", true, (x) -> {
                 new EnablePostProcessor().process(x);
                 return false;
             });
-            //扫描并执行postprocessor
+
+            //扫描并执行所有postprocessor
             ClassReactUtil.listClazz(clazz, true, (x) -> {
                 for (IPostProcessor postProcessor : postProcesses) {
                     postProcessor.process(x);
                 }
                 return false;
             });
-            for (Field key : list) {
-                String name = key.getType().getName();
-                name = interfaceToName.get(name);
-                if (name == null || name.equals("")) {
-                    name = key.getType().getName();
-                }
-                key.set(beans.get(key.getDeclaringClass().getName()), beans.get(name));
-            }
 
+            //执行扫描后的操作
             for (IPostProcessor postProcessor : postProcesses) {
                 postProcessor.lastTodo();
             }
-
-            System.out.println(list);
-            list = null;
-            postProcesses = null;
-            System.out.println(beans);
-            System.out.println(interfaceToName);
-
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }

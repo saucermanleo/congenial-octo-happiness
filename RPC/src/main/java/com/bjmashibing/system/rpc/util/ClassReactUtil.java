@@ -93,7 +93,6 @@ public class ClassReactUtil {
         if(aPackage != null){
             name= clazz.getPackage().getName();
         }
-        System.out.println(name);
         return ClassReactUtil.listClazz(name,recursive,filter);
     }
 
