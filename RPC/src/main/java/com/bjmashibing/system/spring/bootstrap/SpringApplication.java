@@ -30,7 +30,7 @@ public class SpringApplication {
             postProcesses.add(new DefaultPostProcessor());
             //扫描Enable并添加postprocessor
             ClassReactUtil.listClazz("", true, (x) -> {
-                new EnablePostProcessor().filter(x);
+                new EnablePostProcessor().process(x);
                 return false;
             });
             //扫描并执行postprocessor
@@ -55,6 +55,7 @@ public class SpringApplication {
 
             System.out.println(list);
             list = null;
+            postProcesses = null;
             System.out.println(beans);
             System.out.println(interfaceToName);
 
