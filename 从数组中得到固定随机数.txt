@@ -1,0 +1,86 @@
+package com.zy;
+
+
+import sun.security.util.Length;
+
+import java.security.SecureRandom;
+import java.util.*;
+
+/**
+ * @author : 生态环境-张阳
+ * @date : 2020/10/27 0027 12:23
+ */
+public class Test2 {
+    public static void main(String[] args) {
+        List<Long> list = new ArrayList<>();
+        List<Long> list1 = new LinkedList<>();
+        for (long i = 0; i < 100000; i++) {
+            list.add(i);
+            list1.add(i);
+        }
+        int num = 10000;
+        random(num, list);
+        getRandomAraaysToNum(num, list);
+
+        random(num, list1);
+        getRandomAraaysToNum(num, list1);
+
+        num = 80000;
+
+        random(num, list);
+        getRandomAraaysToNum(num, list);
+
+
+        random(num, list1);
+        getRandomAraaysToNum(num, list1);
+    }
+
+
+    public static <T> List<T> random(int length, List<T> arrays) {
+        long startTime = System.currentTimeMillis();
+        arrays = new ArrayList<>(arrays);
+
+        List<T> results = new LinkedList<>();
+        if (arrays == null) {
+            return results;
+        }
+        if (arrays.size() <= length) {
+            return arrays;
+        }
+
+        Random random = new Random();
+
+        if (length > arrays.size() /2) {
+            int n = arrays.size() - length;
+            int index = arrays.size() - 1;
+            for (int i = 0; i < n; i++) {
+                int num = random.nextInt(index);
+                T t = arrays.get(num);
+                arrays.set(num, arrays.get(index));
+                arrays.set(index, t);
+                index--;
+            }
+            results = arrays.subList(0, length);
+        } else {
+            int index = arrays.size() - 1;
+            for (int i = 0; i < length; i++) {
+                int num = random.nextInt(index);
+                results.add(arrays.get(num));
+                arrays.set(num, arrays.get(index));
+                index--;
+            }
+        }
+        System.out.print(System.currentTimeMillis() - startTime);
+        System.out.print(" : ");
+        return results;
+    }
+
+    public static<T> List<T> getRandomAraaysToNum(int num, List<T> arrays) {
+        long startTime = System.currentTimeMillis();
+        arrays = new ArrayList<>(arrays);
+        Collections.shuffle(arrays);
+        List<T> results = arrays.subList(0, num);
+        System.out.println(System.currentTimeMillis() - startTime);
+        return results;
+    }
+}

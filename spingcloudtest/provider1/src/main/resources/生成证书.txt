@@ -1,0 +1,20 @@
+keytool -genkeypair -keyalg RSA -keysize 2048 -alias magic -validity 3650
+
+keytool -genkeypair -keyalg RSA -keysize 2048 -alias zy -ext SAN=dns:localhost -validity 3650
+
+keytool -certreq -alias zy -file zy.csr
+
+keytool -gencert -alias magic -validity 365 -infile zy.csr -outfile secoundCert.cer -ext SAN=dns:localhost
+
+keytool -importcert -alias zy -file secoundCert.cer
+
+keytool -exportcert -alias magic -file magic.cer
+
+
+
+
+springboot https配置方法:
+#证书的路径.
+server.ssl.key-store= classpath:keystore
+server.ssl.key-alias= zy
+server.ssl.key-store-password= 123456

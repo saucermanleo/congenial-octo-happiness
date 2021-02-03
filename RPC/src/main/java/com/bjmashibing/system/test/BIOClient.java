@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
  */
 public class BIOClient {
     public static void main(String[] args) {
-        try (Socket socket  = new Socket("192.168.25.128", 9090)) {
+        try (Socket socket  = new Socket("222.209.28.186", 12345)) {
             socket.setTcpNoDelay(false);
             socket.setKeepAlive(true);
             OutputStream outputStream = socket.getOutputStream();
