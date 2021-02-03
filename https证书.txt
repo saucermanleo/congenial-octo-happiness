@@ -18,3 +18,7 @@ springboot https配置方法:
 server.ssl.key-store= classpath:keystore
 server.ssl.key-alias= zy
 server.ssl.key-store-password= 123456
+
+
+
+springcloudtest provider1 中已经实现
