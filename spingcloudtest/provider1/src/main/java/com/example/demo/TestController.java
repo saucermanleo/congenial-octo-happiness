@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -28,6 +29,9 @@ public class TestController {
 
     @Autowired
     TestFeign1 testFeign1;
+
+    @Value("${test}")
+     String name;
 
 
     @GetMapping("/services")
@@ -57,6 +61,6 @@ public class TestController {
 
     @GetMapping("/test2")
     public String test2() {
-        return testFeign1.test();
+        return name;
     }
 }
