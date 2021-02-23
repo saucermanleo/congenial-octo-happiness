@@ -1,0 +1,126 @@
+
+数据库信息：                                                                                                                数据连接地址：10.18.100.235:4000                                                                               连接工具：navicat                                                                                                         账号：BYSC_JCFX                                                                                                           密 码：BY@V1.0JCFX       
+
+
+
+双随机:
+   数据库名称：DB_GSODS_PLRS_BASE
+   用户名：DB_GSODS_PLRS_BASE
+   密码：eemp@V1.0#PLRS
+10.18.101.53
+
+
+
+
+
+
+1.完成学习VUE前端框架js代码编写规范，iView相关组件，JS方法抽取共用方法，高级函数的使用。 2完成学习数据库设计规范和达梦数据库使用。 3.完成学习spring boot框架常用组件jdk8新特性
+RWC1?rwSeparate=1&rwPercent=0
+5236
+DB_GSODS_AREV_BASE
+eemp@V1.0#DQ
+
+git账号:
+zhangyang
+kL2RZjtw*
+
+25楼进门密码
+065173#
+
+vpn:
+17743234105
+123456
+
+禅道:
+zhangyang
+zhangyang123
+
+达梦数据库地址：10.18.101.81:5236
+用户名：EEMP_SLWS
+密码：zdww@2019
+数据库模式：EEMPSLWS
+
+数据库powerdesigner
+ip：cdb-6jhza1ik.cd.tencentcdb.com
+端口：10025
+账号：powerdesigner
+密码：powerdesigner
+
+nacos配置界面
+http://10.18.101.131:8848/nacos
+develop 123456
+
+
+固废
+ip：10.18.101.81 
+port：5236
+用户名：EEMP_SLWS
+密码：zdww@2019
+
+Mysql数据库：
+地址：10.18.101.82
+账号密码：root  gswwECO@2019com
+
+
+服务器:
+10.18.101.141    root   gsww@100.com
+10.18.101.144    root   ww100.com
+10.18.101.148    root   gsww@100.com
+
+mysql测试数据库
+10.18.100.4
+123456
+root
+
+权限控制系统
+http://10.18.101.153:32101/oauth/authorize?response_type=token&client_id=0&scope=read+write&redirect_uri=http%3A%2F%2F10.18.101.153%3A32101%2F
+admin
+123456
+
+solidWaste001
+huanbao_test
+
+dm数据库 表结构转excel语句
+select
+        com.COMMENTS                                    ,
+        col.COLUMN_NAME                                 ,
+        CONCAT(col.DATA_TYPE, '(', col.data_length, ')'),
+        if(col.NULLABLE='N', '是', '否') as 是否非空
+from
+        user_tab_columns as col
+join user_col_comments   as com
+on
+        col.COLUMN_NAME=com.COLUMN_NAME
+where
+        col.Table_Name='T_ACCOUNT_FOREIGN_IN'
+    and com.Table_Name='T_ACCOUNT_FOREIGN_IN';
+	
+	
+	SELECT
+        rownum        ,
+        T.COLUMN_NAME ,
+        T.COMMENTS    ,
+        T1.DATA_TYPE  ,
+        T1.DATA_LENGTH,
+        '' 是否主键       ,
+        T.COMMENTS
+FROM
+        USER_COL_COMMENTS T
+LEFT JOIN all_tab_columns T1
+ON
+        T1.TABLE_NAME  = T.TABLE_NAME
+    and T1.column_name = T.column_name
+WHERE
+        T.TABLE_NAME='T_VEH_TEST_PERSON_INFO';
+select CONCAT(comments,'(',table_name,')') from user_tab_comments where table_name ='T_VEH_TEST_PERSON_INFO';
+
+
+10.18.101.167:8081
+http://10.18.101.167:8081/zhangjunyuan/eemp-pr-gs-gov-logitis-b-vue.git
+http://10.18.101.167:8081/zhangjunyuan/eemp-pr-gs-gov-logitis-s-biz-server.git
+http://10.18.101.167:8081/zhangjunyuan/eemp-pr-gs-gov-logitis-s-biz-module.git
+
+
+
+
+

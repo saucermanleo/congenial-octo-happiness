@@ -1,0 +1,64 @@
+Archaius
+权限
+断点续传
+kafka
+数据结构
+设计模式
+
+架构师、jvm、spring源码、redis、mq , sql优化、数据库分库策略 synchronize、多线程 IO底层 面试 架构 raft算法  b树 负载均衡
+
+
+运行时数据区
+常量池
+偏向锁
+中断
+熟悉jvm  有过jvm调优的经验
+精通nio模型 熟悉netty  通过netty实现rpc
+精通https底层原理,https部署,管理公司证书
+spring二次开发
+怎么使用zookeeper
+
+netty futurelistener
+类扫描
+orm 赋值 反射  javaassist
+
+谁是谷歌想要的人才
+
+刘虹
+坑爹韩
+胥涛
+胜标
+刘淼
+郑沛
+炳奇
+
+factorybean &
+循环依赖
+lifecircle
+starter
+构造方法循环依赖
+mybatis怎么得到connection
+事务超时是什么
+事务同步器
+事务传播怎么保存
+datasource 怎么关闭连接
+handlermaping什么时候加载的
+spirngmvc session
+pringmvc扩展点
+springmvc @feingn怎么实现
+springmvc 上传下载
+@initbinder源码
+
+ribbon 平均响应时间 服务器负载  单链接还是多连接
+
+鉴权
+数据库设计
+工作流
+
+
+彭炫 666
+大厨 600
+奎哥 1000
+磊哥 1000
+杨晓斌 1000
+熊峰 1000
